@@ -1,6 +1,7 @@
 package Logic;
 
 import Graphic.GraphicManager;
+import Logic.Models.Entity.Player;
 
 public class LogicManager {
 
@@ -10,7 +11,7 @@ public class LogicManager {
         this.gM =gM;
     }
 
-    public void playerAction(String action){
-
+    public void playerAction(String action, Player player){
+        player.action(action);
     }
 }

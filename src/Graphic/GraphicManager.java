@@ -2,6 +2,7 @@ package Graphic;
 
 import Graphic.Listeners.PlayerListener;
 import Logic.LogicManager;
+import Logic.Models.Entity.Player;
 
 public class GraphicManager {
 
@@ -11,8 +12,8 @@ public class GraphicManager {
         this.lM = lM;
     }
 
-    public void sendPlayerListenerAction(String action) {
-        lM.playerAction(action);
+    public void sendPlayerListenerAction(String action, Player player) {
+        lM.playerAction(action,player);
     }
 
 }

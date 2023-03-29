@@ -1,7 +1,6 @@
 package Graphic.Listeners;
 
 import Graphic.GraphicManager;
-import Graphic.Models.Entity.GuiPlayer;
 import Logic.Models.Entity.Player;
 
 import java.awt.event.KeyEvent;
@@ -10,10 +9,12 @@ import java.awt.event.KeyListener;
 public class PlayerListener implements KeyListener {
 
     private final GraphicManager gM;
+    private final Player player;
     public String keyAndMode = ""; //exp : "WP" -> w pressed / "WR" -> w released /"" nothing
 
-    public PlayerListener(GraphicManager gM){
+    public PlayerListener(GraphicManager gM, Player player){
         this.gM = gM;
+        this.player = player;
     }
 
     @Override
@@ -33,7 +34,7 @@ public class PlayerListener implements KeyListener {
             keyAndMode = "AP";
         }
 
-        gM.sendPlayerListenerAction(keyAndMode);
+        gM.sendPlayerListenerAction(keyAndMode,player);
 
     }
 
@@ -49,7 +50,7 @@ public class PlayerListener implements KeyListener {
             keyAndMode = "AR";
         }
 
-        gM.sendPlayerListenerAction(keyAndMode);
+        gM.sendPlayerListenerAction(keyAndMode,player);
 
     }
 }
