@@ -2,7 +2,7 @@ package Logic.Models.Entity;
 
 public enum V {
 
-    Mario(5);
+    Mario(10);
 
     int v;
 

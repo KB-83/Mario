@@ -11,6 +11,8 @@ public class Mario extends Player{
 
         this.jumpPow = JumpPower.Mario;
         this.v = V.Mario.v;
+        this.x = 0;
+        this.y = 480+48;
     }
 
     public static Mario getMario() {

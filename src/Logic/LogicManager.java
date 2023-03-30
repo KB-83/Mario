@@ -9,15 +9,16 @@ import Util.GameLoop;
 public class LogicManager {
 
     public final GraphicManager gM;
-    private final LogicGameState logicGameState;
+    public final LogicGameState logicGameState;
 
     public LogicManager(){
-
-        this.gM =new GraphicManager(this);
+        // logic Game State Must be First
         this.logicGameState = new LogicGameState(this);
+        this.gM =new GraphicManager(this);
     }
 
     public void playerAction(String action, GuiPlayer guiPlayer){
+        //
 
         logicGameState.player.action(action);
     }

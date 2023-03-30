@@ -33,6 +33,6 @@ public class GuiMario extends GuiPlayer{
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.drawImage(images[0], 0 , 480+48, 48, 48, null);
+        g2.drawImage(images[0], gM.lM.logicGameState.player.x , gM.lM.logicGameState.player.y, 48, 48, null);
     }
 }

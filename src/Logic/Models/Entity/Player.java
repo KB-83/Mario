@@ -10,6 +10,7 @@ public abstract class Player extends Entity {
 
     }
      public void action(String action) {
+         System.out.println("player action");
         switch (action){
             case "WP":
                 this.y -= this.v; // it is jump
@@ -18,7 +19,7 @@ public abstract class Player extends Entity {
                 this.x += this.v;
                 break;
             case "AP":
-                this.x =- this.v;
+                this.x -= this.v;
                 break;
         }
     }
