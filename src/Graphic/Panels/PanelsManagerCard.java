@@ -9,14 +9,16 @@ public class PanelsManagerCard extends JPanel {
     Frame frame;
     // panels will be added later
     GamePanel gamePanel;
+    GraphicManager gM;
     //info
     public final int cols = 26;
     public final int rows = 15;
     public final int tileSize = 48;
-    public PanelsManagerCard(Frame frame){
+    public PanelsManagerCard(Frame frame,GraphicManager gM){
+        this.gM = gM;
         this.frame = frame;
 
-        this.gamePanel = new GamePanel(this);
+        this.gamePanel = new GamePanel(this,this.gM);
 
         this.setLayout(new CardLayout());
         this.setFocusable(false);

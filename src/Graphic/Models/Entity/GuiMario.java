@@ -1,13 +1,16 @@
 package Graphic.Models.Entity;
 
 import Graphic.GraphicManager;
+import Graphic.Listeners.PlayerListener;
+import Graphic.Panels.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
 public class GuiMario extends GuiPlayer{
-    public GuiMario() {
+    public GuiMario(GraphicManager gM, GamePanel gamePanel) {
+        super(gM,gamePanel);
         images = new Image[10];
         loadImages();
     }

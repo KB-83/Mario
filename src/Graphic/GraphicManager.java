@@ -1,18 +1,13 @@
 package Graphic;
 
-import Graphic.Listeners.PlayerListener;
-import Graphic.Models.Tiles.GuiTileManager;
+import Graphic.Models.Entity.GuiPlayer;
 import Graphic.Panels.Frame;
-import Graphic.Panels.GamePanel;
-import Graphic.Panels.PanelsManagerCard;
 import Logic.LogicManager;
-import Logic.Models.Entity.Player;
 
-import java.awt.*;
 
 public class GraphicManager {
 
-    private  LogicManager lM ;
+    public LogicManager lM ;
     Frame frame;
 
 
@@ -20,10 +15,12 @@ public class GraphicManager {
 
         this.lM = lM;
         this.frame = new Frame(this);
+//        System.out.println(gameLoop.toString());
     }
 
-    public void sendPlayerListenerAction(String action, Player player) {
-        lM.playerAction(action,player);
+    public void sendPlayerListenerAction(String action, GuiPlayer guiPlayer) {
+
+        lM.playerAction(action,guiPlayer);
     }
 
     public void paintAll() {

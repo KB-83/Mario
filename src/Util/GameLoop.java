@@ -12,7 +12,7 @@ public class GameLoop implements Runnable{
     LogicManager lM;
     GraphicManager gM;
 
-    GameLoop(LogicManager lM, GraphicManager gM) {
+    public GameLoop(LogicManager lM, GraphicManager gM) {
         this.lM = lM;
         this.gM = gM;
     }

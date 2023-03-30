@@ -2,7 +2,6 @@ package Graphic.Models.Tiles;
 
 import Graphic.Models.GuiPart;
 import Graphic.Panels.GamePanel;
-import Logic.Models.Tiles.Tile;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -93,13 +92,11 @@ public class GuiTileManager implements GuiPart {
 
     @Override
     public void draw(Graphics2D g2){
-        System.out.println("here guiTileManager");
 
         int col = 0;
         int row = 0;
         int x = 0;
         int y = 0;
-        System.out.println(gamePanel.cardPanel.cols);
 
         while (col < gamePanel.cardPanel.cols && row<  gamePanel.cardPanel.rows) {
 

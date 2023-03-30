@@ -11,7 +11,7 @@ public class Frame extends JFrame {
     public Frame(GraphicManager gM){
 
         this.gM = gM;
-        this.panelsManagerCard = new PanelsManagerCard(this);
+        this.panelsManagerCard = new PanelsManagerCard(this,this.gM);
 //        this.setSize(panelsManagerCard.getPreferredSize());
 //        this.setLayout(null);
         this.setFocusable(false);
@@ -23,7 +23,6 @@ public class Frame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void paintAll(){
-        System.out.println("here from frame");
         this.panelsManagerCard.repaint();
     }
 

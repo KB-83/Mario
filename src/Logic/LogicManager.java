@@ -1,19 +1,25 @@
 package Logic;
 
 import Graphic.GraphicManager;
+import Graphic.Models.Entity.GuiPlayer;
 import Logic.Models.Entity.Player;
+import Logic.Models.LogicGameState;
+import Util.GameLoop;
 
 public class LogicManager {
 
-    private final GraphicManager gM;
+    public final GraphicManager gM;
+    private final LogicGameState logicGameState;
 
     public LogicManager(){
 
         this.gM =new GraphicManager(this);
+        this.logicGameState = new LogicGameState(this);
     }
 
-    public void playerAction(String action, Player player){
-        player.action(action);
+    public void playerAction(String action, GuiPlayer guiPlayer){
+
+        logicGameState.player.action(action);
     }
 
     public void updateAll(){}

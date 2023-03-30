@@ -1,42 +1,34 @@
 package Graphic.Panels;
-
-import Graphic.Listeners.PlayerListener;
-import Graphic.Models.Entity.GuiMario;
-import Graphic.Models.Entity.GuiPlayer;
-import Graphic.Models.Tiles.GuiTileManager;
-import Logic.Models.Entity.Enemy;
-import Logic.Models.Entity.Player;
-import Logic.Models.Tiles.Tile;
-import Logic.Models.Tiles.TileManager;
+import Graphic.GraphicManager;
+import Graphic.Models.GuiGameState;
+import Util.GameLoop;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GamePanel extends JPanel {
+    GraphicManager gM;
+    GameLoop gameLoop;
     public PanelsManagerCard cardPanel;
-    GuiPlayer player;
 //    List<Tile> tileList;
-    List<Enemy> enemies;
-    GuiTileManager background;
+    GuiGameState guiGameState;
 
-    public GamePanel(PanelsManagerCard cardPanel){
+    public GamePanel(PanelsManagerCard cardPanel, GraphicManager gM){
+        this.gM = gM;
         this.cardPanel = cardPanel;
         this.setFocusable(true);
-//        this.addKeyListener(pL);
 //        this.set
         this.setLayout(null);
+//        this.gameLoop = new GameLoop(this.gM.lM,this.gM);
+//        gameLoop.start();
         // needs to be optionable
-        this.player = new GuiMario();
-        this.background = new GuiTileManager(this);
+        this.guiGameState = new GuiGameState(this,this.gM);
     }
 
     public void paintComponent(Graphics g) {
-        System.out.println("from gamePanel");
         Graphics2D g2 = (Graphics2D) g;
-        background.draw(g2);
-        player.draw(g2);
+        guiGameState.background.draw(g2);
+        guiGameState.guiPlayer.draw(g2);
 
     }
 }
