@@ -27,8 +27,7 @@ public class GamePanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        guiGameState.background.draw(g2);
-        guiGameState.guiPlayer.draw(g2);
+        guiGameState.paintAll(g2);
 
     }
 }

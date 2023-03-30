@@ -13,6 +13,7 @@ public class GuiMario extends GuiPlayer{
         super(gM,gamePanel);
         images = new Image[10];
         loadImages();
+        image = images[0];
     }
 
     @Override

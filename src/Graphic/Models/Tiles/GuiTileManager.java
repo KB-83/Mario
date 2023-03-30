@@ -92,6 +92,8 @@ public class GuiTileManager implements GuiPart {
 
     @Override
     public void draw(Graphics2D g2){
+//        System.out.print("start:"); ok
+//        System.out.println(System.currentTimeMillis());
 
         int col = 0;
         int row = 0;
@@ -114,5 +116,7 @@ public class GuiTileManager implements GuiPart {
                 y += gamePanel.cardPanel.tileSize;
             }
         }
+//        System.out.print("end:"); // ok
+//        System.out.println(System.currentTimeMillis());
     }
 }

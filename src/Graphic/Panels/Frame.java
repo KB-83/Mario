@@ -23,6 +23,7 @@ public class Frame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void paintAll(){
+//        System.out.println("frame paint all");
         this.panelsManagerCard.repaint();
     }
 
