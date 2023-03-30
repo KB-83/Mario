@@ -7,21 +7,27 @@ import Logic.Models.Tiles.Tile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GamePanel extends JPanel {
+    public PanelsManagerCard cardPanel;
     Player player;
 //    List<Tile> tileList;
     List<Enemy> enemies;
-    private final int cols = 26;
-    private final int rows = 15;
-    private final int tileSize = 48;
+    List<Tile> background;
 
-    GamePanel(PlayerListener pL){
-        this.setPreferredSize(new Dimension(cols*tileSize , rows*tileSize));
+    public GamePanel(PanelsManagerCard cardPanel){
+        this.cardPanel = cardPanel;
         this.setFocusable(true);
-        this.addKeyListener(pL);
+//        this.addKeyListener(pL);
+//        this.set
+        this.setLayout(null);
+        loadBackGround();
     }
 
-    public void loadBackGround(){}
+    public void loadBackGround(){
+        this.background = new ArrayList<>();
+
+    }
 }

@@ -1,5 +1,8 @@
+import Graphic.Panels.GamePanel;
+import Graphic.Panels.PanelsManagerCard;
 import Logic.Models.Entity.Mario;
 import Logic.Models.GameState;
+import Logic.Models.Tiles.TileManager;
 import sun.awt.image.BufferedImageDevice;
 
 import javax.imageio.ImageIO;
@@ -12,6 +15,7 @@ public class Main {
         GameState gameState = new GameState();
         Mario mario = Mario.getMario();
         System.out.println(mario.v);
+        TileManager tm = new TileManager(new GamePanel(new PanelsManagerCard()));
 
     }
 }
