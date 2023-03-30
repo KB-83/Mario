@@ -49,7 +49,7 @@ public class GuiTileManager implements GuiPart {
                     mapTileNum[col][row] = num;
                     col++;
                 }
-                if(col == gamePanel.cardPanel.cols) {
+                if(col >= gamePanel.cardPanel.cols) {
 
                     col = 0;
                     row++;
@@ -93,21 +93,24 @@ public class GuiTileManager implements GuiPart {
 
     @Override
     public void draw(Graphics2D g2){
+        System.out.println("here guiTileManager");
 
         int col = 0;
         int row = 0;
         int x = 0;
         int y = 0;
+        System.out.println(gamePanel.cardPanel.cols);
 
-        while (col < gamePanel.cardPanel.cols && row< gamePanel.cardPanel.rows) {
+        while (col < gamePanel.cardPanel.cols && row<  gamePanel.cardPanel.rows) {
 
-            int tilenum = mapTileNum[col][row];
+            int tileNum = mapTileNum[col][row];
 
-            g2.drawImage(tiles[tilenum].image, x, y, gamePanel.cardPanel.tileSize, gamePanel.cardPanel.tileSize, null);
+            g2.drawImage(tiles[tileNum].image, x, y, gamePanel.cardPanel.tileSize, gamePanel.cardPanel.tileSize, null);
             col++;
             x += gamePanel.cardPanel.tileSize;
 
-            if(col == gamePanel.cardPanel.tileSize){
+            if(col == gamePanel.cardPanel.cols){
+
                 col = 0;
                 x = 0;
                 row++;

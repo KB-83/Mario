@@ -7,8 +7,9 @@ public class LogicManager {
 
     private final GraphicManager gM;
 
-    LogicManager(GraphicManager gM){
-        this.gM =gM;
+    public LogicManager(){
+
+        this.gM =new GraphicManager(this);
     }
 
     public void playerAction(String action, Player player){

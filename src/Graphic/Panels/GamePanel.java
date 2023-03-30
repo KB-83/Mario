@@ -28,15 +28,12 @@ public class GamePanel extends JPanel {
 //        this.set
         this.setLayout(null);
         // needs to be optionable
-        player = new GuiMario(cardPanel.graphicManager);
-        loadBackGround();
-    }
-
-    public void loadBackGround(){
+        this.player = new GuiMario();
         this.background = new GuiTileManager(this);
-
     }
+
     public void paintComponent(Graphics g) {
+        System.out.println("from gamePanel");
         Graphics2D g2 = (Graphics2D) g;
         background.draw(g2);
         player.draw(g2);

@@ -6,15 +6,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelsManagerCard extends JPanel {
-    GraphicManager graphicManager;
+    Frame frame;
     // panels will be added later
     GamePanel gamePanel;
     //info
     public final int cols = 26;
     public final int rows = 15;
     public final int tileSize = 48;
-    public PanelsManagerCard(GraphicManager graphicManager){
-        this.graphicManager = graphicManager;
+    public PanelsManagerCard(Frame frame){
+        this.frame = frame;
 
         this.gamePanel = new GamePanel(this);
 
@@ -27,6 +27,7 @@ public class PanelsManagerCard extends JPanel {
     }
     public void paintComponent(Graphics g)
     {
+        System.out.println("here from cardpanel");
         gamePanel.repaint();
     }
 }

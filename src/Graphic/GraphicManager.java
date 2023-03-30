@@ -2,6 +2,7 @@ package Graphic;
 
 import Graphic.Listeners.PlayerListener;
 import Graphic.Models.Tiles.GuiTileManager;
+import Graphic.Panels.Frame;
 import Graphic.Panels.GamePanel;
 import Graphic.Panels.PanelsManagerCard;
 import Logic.LogicManager;
@@ -12,12 +13,13 @@ import java.awt.*;
 public class GraphicManager {
 
     private  LogicManager lM ;
-    PanelsManagerCard panelsManagerCard;
+    Frame frame;
 
 
-    GraphicManager() {
+    public GraphicManager(LogicManager lM) {
 
-        this.panelsManagerCard = new PanelsManagerCard(this);
+        this.lM = lM;
+        this.frame = new Frame(this);
     }
 
     public void sendPlayerListenerAction(String action, Player player) {
@@ -25,7 +27,7 @@ public class GraphicManager {
     }
 
     public void paintAll() {
-        panelsManagerCard.repaint();
+        frame.paintAll();
     }
 
 }

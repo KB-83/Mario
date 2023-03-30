@@ -7,15 +7,11 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GuiMario extends GuiPlayer{
-    public GuiMario(GraphicManager gM) {
-        super(gM);
+    public GuiMario() {
+        images = new Image[10];
         loadImages();
     }
 
-    @Override
-    public void draw(Graphics2D g2) {
-
-    }
     void loadImages() {
         try{
 
@@ -30,5 +26,10 @@ public class GuiMario extends GuiPlayer{
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void draw(Graphics2D g2) {
+        g2.drawImage(images[0], 0 , 480+48, 48, 48, null);
     }
 }
