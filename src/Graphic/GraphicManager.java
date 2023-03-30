@@ -16,4 +16,6 @@ public class GraphicManager {
         lM.playerAction(action,player);
     }
 
+    public void paintAll() {}
+
 }

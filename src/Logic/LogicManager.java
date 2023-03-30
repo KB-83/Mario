@@ -14,4 +14,6 @@ public class LogicManager {
     public void playerAction(String action, Player player){
         player.action(action);
     }
+
+    public void updateAll(){}
 }
