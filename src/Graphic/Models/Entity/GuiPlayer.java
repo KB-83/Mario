@@ -10,6 +10,7 @@ public abstract class GuiPlayer extends GuiEntity {
             GraphicManager gM;
             public PlayerListener listener;
             GamePanel gamePanel;
+            Image image;
 //    GraphicManager gM;
 //
     GuiPlayer(GraphicManager gM, GamePanel gamePanel) {
@@ -18,4 +19,5 @@ public abstract class GuiPlayer extends GuiEntity {
         this.listener = new PlayerListener(this.gM,this);
         this.gamePanel.addKeyListener(listener);
     }
+    public abstract void setImage(String action);
 }

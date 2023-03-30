@@ -11,7 +11,7 @@ public class GamePanel extends JPanel {
     GameLoop gameLoop;
     public PanelsManagerCard cardPanel;
 //    List<Tile> tileList;
-    GuiGameState guiGameState;
+    public GuiGameState guiGameState;
 
     public GamePanel(PanelsManagerCard cardPanel, GraphicManager gM){
         this.gM = gM;

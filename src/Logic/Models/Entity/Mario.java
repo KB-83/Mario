@@ -15,6 +15,7 @@ public class Mario extends Player{
         this.y = 480+48;
     }
 
+
     public static Mario getMario() {
         if(mario == null) {
             mario = new Mario();

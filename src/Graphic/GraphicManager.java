@@ -19,7 +19,7 @@ public class GraphicManager {
     }
 
     public void sendPlayerListenerAction(String action, GuiPlayer guiPlayer) {
-
+        this.frame.panelsManagerCard.gamePanel.guiGameState.guiPlayer.setImage(action);
         lM.playerAction(action,guiPlayer);
     }
 

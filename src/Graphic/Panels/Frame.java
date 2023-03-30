@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class Frame extends JFrame {
     GraphicManager gM;
-    PanelsManagerCard panelsManagerCard;
+    public PanelsManagerCard panelsManagerCard;
     public Frame(GraphicManager gM){
 
         this.gM = gM;

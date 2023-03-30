@@ -8,7 +8,7 @@ import java.awt.*;
 public class PanelsManagerCard extends JPanel {
     Frame frame;
     // panels will be added later
-    GamePanel gamePanel;
+    public GamePanel gamePanel;
     GraphicManager gM;
     //info
     public final int cols = 26;
