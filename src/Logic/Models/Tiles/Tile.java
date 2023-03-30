@@ -4,5 +4,4 @@ import java.awt.*;
 
 public class Tile {
 //    final int size = 48;
-    Image image;
 }

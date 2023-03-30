@@ -1,21 +1,31 @@
 package Graphic;
 
 import Graphic.Listeners.PlayerListener;
+import Graphic.Models.Tiles.GuiTileManager;
+import Graphic.Panels.GamePanel;
+import Graphic.Panels.PanelsManagerCard;
 import Logic.LogicManager;
 import Logic.Models.Entity.Player;
 
+import java.awt.*;
+
 public class GraphicManager {
 
-    private final LogicManager lM ;
+    private  LogicManager lM ;
+    PanelsManagerCard panelsManagerCard;
 
-    GraphicManager(LogicManager lM) {
-        this.lM = lM;
+
+    GraphicManager() {
+
+        this.panelsManagerCard = new PanelsManagerCard(this);
     }
 
     public void sendPlayerListenerAction(String action, Player player) {
         lM.playerAction(action,player);
     }
 
-    public void paintAll() {}
+    public void paintAll() {
+        panelsManagerCard.repaint();
+    }
 
 }

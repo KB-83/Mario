@@ -15,7 +15,7 @@ public class Main {
         GameState gameState = new GameState();
         Mario mario = Mario.getMario();
         System.out.println(mario.v);
-        TileManager tm = new TileManager(new GamePanel(new PanelsManagerCard()));
+//        TileManager tm = new TileManager(new GamePanel(new PanelsManagerCard()));
 
     }
 }

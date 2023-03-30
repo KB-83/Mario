@@ -9,4 +9,9 @@ public class GuiEnemy extends GuiEntity {
     public void draw(Graphics2D g2) {
 
     }
+
+    @Override
+    void loadImages() {
+
+    }
 }
