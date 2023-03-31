@@ -17,8 +17,9 @@ public class GuiMario extends GuiPlayer{
     }
 
     @Override
-    public void setImage(String action) {
-        this.image = images[gM.lM.logicGameState.player.imageNumber];
+    public void setImage(int imageNum) {
+//        System.out.println(imageNum);
+        this.image = images[imageNum];
     }
 
 

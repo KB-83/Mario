@@ -13,15 +13,20 @@ import Logic.Models.Tiles.TileManager;
 
 import java.util.List;
 
+
 public class LogicGameState {
-    LogicManager lM;
+    public LogicManager lM;
     public Player player;
     List<Enemy> enemies;
     public TileManager background;
     public LogicGameState(LogicManager lM){
 
         this.lM = lM;
-        this.player = Mario.getMario();
+        this.player = new Mario(this);
 //        this.background = new GuiTileManager(this.gamePanel);
+    }
+
+    public void update(){
+        player.update();
     }
 }

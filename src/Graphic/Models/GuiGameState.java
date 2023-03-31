@@ -29,10 +29,11 @@ public class GuiGameState {
 //        System.out.print("start tile:");
 //        System.out.println(System.currentTimeMillis());
         background.draw(g2);
+//        g2.dispose();
 //        System.out.print("end tile start mario:");
 //        System.out.println(System.currentTimeMillis());
         guiPlayer.draw(g2);
-        g2.dispose();
+//        g2.dispose();
 //        System.out.print("end mario:");
 //        System.out.println(System.currentTimeMillis());
         if(System.nanoTime()-time >= 1000000000){

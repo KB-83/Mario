@@ -1,5 +1,8 @@
 package Logic.Models.Entity;
 
+import Logic.LogicManager;
+import Logic.Models.LogicGameState;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
@@ -7,7 +10,8 @@ import java.io.IOException;
 public class Mario extends Player{
 
     private static Mario mario;
-    private Mario(){
+    public Mario(LogicGameState logicGameState){
+        super(logicGameState);
 
         this.jumpPow = JumpPower.Mario;
         this.v = V.Mario.v;
@@ -16,10 +20,10 @@ public class Mario extends Player{
     }
 
 
-    public static Mario getMario() {
-        if(mario == null) {
-            mario = new Mario();
-        }
-        return mario;
-    }
+//    public static Mario getMario() {
+//        if(mario == null) {
+//            mario = new Mario();
+//        }
+//        return mario;
+//    }
 }

@@ -9,13 +9,16 @@ import java.awt.event.KeyListener;
 
 public class PlayerListener implements KeyListener {
 
-    private final GraphicManager gM;
-    private final GuiPlayer guiPlayer;
+    private  GraphicManager gM;
+    private  GuiPlayer guiPlayer;
     public String keyAndMode = ""; //exp : "WP" -> w pressed / "WR" -> w released /"" nothing
 
     public PlayerListener(GraphicManager gM, GuiPlayer guiPlayer){
         this.gM = gM;
         this.guiPlayer = guiPlayer;
+    }
+    public PlayerListener(){
+
     }
 
     @Override
@@ -36,7 +39,7 @@ public class PlayerListener implements KeyListener {
             keyAndMode = "AP";
         }
 
-        gM.sendPlayerListenerAction(keyAndMode,guiPlayer);
+//        gM.sendPlayerListenerAction(keyAndMode,guiPlayer);
 
     }
 
@@ -52,7 +55,7 @@ public class PlayerListener implements KeyListener {
             keyAndMode = "AR";
         }
 
-        gM.sendPlayerListenerAction(keyAndMode,guiPlayer);
+//        gM.sendPlayerListenerAction(keyAn/\dMode,guiPlayer);
 
     }
 }

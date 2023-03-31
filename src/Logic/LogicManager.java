@@ -20,8 +20,10 @@ public class LogicManager {
     public void playerAction(String action, GuiPlayer guiPlayer){
         //
 
-        logicGameState.player.action(action);
+//        logicGameState.player.action(action);
     }
 
-    public void updateAll(){}
+    public void updateAll(){
+        logicGameState.update();
+    }
 }

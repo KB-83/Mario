@@ -22,12 +22,17 @@ public class GamePanel extends JPanel {
 //        this.gameLoop = new GameLoop(this.gM.lM,this.gM);
 //        gameLoop.start();
         // needs to be optionable
-        this.guiGameState = new GuiGameState(this,this.gM);
+//        this.guiGameState = new GuiGameState(this,this.gM);
+    }
+    public void setGuiGameState(GuiGameState guiGameState){
+        this.guiGameState = guiGameState;
     }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
+        if (guiGameState != null){
         guiGameState.paintAll(g2);
+        }
 
     }
 }

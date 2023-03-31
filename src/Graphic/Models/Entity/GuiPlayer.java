@@ -16,8 +16,9 @@ public abstract class GuiPlayer extends GuiEntity {
     GuiPlayer(GraphicManager gM, GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         this.gM = gM;
-        this.listener = new PlayerListener(this.gM,this);
+        /// change
+        this.listener = gM.lM.logicGameState.player.playerListener;
         this.gamePanel.addKeyListener(listener);
     }
-    public abstract void setImage(String action);
+    public abstract void setImage(int imageNum);
 }
