@@ -1,7 +1,6 @@
 package Graphic.Models.Entity;
 
 import Graphic.GraphicManager;
-import Graphic.Listeners.PlayerListener;
 import Graphic.Panels.GamePanel;
 
 import javax.imageio.ImageIO;
@@ -18,7 +17,7 @@ public class GuiMario extends GuiPlayer{
 
     @Override
     public void setImage(int imageNum) {
-//        System.out.println(imageNum);
+
         this.image = images[imageNum];
     }
 
@@ -41,6 +40,7 @@ public class GuiMario extends GuiPlayer{
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.drawImage(image, gM.lM.logicGameState.player.x , gM.lM.logicGameState.player.y, 48, 48, null);
+        g2.drawImage(image, gM.lM.logicGameState.player.x , gM.lM.logicGameState.player.y,
+                gM.guiGameState.background.tileSize, gM.guiGameState.background.tileSize, null);
     }
 }

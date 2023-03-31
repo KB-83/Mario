@@ -11,8 +11,7 @@ public abstract class GuiPlayer extends GuiEntity {
             public PlayerListener listener;
             GamePanel gamePanel;
             Image image;
-//    GraphicManager gM;
-//
+
     GuiPlayer(GraphicManager gM, GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         this.gM = gM;

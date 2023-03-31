@@ -1,22 +1,12 @@
 package Graphic.Listeners;
 
-import Graphic.GraphicManager;
-import Graphic.Models.Entity.GuiPlayer;
-import Logic.Models.Entity.Player;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class PlayerListener implements KeyListener {
 
-    private  GraphicManager gM;
-    private  GuiPlayer guiPlayer;
     public String keyAndMode = ""; //exp : "WP" -> w pressed / "WR" -> w released /"" nothing
 
-    public PlayerListener(GraphicManager gM, GuiPlayer guiPlayer){
-        this.gM = gM;
-        this.guiPlayer = guiPlayer;
-    }
     public PlayerListener(){
 
     }
@@ -39,7 +29,6 @@ public class PlayerListener implements KeyListener {
             keyAndMode = "AP";
         }
 
-//        gM.sendPlayerListenerAction(keyAndMode,guiPlayer);
 
     }
 
@@ -55,7 +44,6 @@ public class PlayerListener implements KeyListener {
             keyAndMode = "AR";
         }
 
-//        gM.sendPlayerListenerAction(keyAn/\dMode,guiPlayer);
 
     }
 }

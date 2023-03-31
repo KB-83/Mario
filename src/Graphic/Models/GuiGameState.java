@@ -16,8 +16,7 @@ public class GuiGameState {
     public GuiPlayer guiPlayer;
     List<Enemy> enemies;
     public GuiTileManager background;
-    int counter = 0;
-    long time = System.nanoTime();
+
     public GuiGameState(GamePanel gamePanel, GraphicManager gM){
         this.gamePanel = gamePanel;
         this.gM = gM;
@@ -25,21 +24,8 @@ public class GuiGameState {
         this.background = new GuiTileManager(this.gamePanel);
     }
     public void paintAll(Graphics2D g2){
-        counter++;
-//        System.out.print("start tile:");
-//        System.out.println(System.currentTimeMillis());
+
         background.draw(g2);
-//        g2.dispose();
-//        System.out.print("end tile start mario:");
-//        System.out.println(System.currentTimeMillis());
         guiPlayer.draw(g2);
-//        g2.dispose();
-//        System.out.print("end mario:");
-//        System.out.println(System.currentTimeMillis());
-        if(System.nanoTime()-time >= 1000000000){
-//            System.out.println(counter +"repaint called");
-            counter = 0;
-            time = System.nanoTime();
-        }
     }
 }

@@ -27,9 +27,7 @@ public class PanelsManagerCard extends JPanel {
         this.add(gamePanel);
         // dont forget packing
     }
-    public void paintComponent(Graphics g)
-    {
-        System.out.println("here from cardpanel");
+    public void paintComponent(Graphics g) {
         gamePanel.repaint();
     }
 }
