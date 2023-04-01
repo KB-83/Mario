@@ -17,9 +17,9 @@ public class PanelsManagerCard extends JPanel {
     public PanelsManagerCard(Frame frame,GraphicManager gM){
         this.gM = gM;
         this.frame = frame;
-
+        // other panels going to be added here
         this.gamePanel = new GamePanel(this,this.gM);
-
+        // panel settings
         this.setLayout(new CardLayout());
         this.setFocusable(false);
         this.setPreferredSize(new Dimension(cols*tileSize , rows*tileSize));

@@ -1,6 +1,7 @@
 package Graphic.Models;
 
 import Graphic.GraphicManager;
+import Graphic.Listeners.PlayerListener;
 import Graphic.Models.Entity.GuiMario;
 import Graphic.Models.Entity.GuiPlayer;
 import Graphic.Models.Tiles.GuiTileManager;
@@ -20,7 +21,7 @@ public class GuiGameState {
     public GuiGameState(GamePanel gamePanel, GraphicManager gM){
         this.gamePanel = gamePanel;
         this.gM = gM;
-        this.guiPlayer = new GuiMario(this.gM, this.gamePanel);
+        this.guiPlayer = new GuiMario(this.gM, this);
         this.background = new GuiTileManager(this);
     }
     public void paintAll(Graphics2D g2){

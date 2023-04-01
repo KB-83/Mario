@@ -11,11 +11,11 @@ public abstract class Player extends Entity {
     JumpPower jumpPow;
     public int imageNumber;
     int imageCounter;
-    LogicGameState logicGameState;
-    public PlayerListener playerListener;
+    private PlayerListener playerListener;
     Player(LogicGameState logicGameState){
-        this.logicGameState = logicGameState;
+        super(logicGameState);
         this.playerListener = new PlayerListener();
+        this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
     }
 
      public void update(){

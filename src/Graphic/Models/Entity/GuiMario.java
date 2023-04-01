@@ -1,6 +1,8 @@
 package Graphic.Models.Entity;
 
 import Graphic.GraphicManager;
+import Graphic.Listeners.PlayerListener;
+import Graphic.Models.GuiGameState;
 import Graphic.Panels.GamePanel;
 
 import javax.imageio.ImageIO;
@@ -8,8 +10,8 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GuiMario extends GuiPlayer{
-    public GuiMario(GraphicManager gM, GamePanel gamePanel) {
-        super(gM,gamePanel);
+    public GuiMario(GraphicManager gM, GuiGameState guiGameState) {
+        super(gM,guiGameState);
         images = new Image[10];
         loadImages();
         image = images[0];
