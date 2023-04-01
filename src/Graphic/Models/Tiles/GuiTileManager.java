@@ -1,7 +1,9 @@
 package Graphic.Models.Tiles;
 
+import Graphic.Models.GuiGameState;
 import Graphic.Models.GuiPart;
 import Graphic.Panels.GamePanel;
+import Logic.Models.Entity.Player;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -11,17 +13,22 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class GuiTileManager implements GuiPart {
-    GamePanel gamePanel;
-    GuiTile[] tiles;
+    GuiGameState guiGameState;
+    public GuiTile[] tiles;
     int[][] mapTileNum;
+
+    public int screenCols = 26;
+    public int screenRows = 15;
+    public int worldCols = 26 * 4;
+    public int worldRows = 15;
     public int tileSize = 48;
 
-    public GuiTileManager(GamePanel gamePanel){
+    public GuiTileManager(GuiGameState guiGameState){
 
-        this.gamePanel = gamePanel;
+        this.guiGameState = guiGameState;
         tiles = new GuiTile[10];
         //going to change when world added
-        mapTileNum = new int[gamePanel.cardPanel.cols][gamePanel.cardPanel.rows];
+        mapTileNum = new int[worldCols][worldRows];
         loadTilesImage();
         loadMap();
     }
@@ -36,11 +43,11 @@ public class GuiTileManager implements GuiPart {
             int col = 0;
             int row = 0;
 
-            while (col < gamePanel.cardPanel.cols && row < gamePanel.cardPanel.rows){
+            while (col < worldCols && row < worldRows){
 
                 String line = br.readLine();
 
-                while (col < gamePanel.cardPanel.cols) {
+                while (col < worldCols) {
 
                     String numbers[] = line.split(" ");
 
@@ -49,7 +56,7 @@ public class GuiTileManager implements GuiPart {
                     mapTileNum[col][row] = num;
                     col++;
                 }
-                if(col >= gamePanel.cardPanel.cols) {
+                if(col >= worldCols) {
 
                     col = 0;
                     row++;
@@ -69,6 +76,7 @@ public class GuiTileManager implements GuiPart {
 
             tiles[0] = new GuiTile();
             tiles[0].image = ImageIO.read(getClass().getResourceAsStream("/Images/Tiles/Sky.png"));
+            tiles[0].collision = false;
 
             tiles[1] = new GuiTile();
             tiles[1].image = ImageIO.read(getClass().getResourceAsStream("/Images/Tiles/Tile1.png"));
@@ -94,25 +102,25 @@ public class GuiTileManager implements GuiPart {
     @Override
     public void draw(Graphics2D g2){
 
-        int col = 0;
-        int row = 0;
+        int col = guiGameState.gM.lM.logicGameState.player.worldX/tileSize;
+        int row = guiGameState.gM.lM.logicGameState.player.worldY/tileSize;
         int x = 0;
         int y = 0;
 
-        while (col < gamePanel.cardPanel.cols && row<  gamePanel.cardPanel.rows) {
+        while (col < worldCols && row<  worldRows) {
 
             int tileNum = mapTileNum[col][row];
 
-            g2.drawImage(tiles[tileNum].image, x, y, gamePanel.cardPanel.tileSize, gamePanel.cardPanel.tileSize, null);
+            g2.drawImage(tiles[tileNum].image, x, y, tileSize,tileSize, null);
             col++;
-            x += gamePanel.cardPanel.tileSize;
+            x += tileSize;
 
-            if(col == gamePanel.cardPanel.cols){
+            if(col == worldCols){
 
-                col = 0;
+                col = guiGameState.gM.lM.logicGameState.player.worldX/tileSize;
                 x = 0;
                 row++;
-                y += gamePanel.cardPanel.tileSize;
+                y += tileSize;
             }
         }
     }

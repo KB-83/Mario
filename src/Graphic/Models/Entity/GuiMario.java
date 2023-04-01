@@ -40,7 +40,7 @@ public class GuiMario extends GuiPlayer{
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.drawImage(image, gM.lM.logicGameState.player.x , gM.lM.logicGameState.player.y,
+        g2.drawImage(image, gM.lM.logicGameState.player.screenX , gM.lM.logicGameState.player.screenY,
                 gM.guiGameState.background.tileSize, gM.guiGameState.background.tileSize, null);
     }
 }

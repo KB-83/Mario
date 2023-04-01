@@ -23,7 +23,7 @@ public class LogicGameState {
 
         this.lM = lM;
         this.player = new Mario(this);
-//        this.background = new GuiTileManager(this.gamePanel);
+        this.background = new TileManager(this);
     }
 
     public void update(){

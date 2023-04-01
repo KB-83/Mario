@@ -11,7 +11,7 @@ import java.awt.*;
 import java.util.List;
 
 public class GuiGameState {
-    GraphicManager gM;
+    public GraphicManager gM;
     public GamePanel gamePanel;
     public GuiPlayer guiPlayer;
     List<Enemy> enemies;
@@ -21,7 +21,7 @@ public class GuiGameState {
         this.gamePanel = gamePanel;
         this.gM = gM;
         this.guiPlayer = new GuiMario(this.gM, this.gamePanel);
-        this.background = new GuiTileManager(this.gamePanel);
+        this.background = new GuiTileManager(this);
     }
     public void paintAll(Graphics2D g2){
 

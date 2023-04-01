@@ -5,6 +5,8 @@ import java.awt.*;
 public abstract class Entity {
 
     public int v;
-    public int x,y;
+    public int screenX,screenY;
+    public int worldX,worldY;
+
     int size;//pixel//maybe unusable (just tiles needed)
 }

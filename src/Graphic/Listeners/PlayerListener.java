@@ -28,6 +28,9 @@ public class PlayerListener implements KeyListener {
         if(e.getKeyCode() == KeyEvent.VK_A){
             keyAndMode = "AP";
         }
+        if(e.getKeyCode() == KeyEvent.VK_S){
+            keyAndMode = "SP";
+        }
 
 
     }
@@ -42,6 +45,9 @@ public class PlayerListener implements KeyListener {
         }
         if(e.getKeyCode() == KeyEvent.VK_A){
             keyAndMode = "AR";
+        }
+        if(e.getKeyCode() == KeyEvent.VK_S){
+            keyAndMode = "SR";
         }
 
 

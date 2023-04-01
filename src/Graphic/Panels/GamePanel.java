@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel {
-    GraphicManager gM;
+    public GraphicManager gM;
     public PanelsManagerCard cardPanel;
     public GuiGameState guiGameState;
 
