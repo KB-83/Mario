@@ -12,10 +12,6 @@ public abstract class Player extends Entity {
     public PlayerListener playerListener;
     CollisionChecker collisionChecker;
     // collision rect setting
-    public int leftCollisionLeDistanceFromX = 8;
-    public int RightCollisionLeDistanceFromX = 8 + 32 ;
-    public int topCollisionLeDistanceFromY = 16;
-    public int bottomCollisionLeDistanceFromY = 48;
 
     JumpPower jumpPow;
     public int imageNumber;
@@ -49,7 +45,7 @@ public abstract class Player extends Entity {
                          imageNumber = 1;
                      }
                      imageCounter++;
-                     if (! isRightCollisionOn) {
+                     if (!isRightCollisionOn) {
                          this.worldX += this.v;
                          if (screenX <= 26 * 48 / 2) {
                              this.screenX += this.v;
@@ -80,7 +76,7 @@ public abstract class Player extends Entity {
                      imageNumber = 6;
                      imageCounter++;
                      if (!isBottomCollisionOn) {
-                         if (screenY< size * this.logicGameState.rows) {
+                         if (screenY< size * (this.logicGameState.rows) - size) {
                              this.screenY += this.v;
                              this.worldY += this.v;
                          }
@@ -95,5 +91,6 @@ public abstract class Player extends Entity {
              imageCounter = 0;
          }
          this.logicGameState.lM.gM.guiGameState.guiPlayer.setImage(imageNumber);
+//         System.out.println(this.logicGameState.background.topLeftColInWorld);
      }
 }

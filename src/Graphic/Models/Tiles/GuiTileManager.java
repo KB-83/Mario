@@ -105,11 +105,12 @@ public class GuiTileManager implements GuiPart {
 
         int topLeftCol = guiGameState.gM.lM.logicGameState.background.topLeftColInWorld;
         int topLeftRow = 0;
+//        System.out.println(topLeftCol);
         int col = topLeftCol;
-        System.out.println(col);
         int row = topLeftRow;
         int x = 0;
         int y = 0;
+//        System.out.println(col +" "+ row);
 
         while (col < worldCols && row<  worldRows) {
 
@@ -121,7 +122,7 @@ public class GuiTileManager implements GuiPart {
 
             if(col == worldCols){
 
-                col = guiGameState.gM.lM.logicGameState.player.worldX/tileSize;
+                col = topLeftCol;
                 x = 0;
                 row++;
                 y += tileSize;

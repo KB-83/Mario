@@ -12,5 +12,7 @@ public class Mario extends Player{
         this.v = V.Mario.v;
         this.screenX= 0;
         this.screenY= 480;
+        this.worldX = 0;
+        this.worldY = 480;
     }
 }

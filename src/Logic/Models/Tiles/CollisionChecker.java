@@ -10,7 +10,7 @@ public class CollisionChecker {
     TileManager tileManager;
     Player player;
     PlayerListener playerListener;
-    int col , row;
+    public int col , row;
     Tile up,right,down,left;
 
     public CollisionChecker(Player player) {
@@ -24,10 +24,10 @@ public class CollisionChecker {
     public void checkCollision() {
 //        System.out.println("here");
 
-//        player.isUpCollisionOn = false;
-//        player.isLeftCollisionOn = false;
-//        player.isBottomCollisionOn = false;
-//        player.isRightCollisionOn = false;
+        player.isUpCollisionOn = false;
+        player.isLeftCollisionOn = false;
+        player.isBottomCollisionOn = false;
+        player.isRightCollisionOn = false;
 
 
         int playerNewWorldX = player.worldX;
@@ -49,28 +49,37 @@ public class CollisionChecker {
                 break;
         }
 
-        col = (playerNewWorldX + player.leftCollisionLeDistanceFromX) / player.size;
-        row = (playerNewWorldY + player.topCollisionLeDistanceFromY) / player.size;
+        col = playerNewWorldX/ player.size;
+        row = playerNewWorldY/ player.size;
+//        System.out.println("player col "+ col +"player row " +row);
 //        System.out.println(col +"   " +row);
-        if (col >= 0 && row >= 0) {
             // at first its right
-            up = tileManager.tiles[tileManager.mapTileNum[col][row]];
-            right = tileManager.tiles[tileManager.mapTileNum[col][row + 1]];
-            down = tileManager.tiles[tileManager.mapTileNum[col + 1][row]];
-            left = tileManager.tiles[tileManager.mapTileNum[col][row]];
+
+        // mark it as feature tile and the are same
+        if(row >= 1 && col >= 0) {
+                up = tileManager.tiles[tileManager.mapTileNum[col][row]];
+            }
+        if(row >= 0 && col >= 0) {
+            right = tileManager.tiles[tileManager.mapTileNum[col+1][row+1]];
+        }
+        if(row >= 0 && col >= 0) {
+            down = tileManager.tiles[tileManager.mapTileNum[col][row+1]];
+        }
+        if(row >= 0 && col >= 2) {
+            left = tileManager.tiles[tileManager.mapTileNum[col-2][row+1]];
         }
 
 
-        if (up.collision){
+        if (up != null && up.collision){
             player.isUpCollisionOn = true;
         }
-        if (right.collision){
+        if (right != null && right.collision){
             player.isRightCollisionOn = true;
         }
-        if (down.collision){
+        if (down != null && down.collision){
             player.isBottomCollisionOn = true;
         }
-        if (left.collision){
+        if (left != null && left.collision){
             player.isLeftCollisionOn = true;
         }
 
