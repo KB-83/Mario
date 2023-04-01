@@ -68,6 +68,7 @@ public class GuiTileManager implements GuiPart {
         }catch (Exception e){
             e.printStackTrace();
         }
+        this.guiGameState.gM.lM.logicGameState.background.mapTileNum = this.mapTileNum;
     }
 
     public void loadTilesImage() {
@@ -102,8 +103,11 @@ public class GuiTileManager implements GuiPart {
     @Override
     public void draw(Graphics2D g2){
 
-        int col = guiGameState.gM.lM.logicGameState.player.worldX/tileSize;
-        int row = guiGameState.gM.lM.logicGameState.player.worldY/tileSize;
+        int topLeftCol = guiGameState.gM.lM.logicGameState.background.topLeftColInWorld;
+        int topLeftRow = 0;
+        int col = topLeftCol;
+        System.out.println(col);
+        int row = topLeftRow;
         int x = 0;
         int y = 0;
 

@@ -10,19 +10,23 @@ public class TileManager {
     public int screenRows = 15;
     public int worldCols = 26 * 4;
     public int worldRows = 15;
+    public int topLeftColInWorld = 0;
     LogicGameState logicGameState;
     Tile[] tiles;
+    public int[][] mapTileNum;
 
     public TileManager(LogicGameState logicGameState){
         this.logicGameState = logicGameState;
+        tiles = new Tile[10];
+        loadTiles();
     }
-
     public void loadTiles() {
-        GuiTile[] guiTiles = this.logicGameState.lM.gM.guiGameState.background.tiles;
-        for (int i = 0; i<guiTiles.length; i++){
-            Tile tile = new Tile(guiTiles[i].collision);
-            this.tiles[i] = tile;
-        }
+        tiles[0] = new Tile(false);
+        tiles[1] = new Tile(true);
+        tiles[2] = new Tile(true);
+        tiles[3] = new Tile(true);
+        tiles[4] = new Tile(true);
+        tiles[5] = new Tile(true);
     }
 
 }

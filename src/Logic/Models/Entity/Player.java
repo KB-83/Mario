@@ -3,29 +3,44 @@ package Logic.Models.Entity;
 import Graphic.Listeners.PlayerListener;
 import Logic.Models.Entity.Entity;
 import Logic.Models.LogicGameState;
+import Logic.Models.Tiles.CollisionChecker;
 
 import java.awt.*;
 
 public abstract class Player extends Entity {
 
+    public PlayerListener playerListener;
+    CollisionChecker collisionChecker;
+    // collision rect setting
+    public int leftCollisionLeDistanceFromX = 8;
+    public int RightCollisionLeDistanceFromX = 8 + 32 ;
+    public int topCollisionLeDistanceFromY = 16;
+    public int bottomCollisionLeDistanceFromY = 48;
+
     JumpPower jumpPow;
     public int imageNumber;
     int imageCounter;
-    private PlayerListener playerListener;
+    public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
     Player(LogicGameState logicGameState){
         super(logicGameState);
         this.playerListener = new PlayerListener();
         this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
+        this.collisionChecker = new CollisionChecker(this);
     }
 
      public void update(){
 
+        collisionChecker.checkCollision();
+
         String action = playerListener.keyAndMode;
-         if (worldX >= 0 ) {
+         if (worldX >= this.logicGameState.background.topLeftColInWorld * size ) {
          switch (action) {
                  case "WP":
                      imageNumber = 4;
-                     this.screenY -= this.v; // it is jumped
+                     if (!isUpCollisionOn) {
+                         this.screenY -= this.v;
+                         this.worldY -= this.v;
+                     }// it is jumped
                      break;
                  case "DP":
                      if (imageCounter < 12) {
@@ -34,10 +49,14 @@ public abstract class Player extends Entity {
                          imageNumber = 1;
                      }
                      imageCounter++;
-                     if(screenX > 26*48 /2){
-                     this.worldX += this.v;}
-                     else {
-                         this.screenX += this.v;
+                     if (! isRightCollisionOn) {
+                         this.worldX += this.v;
+                         if (screenX <= 26 * 48 / 2) {
+                             this.screenX += this.v;
+                         }
+                         else {
+                             this.logicGameState.background.topLeftColInWorld = (this.worldX - (26 * 48 /2) ) / size;
+                         }
                      }
                      break;
                  case "AP":
@@ -47,8 +66,11 @@ public abstract class Player extends Entity {
                          imageNumber = 3;
                      }
                      imageCounter++;
-                     if(screenX > 0){
-                         screenX -= v;
+                     if(!isLeftCollisionOn){
+                     if(this.screenX > 0){
+                         this.screenX -= v;
+                         this.worldX -= v;
+                     }
                      }
 //                     else {
 //                     this.worldX -= this.v;
@@ -57,12 +79,17 @@ public abstract class Player extends Entity {
                  case "SP":
                      imageNumber = 6;
                      imageCounter++;
-                     this.screenY += this.v;
+                     if (!isBottomCollisionOn) {
+                         if (screenY< size * this.logicGameState.rows) {
+                             this.screenY += this.v;
+                             this.worldY += this.v;
+                         }
+                     }
                      break;
              }
          }
          else {
-             worldX = 0;
+             worldX = this.logicGameState.background.topLeftColInWorld * size;
          }
          if (imageCounter > 24) {
              imageCounter = 0;
