@@ -15,9 +15,9 @@ public class Frame extends JFrame {
         this.setFocusable(false);
         this.add(panelsManagerCard);
         this.pack();// check
-        this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
     public void paintAll(){
         this.panelsManagerCard.repaint();
