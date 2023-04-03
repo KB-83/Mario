@@ -1,4 +1,4 @@
 package Graphic.Panels;
 
-public class LoginPanel {
+public class SignInPanel {
 }

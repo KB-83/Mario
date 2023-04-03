@@ -18,7 +18,6 @@ public class GamePanel extends JPanel {
         this.cardPanel = cardPanel;
         this.setFocusable(true);
         this.setLayout(null);
-//        this.addKeyListener(gM.lM.logicGameState.player.playerListener);
     }
     public void setGuiGameState(GuiGameState guiGameState){
         this.guiGameState = guiGameState;
