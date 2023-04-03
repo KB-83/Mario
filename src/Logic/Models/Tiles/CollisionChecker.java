@@ -57,6 +57,7 @@ public class CollisionChecker {
 
         // mark it as feature tile and the are same
         if(row >= 1 && col >= 0) {
+
                 up = tileManager.tiles[tileManager.mapTileNum[col][row]];
             }
         if(row >= 0 && col >= 0) {

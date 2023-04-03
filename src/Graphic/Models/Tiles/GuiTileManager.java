@@ -50,9 +50,14 @@ public class GuiTileManager implements GuiPart {
                 while (col < worldCols) {
 
                     String numbers[] = line.split(" ");
-
-                    int num = Integer.parseInt(numbers[col]);
-
+                    int num;
+                    // assuming coin background is sky;
+                    if(numbers[col].equals("c")){
+                        num = 0;
+                    }
+                    else {
+                        num = Integer.parseInt(numbers[col]);
+                    }
                     mapTileNum[col][row] = num;
                     col++;
                 }
@@ -68,7 +73,7 @@ public class GuiTileManager implements GuiPart {
         }catch (Exception e){
             e.printStackTrace();
         }
-        this.guiGameState.gM.lM.logicGameState.background.mapTileNum = this.mapTileNum;
+//        this.guiGameState.gM.lM.logicGameState.background.mapTileNum = this.mapTileNum;
     }
 
     public void loadTilesImage() {
@@ -115,6 +120,7 @@ public class GuiTileManager implements GuiPart {
         while (col < worldCols && row<  worldRows) {
 
             int tileNum = mapTileNum[col][row];
+
 
             g2.drawImage(tiles[tileNum].image, x, y, tileSize,tileSize, null);
             col++;

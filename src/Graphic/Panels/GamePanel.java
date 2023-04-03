@@ -2,7 +2,6 @@ package Graphic.Panels;
 import Graphic.GraphicManager;
 import Graphic.Listeners.PlayerListener;
 import Graphic.Models.GuiGameState;
-import Util.GameLoop;
 
 import javax.swing.*;
 import java.awt.*;

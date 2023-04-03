@@ -21,12 +21,12 @@ public abstract class Player extends Entity {
         super(logicGameState);
         this.playerListener = new PlayerListener();
         this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
-        this.collisionChecker = new CollisionChecker(this);
+//        this.collisionChecker = new CollisionChecker(this);
     }
 
      public void update(){
 
-        collisionChecker.checkCollision();
+//        collisionChecker.checkCollision();
 
         String action = playerListener.keyAndMode;
          if (worldX >= this.logicGameState.background.topLeftColInWorld * size ) {

@@ -4,6 +4,7 @@ import Graphic.GraphicManager;
 import Graphic.Listeners.PlayerListener;
 import Graphic.Models.Entity.GuiMario;
 import Graphic.Models.Entity.GuiPlayer;
+import Graphic.Models.Object.GuiCoinManager;
 import Graphic.Models.Tiles.GuiTileManager;
 import Graphic.Panels.GamePanel;
 import Logic.Models.Entity.Enemy;
@@ -17,16 +18,19 @@ public class GuiGameState {
     public GuiPlayer guiPlayer;
     List<Enemy> enemies;
     public GuiTileManager background;
+    public GuiCoinManager coinManager;
 
     public GuiGameState(GamePanel gamePanel, GraphicManager gM){
         this.gamePanel = gamePanel;
         this.gM = gM;
         this.guiPlayer = new GuiMario(this.gM, this);
         this.background = new GuiTileManager(this);
+        this.coinManager = new GuiCoinManager(this);
     }
     public void paintAll(Graphics2D g2){
 
         background.draw(g2);
+        coinManager.draw(g2);
         guiPlayer.draw(g2);
     }
 }

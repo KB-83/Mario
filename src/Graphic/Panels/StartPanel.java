@@ -114,6 +114,21 @@ public class StartPanel extends JPanel {
                 card.startPanel.getSignIn.setVisible(true);
             }
         });
+        getSignIn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                System.out.println(card.gamePanel.getKeyListeners());
+                card.gM.lM.startAGame();
+                GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
+                gameLoop.start();
+//                System.out.println(card.gamePanel.getKeyListeners());
+                card.cardLayout.show(card,"gamePanel");
+
+                card.gamePanel.requestFocus();
+
+            }
+        });
         this.add(signIn);
         this.add(login);
         this.add(exit);
