@@ -36,7 +36,7 @@ public abstract class Player extends Entity {
                      imageNumber = 4;
                      if (!isUpCollisionOn) {
                          if(lastYB4Jump - screenY < 4 *48) {
-                             this.screenY -= 3 * this.v;
+                             this.screenY -= 2 * this.v;
                              this.worldY -= this.v;
                          }
                          else {

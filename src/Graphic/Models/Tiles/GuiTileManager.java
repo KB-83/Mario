@@ -44,7 +44,7 @@ public class GuiTileManager implements GuiPart {
 
                     String numbers[] = line.split(" ");
                     int num;
-                    // assuming coin background is sky;
+                    // assuming coin and pipe background is sky;
                     if(numbers[col].equals("c") || numbers[col].equals("p") || numbers[col].equals("P")){
                         num = 0;
                     }
@@ -66,7 +66,6 @@ public class GuiTileManager implements GuiPart {
         }catch (Exception e){
             e.printStackTrace();
         }
-//        this.guiGameState.gM.lM.logicGameState.background.mapTileNum = this.mapTileNum;
     }
 
     public void loadTilesImage() {
@@ -103,12 +102,10 @@ public class GuiTileManager implements GuiPart {
 
         int topLeftCol = guiGameState.gM.lM.logicGameState.background.topLeftColInWorld;
         int topLeftRow = 0;
-//        System.out.println(topLeftCol);
         int col = topLeftCol;
         int row = topLeftRow;
         int x = 0;
         int y = 0;
-//        System.out.println(col +" "+ row);
 
         while (col < worldCols && row<  worldRows) {
 

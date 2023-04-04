@@ -17,12 +17,9 @@ public class Frame extends JFrame {
         this.pack();// check
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        this.revalidate();
-//        this.validate();
 
         this.revalidate();
         this.setVisible(true);
-//        this.revalidate();
     }
     public void paintAll(){
         this.panelsManagerCard.repaint();

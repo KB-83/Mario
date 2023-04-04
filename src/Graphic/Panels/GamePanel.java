@@ -1,6 +1,5 @@
 package Graphic.Panels;
 import Graphic.GraphicManager;
-import Graphic.Listeners.PlayerListener;
 import Graphic.Models.GuiGameState;
 
 import javax.swing.*;

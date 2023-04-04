@@ -5,16 +5,19 @@ import Logic.LogicManager;
 import Logic.Models.Entity.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class User {
-    LogicGameState logicGameState;
+    List<LogicGameState> gamesList;
     Player player;
     int score;
     int coins;
+    int hearts;
     ArrayList<String> ownedPlayers;
 
-    public User(LogicGameState logicGameState) {
-        this.logicGameState = logicGameState;
+    public User(List<LogicGameState> gamesList) {
+
+        this.gamesList = gamesList;
     }
 
     public void update(){

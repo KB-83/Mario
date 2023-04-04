@@ -5,8 +5,6 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GuiPipe {
-//
-//    GuiPipeManager guiPipeManager;
 
     int worldCol,worldRow;
 
@@ -17,7 +15,6 @@ public class GuiPipe {
     public GuiPipe (boolean isBiggerOne , int worldCol, int worldRow ){
         this.worldCol = worldCol;
         this.worldRow = worldRow;
-//        this.guiPipeManager = guiPipeManager;
         this.isBiggerOne = isBiggerOne;
         loadImage();
     }

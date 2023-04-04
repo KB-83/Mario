@@ -72,20 +72,12 @@ public class GuiPipeManager implements GuiPart {
         }catch (Exception e){
             e.printStackTrace();
         }
-//        this.guiGameState.gM.lM.logicGameState.background.mapTileNum = this.mapTileNum;
     }
 
     @Override
     public void draw(Graphics2D g2) {
 
         int topLeftCol = guiGameState.gM.lM.logicGameState.background.topLeftColInWorld;
-//        int topLeftRow = 0;
-//        System.out.println(topLeftCol);
-////        int screenFirstCol = topLeftCol;
-//        int screenRow = 0;
-//        System.out.println(col +" "+ row);
-//
-//        while ( topLeftCol < worldCols - 26 && screenRow < worldRows) {
         int screenCol ;
         int screenRow ;
         for (GuiPipe guiPipe:pipeList){
@@ -97,8 +89,8 @@ public class GuiPipeManager implements GuiPart {
                 else {
                     screenRow = guiPipe.worldRow - 1;
                 }
-                System.out.println(screenCol + screenRow);
-                g2.drawImage(guiPipe.image , screenCol *48 , screenRow * 48,null);
+
+                g2.drawImage(guiPipe.image , screenCol *tileSize , screenRow * tileSize,null);
             }
         }
     }

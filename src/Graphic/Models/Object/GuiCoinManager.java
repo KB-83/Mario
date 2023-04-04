@@ -12,7 +12,7 @@ import java.util.List;
 
 public class GuiCoinManager implements GuiPart {
 
-    List<GuiCoin> coinList = new ArrayList<GuiCoin>();
+    List<GuiCoin> coinList = new ArrayList<>();
     GuiGameState guiGameState;
 
     int[][] coinsColAndRow = new int[worldCols][worldRows];
@@ -66,29 +66,20 @@ public class GuiCoinManager implements GuiPart {
         }catch (Exception e){
             e.printStackTrace();
         }
-//        this.guiGameState.gM.lM.logicGameState.background.mapTileNum = this.mapTileNum;
     }
 
     @Override
     public void draw(Graphics2D g2) {
 
         int topLeftCol = guiGameState.gM.lM.logicGameState.background.topLeftColInWorld;
-//        int topLeftRow = 0;
-//        System.out.println(topLeftCol);
-////        int screenFirstCol = topLeftCol;
-//        int screenRow = 0;
-//        System.out.println(col +" "+ row);
-//
-//        while ( topLeftCol < worldCols - 26 && screenRow < worldRows) {
         int screenCol ;
         int screenRow ;
             for (GuiCoin guiCoin:coinList){
                 if(guiCoin.worldCol >= topLeftCol) {
                     screenCol = guiCoin.worldCol - topLeftCol;
                     screenRow = guiCoin.worldRow;
-                    g2.drawImage(guiCoin.image , screenCol *48 , screenRow * 48 + 20,24,24,null);
+                    g2.drawImage(guiCoin.image , screenCol *tileSize , screenRow * tileSize + 20,24,24,null);
                 }
             }
         }
-//    }
 }

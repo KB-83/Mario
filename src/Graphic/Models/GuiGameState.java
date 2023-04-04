@@ -23,6 +23,7 @@ public class GuiGameState {
     public GuiPipeManager pipeManager;
 
     public GuiGameState(GamePanel gamePanel, GraphicManager gM){
+
         this.gamePanel = gamePanel;
         this.gM = gM;
         this.guiPlayer = new GuiMario(this.gM, this);
