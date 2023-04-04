@@ -16,6 +16,7 @@ public abstract class Player extends Entity {
     JumpPower jumpPow;
     public int imageNumber;
     int imageCounter;
+    int lastYB4Jump = 12 * 48;
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
     Player(LogicGameState logicGameState){
         super(logicGameState);
@@ -34,8 +35,13 @@ public abstract class Player extends Entity {
                  case "WP":
                      imageNumber = 4;
                      if (!isUpCollisionOn) {
-                         this.screenY -= this.v;
-                         this.worldY -= this.v;
+                         if(lastYB4Jump - screenY < 4 *48) {
+                             this.screenY -= 3 * this.v;
+                             this.worldY -= this.v;
+                         }
+                         else {
+                             playerJumpIsOver();
+                         }
                      }// it is jumped
                      break;
                  case "DP":
@@ -54,6 +60,7 @@ public abstract class Player extends Entity {
                              this.logicGameState.background.topLeftColInWorld = (this.worldX - (26 * 48 /2) ) / size;
                          }
                      }
+                     lastYB4Jump = this.screenY;
                      break;
                  case "AP":
                      if (imageCounter < 12) {
@@ -71,7 +78,10 @@ public abstract class Player extends Entity {
 //                     else {
 //                     this.worldX -= this.v;
 //                     }
+
+                     lastYB4Jump = this.screenY;
                      break;
+
                  case "SP":
                      imageNumber = 6;
                      imageCounter++;
@@ -81,7 +91,12 @@ public abstract class Player extends Entity {
                              this.worldY += this.v;
                          }
                      }
+
+                     lastYB4Jump = this.screenY;
                      break;
+             case "WR":
+                 playerJumpIsOver();
+                 break;
              }
          }
          else {
@@ -92,5 +107,22 @@ public abstract class Player extends Entity {
          }
          this.logicGameState.lM.gM.guiGameState.guiPlayer.setImage(imageNumber);
 //         System.out.println(this.logicGameState.background.topLeftColInWorld);
+     }
+
+     private void playerJumpIsOver(){
+         try {
+             Thread.sleep(300);
+         } catch (InterruptedException e) {
+             throw new RuntimeException(e);
+         }
+         while (screenY < lastYB4Jump) {
+            screenY += 2*v;
+            try {
+                Thread.sleep(1000/60);//fps
+                logicGameState.lM.gM.guiGameState.gamePanel.repaint();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
      }
 }

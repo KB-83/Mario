@@ -7,10 +7,14 @@ import java.io.IOException;
 public class GuiCoin {
 
     Image image;
-    int worldX,worldY;
+    int worldCol,worldRow;
+    boolean isEaten;
 
-    GuiCoin() {
+    GuiCoin(int worldCol,int worldRow) {
 
+        this.worldCol = worldCol;
+        this.worldRow = worldRow;
+        isEaten = false;
         loadImage();
 
     }

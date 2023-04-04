@@ -10,6 +10,7 @@ public class PanelsManagerCard extends JPanel {
     // panels will be added later
     public GamePanel gamePanel;
     public StartPanel startPanel;
+    public MainMenu mainMenu;
     GraphicManager gM;
     CardLayout cardLayout = new CardLayout();
     //info
@@ -22,14 +23,16 @@ public class PanelsManagerCard extends JPanel {
         // other panels going to be added here
         this.gamePanel = new GamePanel(this,this.gM);
         this.startPanel = new StartPanel(this);
+        this.mainMenu = new MainMenu(this);
         // panel settings
 
         this.setLayout(cardLayout);
         this.setFocusable(false);
         this.setPreferredSize(new Dimension(cols*tileSize , rows*tileSize));
         //adding panels order is important
-        this.add(startPanel , "starPanel");
+        this.add(startPanel , "startPanel");
         this.add(gamePanel, "gamePanel");
+        this.add(mainMenu,"mainMenu");
         this.revalidate();
         // dont forget packing
     }

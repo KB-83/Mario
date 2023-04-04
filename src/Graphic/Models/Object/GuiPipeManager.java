@@ -1,5 +1,6 @@
 package Graphic.Models.Object;
 
+import Graphic.Models.Entity.GuiPlayer;
 import Graphic.Models.GuiGameState;
 import Graphic.Models.GuiPart;
 
@@ -10,20 +11,20 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuiCoinManager implements GuiPart {
+public class GuiPipeManager implements GuiPart {
 
-    List<GuiCoin> coinList = new ArrayList<GuiCoin>();
     GuiGameState guiGameState;
+    List<GuiPipe> pipeList = new ArrayList<>();
 
-    int[][] coinsColAndRow = new int[worldCols][worldRows];
+    int[][] pipesColAndRow = new int[worldCols][worldRows];
 
-    public GuiCoinManager(GuiGameState guiGameState) {
+    public GuiPipeManager(GuiGameState guiGameState){
 
         this.guiGameState = guiGameState;
-        loadCoinList();
+        loadPipeList();
     }
 
-    public void loadCoinList() {
+    public void loadPipeList() {
 
 
         try {
@@ -43,15 +44,20 @@ public class GuiCoinManager implements GuiPart {
                     String numbers[] = line.split(" ");
                     int num;
                     // assuming coin background is sky;
-                    if(numbers[col].equals("c")){
+                    if(numbers[col].equals("p")){
                         num = 1;
-                        GuiCoin guiCoin = new GuiCoin(col,row);
-                        coinList.add(guiCoin);
+                        GuiPipe guiPipe = new GuiPipe(false , col,row);
+                        pipeList.add(guiPipe);;
+                    }
+                    else if(numbers[col].equals("P")){
+                        num = 2;
+                        GuiPipe guiPipe = new GuiPipe(true , col,row);
+                        pipeList.add(guiPipe);;
                     }
                     else {
                         num = 0;
                     }
-                    coinsColAndRow[col][row] = num;
+                    pipesColAndRow[col][row] = num;
                     col++;
                 }
                 if(col >= worldCols) {
@@ -82,13 +88,19 @@ public class GuiCoinManager implements GuiPart {
 //        while ( topLeftCol < worldCols - 26 && screenRow < worldRows) {
         int screenCol ;
         int screenRow ;
-            for (GuiCoin guiCoin:coinList){
-                if(guiCoin.worldCol >= topLeftCol) {
-                    screenCol = guiCoin.worldCol - topLeftCol;
-                    screenRow = guiCoin.worldRow;
-                    g2.drawImage(guiCoin.image , screenCol *48 , screenRow * 48 + 20,24,24,null);
+        for (GuiPipe guiPipe:pipeList){
+            if(guiPipe.worldCol >= topLeftCol) {
+                screenCol = guiPipe.worldCol - topLeftCol;
+                if (guiPipe.isBiggerOne){
+                screenRow = guiPipe.worldRow - 2 ;
                 }
+                else {
+                    screenRow = guiPipe.worldRow - 1;
+                }
+                System.out.println(screenCol + screenRow);
+                g2.drawImage(guiPipe.image , screenCol *48 , screenRow * 48,null);
             }
         }
-//    }
+    }
+
 }

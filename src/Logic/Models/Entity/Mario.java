@@ -11,8 +11,8 @@ public class Mario extends Player{
         this.jumpPow = JumpPower.Mario;
         this.v = V.Mario.v;
         this.screenX= 0;
-        this.screenY= 480;
+        this.screenY= 480 + 48;
         this.worldX = 0;
-        this.worldY = 480;
+        this.worldY = 480 + 48;
     }
 }

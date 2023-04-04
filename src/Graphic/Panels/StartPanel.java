@@ -37,6 +37,7 @@ public class StartPanel extends JPanel {
         }
         setTextAreas();
         seButtons();
+        addActions();
         this.add(signName);
         this.add(signPass);
         this.add(loginName);
@@ -85,12 +86,23 @@ public class StartPanel extends JPanel {
 
         getLogin.setVisible(false);
         getSignIn.setVisible(false);
+
+        this.add(signIn);
+        this.add(login);
+        this.add(exit);
+        this.add(getLogin);
+        this.add(getSignIn);
+        this.revalidate();
+    }
+    private void addActions(){
+
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
+
         login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,6 +115,7 @@ public class StartPanel extends JPanel {
 
             }
         });
+
         signIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -114,27 +127,27 @@ public class StartPanel extends JPanel {
                 card.startPanel.getSignIn.setVisible(true);
             }
         });
+
         getSignIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.out.println(card.gamePanel.getKeyListeners());
                 card.gM.lM.startAGame();
                 GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
                 gameLoop.start();
-//                System.out.println(card.gamePanel.getKeyListeners());
                 card.cardLayout.show(card,"gamePanel");
 
                 card.gamePanel.requestFocus();
 
             }
         });
-        this.add(signIn);
-        this.add(login);
-        this.add(exit);
-        this.add(getLogin);
-        this.add(getSignIn);
-        this.revalidate();
+
+        getLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                card.cardLayout.show(card,"mainMenu");
+            }
+        });
     }
 
     @Override

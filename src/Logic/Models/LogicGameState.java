@@ -17,6 +17,7 @@ import java.util.List;
 
 public class LogicGameState {
     public LogicManager lM;
+    private User selectedUser;
     public Player player;
     List<Enemy> enemies;
     public int cols =26;
@@ -28,11 +29,13 @@ public class LogicGameState {
         this.lM = lM;
 
         this.background = new TileManager(this);
+        this.selectedUser = new User(this);
         this.player = new Mario(this);
+        selectedUser.player = player;
 
     }
 
     public void update(){
-        player.update();
+        selectedUser.update();
     }
 }

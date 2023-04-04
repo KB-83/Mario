@@ -16,13 +16,6 @@ public class GuiTileManager implements GuiPart {
     GuiGameState guiGameState;
     public GuiTile[] tiles;
     int[][] mapTileNum;
-
-    public int screenCols = 26;
-    public int screenRows = 15;
-    public int worldCols = 26 * 4;
-    public int worldRows = 15;
-    public int tileSize = 48;
-
     public GuiTileManager(GuiGameState guiGameState){
 
         this.guiGameState = guiGameState;
@@ -52,7 +45,7 @@ public class GuiTileManager implements GuiPart {
                     String numbers[] = line.split(" ");
                     int num;
                     // assuming coin background is sky;
-                    if(numbers[col].equals("c")){
+                    if(numbers[col].equals("c") || numbers[col].equals("p") || numbers[col].equals("P")){
                         num = 0;
                     }
                     else {
