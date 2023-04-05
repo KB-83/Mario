@@ -14,6 +14,8 @@ public class GameLoop implements Runnable{
     GraphicManager gM;
 
     public GameLoop(LogicManager lM, GraphicManager gM) {
+        gM.guiGameState.setLoop(this);
+        lM.logicGameState.setLoop(this);
         this.lM = lM;
         this.gM = gM;
     }
@@ -28,7 +30,11 @@ public class GameLoop implements Runnable{
 
     public void stop(){
         running = false;
+        gameThread = null;
     }
+//    public void resume(){
+//        running = true;
+//    }
 
     public void run() {
         final long drawInterval = 1000000000/FPS;
@@ -36,7 +42,8 @@ public class GameLoop implements Runnable{
         long startfPS = System.nanoTime();
         long delta = 0;
         long currentTime;
-        while (gameThread != null){
+        System.out.println("check if running");
+        while (running){
             currentTime = System.nanoTime();
             delta = (currentTime - lastTime) / drawInterval ;
             if(delta >= 1){

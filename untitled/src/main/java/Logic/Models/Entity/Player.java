@@ -6,13 +6,11 @@ import Logic.Models.LogicGameState;
 import Logic.Models.Tiles.CollisionChecker;
 
 import java.awt.*;
-
 public abstract class Player extends Entity {
 
     public PlayerListener playerListener;
     CollisionChecker collisionChecker;
     // collision rect setting
-
     JumpPower jumpPow;
     public int imageNumber;
     int imageCounter;
@@ -22,12 +20,12 @@ public abstract class Player extends Entity {
         super(logicGameState);
         this.playerListener = new PlayerListener();
         this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
-//        this.collisionChecker = new CollisionChecker(this);
+        this.collisionChecker = new CollisionChecker(this);
     }
 
      public void update(){
 
-//        collisionChecker.checkCollision();
+        collisionChecker.checkCollision();
 
         String action = playerListener.keyAndMode;
          if (worldX >= this.logicGameState.background.topLeftColInWorld * size ) {
@@ -35,13 +33,13 @@ public abstract class Player extends Entity {
                  case "WP":
                      imageNumber = 4;
                      if (!isUpCollisionOn) {
-                         if(lastYB4Jump - screenY < 4 *48) {
-                             this.screenY -= 2 * this.v;
+//                         if(lastYB4Jump - screenY < 4 *48) {
+                             this.screenY -= this.v;
                              this.worldY -= this.v;
-                         }
-                         else {
-                             playerJumpIsOver();
-                         }
+//                         }
+//                         else {
+//                             playerJumpIsOver();
+//                         }
                      }// it is jumped
                      break;
                  case "DP":
@@ -95,7 +93,7 @@ public abstract class Player extends Entity {
                      lastYB4Jump = this.screenY;
                      break;
              case "WR":
-                 playerJumpIsOver();
+//                 playerJumpIsOver();
                  break;
              }
          }
@@ -125,4 +123,9 @@ public abstract class Player extends Entity {
             }
         }
      }
+
+    @Override
+    void setCollision() {
+        collision = new Rectangle(0,0,48,48);
+    }
 }

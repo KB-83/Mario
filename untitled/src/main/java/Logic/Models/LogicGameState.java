@@ -4,14 +4,17 @@ import Logic.Models.Entity.Enemy;
 import Logic.Models.Entity.Mario;
 import Logic.Models.Entity.Player;
 import Logic.Models.Tiles.TileManager;
+import Util.GameLoop;
 
 import java.util.List;
 
 
 public class LogicGameState {
 
-    public User user;
+
     public LogicManager lM;
+
+    private GameLoop loop;
     private User selectedUser;
     public Player player;
     List<Enemy> enemies;
@@ -31,5 +34,9 @@ public class LogicGameState {
 
     public void update(){
         player.update();
+    }
+
+    public void setLoop(GameLoop loop) {
+        this.loop = loop;
     }
 }

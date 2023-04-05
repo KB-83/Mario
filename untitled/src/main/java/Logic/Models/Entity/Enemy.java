@@ -9,6 +9,11 @@ public class Enemy extends Entity {
         super(logicGameState);
     }
 
+    @Override
+    void setCollision() {
+
+    }
+
     void loadImages() {
 
     }

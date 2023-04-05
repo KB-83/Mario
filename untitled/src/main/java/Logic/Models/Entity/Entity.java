@@ -9,6 +9,8 @@ public abstract class Entity {
 
     public LogicGameState logicGameState;
 
+    Rectangle collision;
+
     public int v;
     public int screenX,screenY;
     public int worldX,worldY;
@@ -17,4 +19,7 @@ public abstract class Entity {
     Entity(LogicGameState logicGameState){
         this.logicGameState = logicGameState;
     }
+
+
+    abstract void setCollision();
 }

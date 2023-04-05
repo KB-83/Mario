@@ -9,6 +9,7 @@ import Graphic.Models.Object.GuiPipeManager;
 import Graphic.Models.Tiles.GuiTileManager;
 import Graphic.Panels.GamePanel;
 import Logic.Models.Entity.Enemy;
+import Util.GameLoop;
 
 import java.awt.*;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 public class GuiGameState {
     public GraphicManager gM;
     public GamePanel gamePanel;
+    public GameLoop loop;
     public GuiPlayer guiPlayer;
     List<Enemy> enemies;
     public GuiTileManager background;
@@ -37,5 +39,9 @@ public class GuiGameState {
         pipeManager.draw(g2);
         coinManager.draw(g2);
         guiPlayer.draw(g2);
+    }
+
+    public void setLoop(GameLoop loop) {
+        this.loop = loop;
     }
 }

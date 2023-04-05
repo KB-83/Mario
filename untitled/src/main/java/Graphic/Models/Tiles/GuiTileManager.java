@@ -24,6 +24,7 @@ public class GuiTileManager implements GuiPart {
         mapTileNum = new int[worldCols][worldRows];
         loadTilesImage();
         loadMap();
+        this.guiGameState.gM.lM.logicGameState.background.mapTileNum = this.mapTileNum;
     }
 
     public void loadMap(){
