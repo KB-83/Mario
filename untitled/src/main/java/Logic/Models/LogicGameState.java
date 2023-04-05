@@ -24,13 +24,12 @@ public class LogicGameState {
         this.lM = lM;
 
         this.background = new TileManager(this);
-//        this.selectedUser = new User();
         this.player = new Mario(this);
-        selectedUser.player = player;
+//        selectedUser.player = player;
 
     }
 
     public void update(){
-        selectedUser.update();
+        player.update();
     }
 }
