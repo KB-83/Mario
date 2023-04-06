@@ -1,8 +1,7 @@
 package Logic.Models;
+import Graphic.Models.Entity.GuiLuigi;
 import Logic.LogicManager;
-import Logic.Models.Entity.Enemy;
-import Logic.Models.Entity.Mario;
-import Logic.Models.Entity.Player;
+import Logic.Models.Entity.*;
 import Logic.Models.Tiles.TileManager;
 import Util.GameLoop;
 
@@ -27,7 +26,8 @@ public class LogicGameState {
         this.lM = lM;
 
         this.background = new TileManager(this);
-        this.player = new Mario();
+        this.player = new UniqueGirl(this);
+        player.logicGameState = this;
 //        selectedUser.player = player;
 
     }

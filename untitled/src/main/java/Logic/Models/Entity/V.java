@@ -2,7 +2,13 @@ package Logic.Models.Entity;
 
 public enum V {
 
-    Mario(8);
+    Mario(8),
+    UniqueGirl(5),
+    Luigi(3),
+    Princess(7),
+    Poker(17);
+
+//    UniqueGirl(5);
 
     int v;
 

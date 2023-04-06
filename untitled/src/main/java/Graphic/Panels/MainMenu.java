@@ -1,5 +1,7 @@
 package Graphic.Panels;
 
+import Util.GameLoop;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -51,7 +53,17 @@ public class MainMenu extends JPanel {
         startNewGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                card.cardLayout.show(card,"newGamePanel");
+                if(card.gM.lM.logicGameState == null){
+                        card.gM.lM.startAGame();
+                        GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
+                        gameLoop.start();
+                    card.cardLayout.show(card,"gamePanel");
+            }
+                else {
+//
+                        card.gM.guiGameState.loop.start();
+                    }
+                card.gamePanel.requestFocus();
             }
         });
         continueLastGames.addActionListener(new ActionListener() {
@@ -64,8 +76,6 @@ public class MainMenu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 card.cardLayout.show(card,"profilePanel");
-//                card.gM.lM.currentUser.setCoins(3);
-//                System.out.println(card.gM.lM.currentUser.getCoins());
             }
         });
         shop.addActionListener(new ActionListener() {

@@ -19,11 +19,12 @@ public abstract class Player extends Entity {
     int imageCounter;
     int lastYB4Jump = 12 * 48;
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
-    Player() {
+    Player(LogicGameState logicGameState) {
         super();
+        this.logicGameState = logicGameState;
         this.playerListener = new PlayerListener();
-//        this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
-//        this.collisionChecker = new CollisionChecker(this);
+        this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
+        this.collisionChecker = new CollisionChecker(this);
     }
 
      public void update(){

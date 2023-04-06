@@ -16,9 +16,7 @@ public class LogicManager {
     ObjectMapper objectMapper = new ObjectMapper();
 
     public LogicManager(){
-        // logic Game State Must be First
         this.gM =new GraphicManager(this);
-//        this.logicGameState = new LogicGameState(this);
     }
 
     public void updateAll(){

@@ -28,9 +28,9 @@ public class User {
     public User(String userName,String passWord) {
         this.userName = userName;
         this.passWord = passWord;
-        Mario mario = new Mario();
-        this.selectedPlayer = mario;
-        this.ownedPlayers.add(mario);
+//        Mario mario = new Mario();
+//        this.selectedPlayer = mario;
+//        this.ownedPlayers.add(mario);
 //        LogicGameState logicGameState = new LogicGameState(this.lm);
 //        this.gameStatesList.add(logicGameState);
 //        this.selectedPlayer = logicGameState.player;

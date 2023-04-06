@@ -2,14 +2,12 @@ package Logic.Models.Entity;
 
 import Logic.Models.LogicGameState;
 
-
-public class Mario extends Player{
-
-    public Mario(LogicGameState logicGameState){
+public class Princess extends Player{
+    public Princess(LogicGameState logicGameState){
         super(logicGameState);
-        this.name = "Mario";
+        this.name = "Princess";
         this.jumpPow = JumpPower.Mario;
-        this.v = V.Mario.v;
+        this.v = V.Princess.v;
         this.screenX= 0;
         this.screenY= 480 + 48;
         this.worldX = 0;

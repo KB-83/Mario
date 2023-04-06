@@ -2,8 +2,7 @@ package Graphic.Models;
 
 import Graphic.GraphicManager;
 import Graphic.Listeners.PlayerListener;
-import Graphic.Models.Entity.GuiMario;
-import Graphic.Models.Entity.GuiPlayer;
+import Graphic.Models.Entity.*;
 import Graphic.Models.Object.GuiCoinManager;
 import Graphic.Models.Object.GuiPipeManager;
 import Graphic.Models.Tiles.GuiTileManager;
@@ -28,7 +27,7 @@ public class GuiGameState {
 
         this.gamePanel = gamePanel;
         this.gM = gM;
-        this.guiPlayer = new GuiMario(this.gM, this);
+        this.guiPlayer = new GuiUniqueGirl(this.gM, this);
         this.background = new GuiTileManager(this);
         this.coinManager = new GuiCoinManager(this);
         this.pipeManager = new GuiPipeManager(this);
