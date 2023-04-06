@@ -48,12 +48,40 @@ public class MainMenu extends JPanel {
 
     }
     private void setButtonsListeners(){
+        startNewGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                card.cardLayout.show(card,"newGamePanel");
+            }
+        });
+        continueLastGames.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                card.cardLayout.show(card,"lastGamesPanel");
+            }
+        });
+        profile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                card.cardLayout.show(card,"profilePanel");
+//                card.gM.lM.currentUser.setCoins(3);
+//                System.out.println(card.gM.lM.currentUser.getCoins());
+            }
+        });
+        shop.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                card.cardLayout.show(card,"shopPanel");
+                card.shopPanel.requestFocus();
+            }
+        });
 
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 card.cardLayout.show(card,"startPanel");
+                card.startPanel.requestFocus();
             }
         });
     }

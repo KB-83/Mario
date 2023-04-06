@@ -5,10 +5,10 @@ import Logic.Models.User;
 import javax.swing.*;
 import java.awt.*;
 
-public class ShopPanel extends JPanel {
+public class NewGamePanel extends JPanel {
     User user;
     PanelsManagerCard card;
-    ShopPanel(PanelsManagerCard card) {
+    NewGamePanel(PanelsManagerCard card) {
         this.card = card;
         setBackground(Color.red);
     }

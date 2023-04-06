@@ -11,6 +11,10 @@ public class PanelsManagerCard extends JPanel {
     public GamePanel gamePanel;
     public StartPanel startPanel;
     public MainMenu mainMenu;
+    public ProfilePanel profilePanel;
+    public ShopPanel shopPanel;
+    public NewGamePanel newGamePanel;
+    public LastGamesPanel lastGamesPanel;
     GraphicManager gM;
     CardLayout cardLayout = new CardLayout();
     //info
@@ -24,6 +28,10 @@ public class PanelsManagerCard extends JPanel {
         this.gamePanel = new GamePanel(this,this.gM);
         this.startPanel = new StartPanel(this);
         this.mainMenu = new MainMenu(this);
+        this.shopPanel = new ShopPanel(this);
+        this.profilePanel = new ProfilePanel(this);
+        this.newGamePanel = new NewGamePanel(this);
+        this.lastGamesPanel = new LastGamesPanel(this);
         // panel settings
 
         this.setLayout(cardLayout);
@@ -33,6 +41,10 @@ public class PanelsManagerCard extends JPanel {
         this.add(startPanel , "startPanel");
         this.add(gamePanel, "gamePanel");
         this.add(mainMenu,"mainMenu");
+        this.add(shopPanel,"shopPanel");
+        this.add(profilePanel,"profilePanel");
+        this.add(newGamePanel,"newGamePanel");
+        this.add(lastGamesPanel,"lastGamesPanel");
         this.revalidate();
         // dont forget packing
     }

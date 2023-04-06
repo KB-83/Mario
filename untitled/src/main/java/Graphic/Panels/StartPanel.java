@@ -132,22 +132,20 @@ public class StartPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(card.gM.lM.signInRequest(signName.getText() , signPass.getText())){
-                    if(card.gM.lM.logicGameState == null){
-                        card.gM.lM.startAGame();
-                        GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
-                        gameLoop.start();
-
+//                    if(card.gM.lM.logicGameState == null){
+//                        card.gM.lM.startAGame();
+//                        GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
+//                        gameLoop.start();
+                    card.cardLayout.show(card,"mainMenu");
                     }
-                    else {
-
-                        card.gM.guiGameState.loop.start();
-                    }
-                    card.cardLayout.show(card,"gamePanel");
+//                    else {
+//
+//                        card.gM.guiGameState.loop.start();
+//                    }
                 }
 
-                card.gamePanel.requestFocus();
+//                card.gamePanel.requestFocus();
 
-            }
         });
 
         getLogin.addActionListener(new ActionListener() {

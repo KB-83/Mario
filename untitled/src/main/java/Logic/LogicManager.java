@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class LogicManager {
     public final GraphicManager gM;
-    User currentUser;
+    public User currentUser;
     public LogicGameState logicGameState;
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -33,9 +33,10 @@ public class LogicManager {
         try {
             if(!file.exists()) {
                 FileWriter fileWriter = new FileWriter(file);
-                User user = new User(userName,pass);
+                User user = new User(userName,pass,this);
                 this.currentUser = user;
-                objectMapper.writeValue(fileWriter, user);
+                System.out.println("here");
+                objectMapper.writeValue(fileWriter,user);
                 return true;
             }
             else {
