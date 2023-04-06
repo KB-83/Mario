@@ -49,6 +49,7 @@ public class PanelsManagerCard extends JPanel {
         // dont forget packing
     }
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         gamePanel.repaint();
     }
 }

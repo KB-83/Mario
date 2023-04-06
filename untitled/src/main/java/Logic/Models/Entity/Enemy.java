@@ -5,8 +5,8 @@ import Logic.Models.LogicGameState;
 
 public class Enemy extends Entity {
 
-    Enemy(LogicGameState logicGameState) {
-        super(logicGameState);
+    Enemy() {
+        super();
     }
 
     @Override

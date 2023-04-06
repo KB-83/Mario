@@ -18,25 +18,28 @@ public class User {
     String userName;
     String passWord;
     int score;
+    int highScore;
     int coins;
     int hearts;
 
     public User() {
 
     }
-    public User(String userName,String passWord,LogicManager lm) {
-        this.lm = lm;
+    public User(String userName,String passWord) {
         this.userName = userName;
         this.passWord = passWord;
+        Mario mario = new Mario();
+        this.selectedPlayer = mario;
+        this.ownedPlayers.add(mario);
 //        LogicGameState logicGameState = new LogicGameState(this.lm);
 //        this.gameStatesList.add(logicGameState);
 //        this.selectedPlayer = logicGameState.player;
 
     }
 
-    public void update(){
-        this.selectedPlayer.update();
-    }
+//    public void update(){
+//        this.selectedPlayer.update();
+//    }
 
     public List<LogicGameState> getGameStatesList() {
         return gameStatesList;
@@ -108,5 +111,20 @@ public class User {
 
     public void setHearts(int hearts) {
         this.hearts = hearts;
+    }
+    public LogicManager getLm() {
+        return lm;
+    }
+
+    public void setLm(LogicManager lm) {
+        this.lm = lm;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
     }
 }

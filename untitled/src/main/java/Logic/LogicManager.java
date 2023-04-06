@@ -33,9 +33,8 @@ public class LogicManager {
         try {
             if(!file.exists()) {
                 FileWriter fileWriter = new FileWriter(file);
-                User user = new User(userName,pass,this);
-                this.currentUser = user;
-                System.out.println("here");
+                User user = new User(userName,pass);
+                userCleared(user);
                 objectMapper.writeValue(fileWriter,user);
                 return true;
             }
@@ -52,7 +51,7 @@ public class LogicManager {
         if (file.exists()) {
             try {
                 if (objectMapper.readValue(file, User.class).getPassWord().equals(pass)) {
-                    this.currentUser = objectMapper.readValue(file, User.class);
+                    userCleared(objectMapper.readValue(file, User.class));
                     return true;
                 }
                 else {
@@ -67,5 +66,12 @@ public class LogicManager {
         }
 
         return false;
+    }
+
+    private void userCleared(User user) {
+        this.currentUser = user;
+        // why eror here?
+//        user.setLm(this);
+        this.gM.setCurrentUser(user);
     }
 }

@@ -4,23 +4,26 @@ import Graphic.Listeners.PlayerListener;
 import Logic.Models.Entity.Entity;
 import Logic.Models.LogicGameState;
 import Logic.Models.Tiles.CollisionChecker;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.awt.*;
+@JsonDeserialize(as=Mario.class)
 public abstract class Player extends Entity {
 
     public PlayerListener playerListener;
     CollisionChecker collisionChecker;
     // collision rect setting
     JumpPower jumpPow;
+    public String name;
     public int imageNumber;
     int imageCounter;
     int lastYB4Jump = 12 * 48;
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
-    Player(LogicGameState logicGameState){
-        super(logicGameState);
+    Player() {
+        super();
         this.playerListener = new PlayerListener();
-        this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
-        this.collisionChecker = new CollisionChecker(this);
+//        this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
+//        this.collisionChecker = new CollisionChecker(this);
     }
 
      public void update(){
@@ -127,5 +130,93 @@ public abstract class Player extends Entity {
     @Override
     void setCollision() {
         collision = new Rectangle(0,0,48,48);
+    }
+
+    public PlayerListener getPlayerListener() {
+        return playerListener;
+    }
+
+    public void setPlayerListener(PlayerListener playerListener) {
+        this.playerListener = playerListener;
+    }
+
+    public CollisionChecker getCollisionChecker() {
+        return collisionChecker;
+    }
+
+    public void setCollisionChecker(CollisionChecker collisionChecker) {
+        this.collisionChecker = collisionChecker;
+    }
+
+    public JumpPower getJumpPow() {
+        return jumpPow;
+    }
+
+    public void setJumpPow(JumpPower jumpPow) {
+        this.jumpPow = jumpPow;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getImageNumber() {
+        return imageNumber;
+    }
+
+    public void setImageNumber(int imageNumber) {
+        this.imageNumber = imageNumber;
+    }
+
+    public int getImageCounter() {
+        return imageCounter;
+    }
+
+    public void setImageCounter(int imageCounter) {
+        this.imageCounter = imageCounter;
+    }
+
+    public int getLastYB4Jump() {
+        return lastYB4Jump;
+    }
+
+    public void setLastYB4Jump(int lastYB4Jump) {
+        this.lastYB4Jump = lastYB4Jump;
+    }
+
+    public boolean isUpCollisionOn() {
+        return isUpCollisionOn;
+    }
+
+    public void setUpCollisionOn(boolean upCollisionOn) {
+        isUpCollisionOn = upCollisionOn;
+    }
+
+    public boolean isRightCollisionOn() {
+        return isRightCollisionOn;
+    }
+
+    public void setRightCollisionOn(boolean rightCollisionOn) {
+        isRightCollisionOn = rightCollisionOn;
+    }
+
+    public boolean isBottomCollisionOn() {
+        return isBottomCollisionOn;
+    }
+
+    public void setBottomCollisionOn(boolean bottomCollisionOn) {
+        isBottomCollisionOn = bottomCollisionOn;
+    }
+
+    public boolean isLeftCollisionOn() {
+        return isLeftCollisionOn;
+    }
+
+    public void setLeftCollisionOn(boolean leftCollisionOn) {
+        isLeftCollisionOn = leftCollisionOn;
     }
 }

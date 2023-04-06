@@ -4,6 +4,8 @@ import Graphic.Models.GuiGameState;
 import Graphic.Panels.Frame;
 import Graphic.Panels.PanelsManagerCard;
 import Logic.LogicManager;
+import Logic.Models.User;
+
 import java.awt.*;
 
 
@@ -11,6 +13,7 @@ public class GraphicManager {
 
     public LogicManager lM ;
     Frame frame;
+    public User currentUser;
     public PanelsManagerCard panelsManagerCard;
     Graphics2D g2;// maybe useful in feature
     public GuiGameState guiGameState;
@@ -34,6 +37,10 @@ public class GraphicManager {
         this.guiGameState = new GuiGameState(panelsManagerCard.gamePanel,this);
         this.panelsManagerCard.gamePanel.setGuiGameState(guiGameState);
 
+    }
+    public void setCurrentUser(User user){
+        this.currentUser = user;
+        this.panelsManagerCard.profilePanel.setUser(user);
     }
 
 }

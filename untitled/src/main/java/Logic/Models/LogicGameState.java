@@ -27,7 +27,7 @@ public class LogicGameState {
         this.lM = lM;
 
         this.background = new TileManager(this);
-        this.player = new Mario(this);
+        this.player = new Mario();
 //        selectedUser.player = player;
 
     }

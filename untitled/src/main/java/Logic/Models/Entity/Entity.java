@@ -16,8 +16,7 @@ public abstract class Entity {
     public int worldX,worldY;
 
     public int size = 48;//pixel//maybe unusable (just tiles needed)
-    Entity(LogicGameState logicGameState){
-        this.logicGameState = logicGameState;
+    Entity(){
     }
 
 
