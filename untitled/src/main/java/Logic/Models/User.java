@@ -1,15 +1,16 @@
 package Logic.Models;
 
-import Graphic.Models.Entity.GuiPlayer;
 import Graphic.Models.GuiUser;
 import Logic.LogicManager;
-import Logic.Models.Entity.Mario;
 import Logic.Models.Entity.Player;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    @JsonIgnore
     LogicManager lm;
     public List<LogicGameState> gameStatesList = new ArrayList<>();
     List<Player> ownedPlayers = new ArrayList<>();
@@ -21,13 +22,18 @@ public class User {
     int highScore;
     int coins;
     int hearts;
-
+        @JsonCreator
     public User() {
 
     }
-    public User(String userName,String passWord) {
+    public User(String userName,String passWord,LogicManager lm) {
+        this.lm = lm;
         this.userName = userName;
         this.passWord = passWord;
+        this.lm.createANewGameState();
+        this.gameStatesList.add(lm.logicGameState);
+        this.selectedPlayer = lm.logicGameState.player;
+
 //        Mario mario = new Mario();
 //        this.selectedPlayer = mario;
 //        this.ownedPlayers.add(mario);

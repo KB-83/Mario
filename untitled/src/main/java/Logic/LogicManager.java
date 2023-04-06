@@ -3,6 +3,7 @@ package Logic;
 import Graphic.GraphicManager;
 import Logic.Models.LogicGameState;
 import Logic.Models.User;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -22,16 +23,16 @@ public class LogicManager {
     public void updateAll(){
         logicGameState.update();
     }
-    public void startAGame(){
+    public void createANewGameState(){
         this.logicGameState = new LogicGameState(this);
-        this.gM.startAGame();
+        this.gM.createANewGameState();
     }
     public boolean signInRequest(String userName,String pass) {
         File file = new File(userName+".json");
         try {
             if(!file.exists()) {
                 FileWriter fileWriter = new FileWriter(file);
-                User user = new User(userName,pass);
+                User user = new User(userName,pass,this);
                 userCleared(user);
                 objectMapper.writeValue(fileWriter,user);
                 return true;
@@ -65,7 +66,6 @@ public class LogicManager {
 
         return false;
     }
-
     private void userCleared(User user) {
         this.currentUser = user;
         // why eror here?

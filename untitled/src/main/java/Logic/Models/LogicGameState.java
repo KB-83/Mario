@@ -4,13 +4,14 @@ import Logic.LogicManager;
 import Logic.Models.Entity.*;
 import Logic.Models.Tiles.TileManager;
 import Util.GameLoop;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
 
 public class LogicGameState {
 
-
+    @JsonIgnore
     public LogicManager lM;
 
     private GameLoop loop;
@@ -21,6 +22,7 @@ public class LogicGameState {
     public int rows = 15;
     public TileManager background;
 //    public CollisionChecker collisionChecker;
+    public LogicGameState(){}
     public LogicGameState(LogicManager lM){
 
         this.lM = lM;

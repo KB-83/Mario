@@ -4,6 +4,8 @@ import Logic.Models.LogicGameState;
 
 
 public class Mario extends Player{
+    public Mario(){
+    }
 
     public Mario(LogicGameState logicGameState){
         super(logicGameState);

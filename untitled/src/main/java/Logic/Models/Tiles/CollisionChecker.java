@@ -21,6 +21,9 @@ public class CollisionChecker {
         this.playerListener = player.playerListener;
     }
 
+    public CollisionChecker() {
+    }
+
     public void checkCollision() {
 //        System.out.println("here");
 

@@ -19,6 +19,7 @@ public abstract class Player extends Entity {
     int imageCounter;
     int lastYB4Jump = 12 * 48;
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
+    public Player(){}
     Player(LogicGameState logicGameState) {
         super();
         this.logicGameState = logicGameState;

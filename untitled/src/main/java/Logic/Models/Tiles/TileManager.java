@@ -15,6 +15,9 @@ public class TileManager {
     Tile[] tiles;
     public int[][] mapTileNum;
 
+    public TileManager() {
+    }
+
     public TileManager(LogicGameState logicGameState){
         this.logicGameState = logicGameState;
         tiles = new Tile[10];

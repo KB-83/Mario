@@ -54,15 +54,17 @@ public class MainMenu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(card.gM.lM.logicGameState == null){
-                        card.gM.lM.startAGame();
+                    System.out.println("null");
+                        card.gM.lM.createANewGameState();
                         GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
                         gameLoop.start();
-                    card.cardLayout.show(card,"gamePanel");
             }
                 else {
-//
-                        card.gM.guiGameState.loop.start();
+                    System.out.println("else");
+                      GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
+                        gameLoop.start();
                     }
+                card.cardLayout.show(card,"gamePanel");
                 card.gamePanel.requestFocus();
             }
         });
