@@ -22,4 +22,7 @@ public abstract class Entity {
 
 
     abstract void setCollision();
+    public void setLogicGameState(LogicGameState logicGameState){
+        this.logicGameState = logicGameState;
+    }
 }

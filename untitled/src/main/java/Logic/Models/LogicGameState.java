@@ -27,7 +27,7 @@ public class LogicGameState {
         this.lM = lM;
 
         this.background = new TileManager(this);
-        this.currentPlayer = new UniqueGirl(this);
+        this.currentPlayer = new UniqueGirl();
         currentPlayer.logicGameState = this;
 //        selectedUser.player = player;
 

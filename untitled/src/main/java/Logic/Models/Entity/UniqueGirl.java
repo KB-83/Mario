@@ -1,10 +1,12 @@
 package Logic.Models.Entity;
 
 import Logic.Models.LogicGameState;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
+@JsonTypeName("uniqueGirl")
 public class UniqueGirl extends Player{
-    public UniqueGirl(LogicGameState logicGameState){
-        super(logicGameState);
+    public UniqueGirl(){
+        super();
         this.name = "UniqueGirl";
         this.jumpPow = JumpPower.Mario;
         this.v = V.UniqueGirl.v;

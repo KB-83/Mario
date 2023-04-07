@@ -17,6 +17,7 @@ import java.util.List;
 public class ShopPanel extends JPanel {
     PanelsManagerCard card;
     List<JRadioButton> buttonList = new ArrayList<>();
+    User user;
 
     private JRadioButton mario = new JRadioButton("Mario");
     private JRadioButton luigi = new JRadioButton("Luigi");
@@ -26,6 +27,7 @@ public class ShopPanel extends JPanel {
     Image playerImage;
     Image coinImage;
     ShopPanel(PanelsManagerCard card) {
+        this.setLayout(null);
         this.card = card;
         setBackground(Color.red);
         buttonList.add(mario);
@@ -45,11 +47,11 @@ public class ShopPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        if(playerImage!=null){
             g2.setFont(new Font("monospaced", Font.BOLD, 30));
-            g2.drawString(String.valueOf(card.gM.lM.userManager.currentUser.getCoins()),65,55);
+            g2.drawString(String.valueOf(user.getCoins()),65,55);
             g2.drawImage(coinImage,10,20,48,48,null);
-            g2.drawImage(playerImage,200,200,200,200,null);
+        if(playerImage!=null){
+            g2.drawImage(playerImage,300,200,200,200,null);
         }
     }
     private void setButtons() {
@@ -85,7 +87,7 @@ public class ShopPanel extends JPanel {
             if (mario.isSelected()) {
                 playerImage = ImageIO.read(getClass().getResourceAsStream("/Images/Players/MarioRight1.png"));
             } else if (luigi.isSelected()) {
-                playerImage = ImageIO.read(getClass().getResourceAsStream("/Images/Players/LuigiRight2.png"));
+                playerImage = ImageIO.read(getClass().getResourceAsStream("/Images/Players/LuigiJumpRight.png"));
             } else if (princess.isSelected()) {
                 playerImage = ImageIO.read(getClass().getResourceAsStream("/Images/Players/PrincessRight1.png"));
             } else if (uniqueGirl.isSelected()) {
@@ -97,7 +99,8 @@ public class ShopPanel extends JPanel {
             e.printStackTrace();
         }
     }
-    public void setUser(User user) {
-        this.card.gM.lM.userManager.currentUser = user;
+    public void setUser() {
+        this.user = this.card.gM.lM.userManager.currentUser;
+        this.repaint();
     }
 }

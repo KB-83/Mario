@@ -18,5 +18,9 @@ public class GuiUserManager {
     }
     public void setCurrentUser(User user){
         this.user = user;
+        this.gM.panelsManagerCard.shopPanel.setUser();
+        this.gM.panelsManagerCard.profilePanel.setUser();
+        this.gM.panelsManagerCard.newGamePanel.setUser();
+        this.gM.panelsManagerCard.lastGamesPanel.setUser();
     }
 }

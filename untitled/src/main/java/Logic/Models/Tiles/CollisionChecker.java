@@ -15,9 +15,9 @@ public class CollisionChecker {
 
     public CollisionChecker(Player player) {
 
-        this.tileManager = player.logicGameState.background;
+//        this.tileManager = player.logicGameState.background;
         this.player = player;
-        System.out.println(player);
+//        System.out.println(player);
         this.playerListener = player.playerListener;
     }
 

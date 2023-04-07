@@ -4,10 +4,23 @@ import Graphic.Listeners.PlayerListener;
 import Logic.Models.Entity.Entity;
 import Logic.Models.LogicGameState;
 import Logic.Models.Tiles.CollisionChecker;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.awt.*;
-@JsonDeserialize(as=Mario.class)
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Mario.class, name = "mario"),
+        @JsonSubTypes.Type(value = Luigi.class, name = "luigi"),
+        @JsonSubTypes.Type(value = Princess.class, name = "princess"),
+        @JsonSubTypes.Type(value = UniqueGirl.class, name = "uniqueGirl"),
+        @JsonSubTypes.Type(value = Poker.class, name = "poker")
+})
+
 public abstract class Player extends Entity {
 
     public PlayerListener playerListener;
@@ -20,12 +33,10 @@ public abstract class Player extends Entity {
     int lastYB4Jump = 12 * 48;
     int price;
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
-    public Player(){}
-    Player(LogicGameState logicGameState) {
+    Player() {
         super();
-        this.logicGameState = logicGameState;
         this.playerListener = new PlayerListener();
-        this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
+//        this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
         this.collisionChecker = new CollisionChecker(this);
     }
 
@@ -221,5 +232,13 @@ public abstract class Player extends Entity {
 
     public void setLeftCollisionOn(boolean leftCollisionOn) {
         isLeftCollisionOn = leftCollisionOn;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
