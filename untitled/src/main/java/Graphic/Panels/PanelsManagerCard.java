@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class PanelsManagerCard extends JPanel {
     Frame frame;
+    GraphicManager gM;
     // panels will be added later
     public GamePanel gamePanel;
     public StartPanel startPanel;
@@ -15,7 +16,6 @@ public class PanelsManagerCard extends JPanel {
     public ShopPanel shopPanel;
     public NewGamePanel newGamePanel;
     public LastGamesPanel lastGamesPanel;
-    GraphicManager gM;
     CardLayout cardLayout = new CardLayout();
     //info
     public final int cols = 26;

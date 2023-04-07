@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LastGamesPanel extends JPanel {
-    User user;
     PanelsManagerCard card;
     LastGamesPanel(PanelsManagerCard card) {
         this.card = card;

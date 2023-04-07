@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfilePanel extends JPanel {
-    User user;
     PanelsManagerCard card;
     List<JRadioButton> playersOption = new ArrayList<>();
     JButton ok;
@@ -29,20 +28,20 @@ public class ProfilePanel extends JPanel {
         g2.setColor(Color.black);
         g2.setFont(new Font("monospaced", Font.BOLD, 30));
         FontMetrics fm = g2.getFontMetrics();
-        int textX = (this.getSize().width / 2) - (fm.stringWidth(user.getUserName()) / 2);
-        g2.drawString(user.getUserName(), textX,140);
-        textX = (this.getSize().width / 2) - (fm.stringWidth(String.valueOf(user.getHighScore())) / 2);
-        g2.drawString(String.valueOf(user.getHighScore()), textX,200);
+        int textX = (this.getSize().width / 2) - (fm.stringWidth(card.gM.lM.userManager.currentUser.getUserName()) / 2);
+        g2.drawString(card.gM.lM.userManager.currentUser.getUserName(), textX,140);
+        textX = (this.getSize().width / 2) - (fm.stringWidth(String.valueOf(card.gM.lM.userManager.currentUser.getHighScore())) / 2);
+        g2.drawString(String.valueOf(card.gM.lM.userManager.currentUser.getHighScore()), textX,200);
 
-        textX = (this.getSize().width / 2) - (fm.stringWidth("selected player: "+user.getSelectedPlayer().name) / 2);
-        g2.drawString("selected player: "+user.getSelectedPlayer().name, textX,260);
+        textX = (this.getSize().width / 2) - (fm.stringWidth("selected player: "+card.gM.lM.userManager.currentUser.getSelectedPlayer().name) / 2);
+        g2.drawString("selected player: "+card.gM.lM.userManager.currentUser.getSelectedPlayer().name, textX,260);
         setPlayersOption();
 
     }
     private void setPlayersOption(){
         int x = 100;
         ButtonGroup bg=new ButtonGroup();
-        for (Player player:user.getOwnedPlayers()){
+        for (Player player:card.gM.lM.userManager.currentUser.getOwnedPlayers()){
             JRadioButton jRadioButton=new JRadioButton(player.name);
             jRadioButton.setBounds(x,500,100,30);
             playersOption.add(jRadioButton);
@@ -59,11 +58,11 @@ public class ProfilePanel extends JPanel {
                 for (JRadioButton jRadioButton:playersOption){
                     if (jRadioButton.isSelected()){
                         name=jRadioButton.getText();
-                        user.changeSelectedPlayer(name);
-                        File file =new File(user.getUserName()+".json");
+                        card.gM.lM.userManager.currentUser.changeSelectedPlayer(name);
+                        File file =new File(card.gM.lM.userManager.currentUser.getUserName()+".json");
                         try {
                             FileWriter fileWriter = new FileWriter(file);
-                            card.gM.lM.objectMapper.writeValue(fileWriter,user);
+//                            card.gM.lM.objectMapper.writeValue(fileWriter,user);
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }
@@ -74,9 +73,5 @@ public class ProfilePanel extends JPanel {
             }
         });
         this.add(ok);
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

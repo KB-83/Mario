@@ -77,7 +77,7 @@ public class GuiPipeManager implements GuiPart {
     @Override
     public void draw(Graphics2D g2) {
 
-        int topLeftCol = guiGameState.gM.lM.logicGameState.background.topLeftColInWorld;
+        int topLeftCol = guiGameState.gM.lM.userManager.logicGameState.background.topLeftColInWorld;
         int screenCol ;
         int screenRow ;
         for (GuiPipe guiPipe:pipeList){

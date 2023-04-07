@@ -15,7 +15,7 @@ public class GameLoop implements Runnable{
 
     public GameLoop(LogicManager lM, GraphicManager gM) {
         gM.guiGameState.setLoop(this);
-        lM.logicGameState.setLoop(this);
+        lM.userManager.logicGameState.setLoop(this);
         this.lM = lM;
         this.gM = gM;
     }

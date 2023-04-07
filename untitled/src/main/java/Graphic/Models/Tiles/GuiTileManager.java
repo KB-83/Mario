@@ -24,7 +24,7 @@ public class GuiTileManager implements GuiPart {
         mapTileNum = new int[worldCols][worldRows];
         loadTilesImage();
         loadMap();
-        this.guiGameState.gM.lM.logicGameState.background.mapTileNum = this.mapTileNum;
+        this.guiGameState.gM.lM.userManager.logicGameState.background.mapTileNum = this.mapTileNum;
     }
 
     public void loadMap(){
@@ -101,7 +101,7 @@ public class GuiTileManager implements GuiPart {
     @Override
     public void draw(Graphics2D g2){
 
-        int topLeftCol = guiGameState.gM.lM.logicGameState.background.topLeftColInWorld;
+        int topLeftCol = guiGameState.gM.lM.userManager.logicGameState.background.topLeftColInWorld;
         int topLeftRow = 0;
         int col = topLeftCol;
         int row = topLeftRow;

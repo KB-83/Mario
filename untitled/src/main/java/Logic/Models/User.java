@@ -12,7 +12,8 @@ import java.util.List;
 
 public class User {
     @JsonIgnore
-    LogicManager lm;
+    UserManager userManager;
+    public LogicGameState currentGameState;
     public List<LogicGameState> gameStatesList = new ArrayList<>();
     List<Player> ownedPlayers = new ArrayList<>();
     GuiUser guiUser;
@@ -27,16 +28,17 @@ public class User {
     public User() {
 
     }
-    public User(String userName,String passWord,LogicManager lm) {
-        this.lm = lm;
+    public User(String userName,String passWord,UserManager userManager) {
+        this.userManager = userManager;
         this.userName = userName;
         this.passWord = passWord;
-        this.lm.createANewGameState();
-        this.gameStatesList.add(lm.logicGameState);
-        this.selectedPlayer = lm.logicGameState.player;
+//        this.currentGameState = userManager.createANewGameState();
+//        this.gameStatesList.add(c);
+        this.ownedPlayers.add(new Mario());
+        this.selectedPlayer = ownedPlayers.get(0);
 //        System.out.println("user"+selectedPlayer.name);
-        this.ownedPlayers.add(selectedPlayer);
-        this.ownedPlayers.add(new Mario(lm.logicGameState));
+//        this.ownedPlayers.add(selectedPlayer);
+//        this.ownedPlayers.add(new Mario(lm.logicGameState));
 
 //        Mario mario = new Mario();
 //        this.selectedPlayer = mario;
@@ -51,14 +53,14 @@ public class User {
 //        this.selectedPlayer.update();
 //    }
     public void changeSelectedPlayer(String name){
-        System.out.println(name);
-            for (Player player:ownedPlayers){
-                if (player.name.equals(name)){
-                    this.selectedPlayer = player;
-                    this.lm.gM.panelsManagerCard.profilePanel.repaint();
-                    break;
-                }
-            }
+//        System.out.println(name);
+//            for (Player player:ownedPlayers){
+//                if (player.name.equals(name)){
+//                    this.selectedPlayer = player;
+//                    this.lm.gM.panelsManagerCard.profilePanel.repaint();
+//                    break;
+//                }
+//            }
 
     }
 
@@ -133,12 +135,21 @@ public class User {
     public void setHearts(int hearts) {
         this.hearts = hearts;
     }
-    public LogicManager getLm() {
-        return lm;
+
+    public UserManager getUserManager() {
+        return userManager;
     }
 
-    public void setLm(LogicManager lm) {
-        this.lm = lm;
+    public void setUserManager(UserManager userManager) {
+        this.userManager = userManager;
+    }
+
+    public LogicGameState getCurrentGameState() {
+        return currentGameState;
+    }
+
+    public void setCurrentGameState(LogicGameState currentGameState) {
+        this.currentGameState = currentGameState;
     }
 
     public int getHighScore() {

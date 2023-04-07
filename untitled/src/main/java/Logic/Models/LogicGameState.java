@@ -15,8 +15,7 @@ public class LogicGameState {
     public LogicManager lM;
 
     private GameLoop loop;
-    private User selectedUser;
-    public Player player;
+    public Player currentPlayer;
     List<Enemy> enemies;
     public int cols =26;
     public int rows = 15;
@@ -28,14 +27,22 @@ public class LogicGameState {
         this.lM = lM;
 
         this.background = new TileManager(this);
-        this.player = new UniqueGirl(this);
-        player.logicGameState = this;
+        this.currentPlayer = new UniqueGirl(this);
+        currentPlayer.logicGameState = this;
 //        selectedUser.player = player;
 
     }
 
     public void update(){
-        player.update();
+        currentPlayer.update();
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
     }
 
     public void setLoop(GameLoop loop) {

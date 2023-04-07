@@ -53,24 +53,15 @@ public class MainMenu extends JPanel {
         startNewGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(card.gM.lM.logicGameState == null){
-                    System.out.println("null");
-                        card.gM.lM.createANewGameState();
-                        GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
-                        gameLoop.start();
-            }
-                else {
-                    System.out.println("else");
-                      GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
-                        gameLoop.start();
-                    }
-                card.cardLayout.show(card,"gamePanel");
-                card.gamePanel.requestFocus();
+                card.gM.lM.userManager.newGameRequest();
+                card.cardLayout.show(card,"newGamePanel");
+//                card.newGamePanel.requestFocus();
             }
         });
         continueLastGames.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                card.gM.lM.userManager.lastGamesRequest();
                 card.cardLayout.show(card,"lastGamesPanel");
             }
         });
@@ -91,7 +82,7 @@ public class MainMenu extends JPanel {
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                card.gM.lM.userManager.currentUser = null;
                 card.cardLayout.show(card,"startPanel");
                 card.startPanel.requestFocus();
             }

@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShopPanel extends JPanel {
-    User user;
     PanelsManagerCard card;
     List<JRadioButton> buttonList = new ArrayList<>();
 
@@ -48,7 +47,7 @@ public class ShopPanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         if(playerImage!=null){
             g2.setFont(new Font("monospaced", Font.BOLD, 30));
-            g2.drawString(String.valueOf(user.getCoins()),65,55);
+            g2.drawString(String.valueOf(card.gM.lM.userManager.currentUser.getCoins()),65,55);
             g2.drawImage(coinImage,10,20,48,48,null);
             g2.drawImage(playerImage,200,200,200,200,null);
         }
@@ -99,6 +98,6 @@ public class ShopPanel extends JPanel {
         }
     }
     public void setUser(User user) {
-        this.user = user;
+        this.card.gM.lM.userManager.currentUser = user;
     }
 }
