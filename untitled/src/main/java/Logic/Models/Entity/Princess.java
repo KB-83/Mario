@@ -12,5 +12,6 @@ public class Princess extends Player{
         this.screenY= 480 + 48;
         this.worldX = 0;
         this.worldY = 480 + 48;
+        this.price = 2000;
     }
 }

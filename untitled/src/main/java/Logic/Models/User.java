@@ -2,6 +2,7 @@ package Logic.Models;
 
 import Graphic.Models.GuiUser;
 import Logic.LogicManager;
+import Logic.Models.Entity.Mario;
 import Logic.Models.Entity.Player;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -33,6 +34,9 @@ public class User {
         this.lm.createANewGameState();
         this.gameStatesList.add(lm.logicGameState);
         this.selectedPlayer = lm.logicGameState.player;
+//        System.out.println("user"+selectedPlayer.name);
+        this.ownedPlayers.add(selectedPlayer);
+        this.ownedPlayers.add(new Mario(lm.logicGameState));
 
 //        Mario mario = new Mario();
 //        this.selectedPlayer = mario;
@@ -46,6 +50,17 @@ public class User {
 //    public void update(){
 //        this.selectedPlayer.update();
 //    }
+    public void changeSelectedPlayer(String name){
+        System.out.println(name);
+            for (Player player:ownedPlayers){
+                if (player.name.equals(name)){
+                    this.selectedPlayer = player;
+                    this.lm.gM.panelsManagerCard.profilePanel.repaint();
+                    break;
+                }
+            }
+
+    }
 
     public List<LogicGameState> getGameStatesList() {
         return gameStatesList;

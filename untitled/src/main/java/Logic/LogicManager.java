@@ -14,7 +14,7 @@ public class LogicManager {
     public final GraphicManager gM;
     public User currentUser;
     public LogicGameState logicGameState;
-    ObjectMapper objectMapper = new ObjectMapper();
+    public ObjectMapper objectMapper = new ObjectMapper();
 
     public LogicManager(){
         this.gM =new GraphicManager(this);
@@ -68,6 +68,8 @@ public class LogicManager {
     }
     private void userCleared(User user) {
         this.currentUser = user;
+        //VERY IMP
+        user.setLm(this);
         // why eror here?
 //        user.setLm(this);
         this.gM.setCurrentUser(user);

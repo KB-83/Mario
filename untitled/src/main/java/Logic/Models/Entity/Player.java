@@ -18,6 +18,7 @@ public abstract class Player extends Entity {
     public int imageNumber;
     int imageCounter;
     int lastYB4Jump = 12 * 48;
+    int price;
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
     public Player(){}
     Player(LogicGameState logicGameState) {
