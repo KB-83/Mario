@@ -42,6 +42,7 @@ public class GraphicManager {
     public void setCurrentUser(User user){
         this.currentUser = user;
         this.panelsManagerCard.profilePanel.setUser(user);
+        this.panelsManagerCard.shopPanel.setUser(user);
     }
 
 }

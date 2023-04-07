@@ -5,6 +5,7 @@ import Logic.Models.LogicGameState;
 import Logic.Models.User;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,6 +19,7 @@ public class LogicManager {
 
     public LogicManager(){
         this.gM =new GraphicManager(this);
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
     public void updateAll(){
