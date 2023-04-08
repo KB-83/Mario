@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class UserManager {
-    private LogicManager lM;
+    public LogicManager lM;
     public User currentUser;
 
     public ObjectMapper objectMapper = new ObjectMapper();
@@ -66,7 +66,8 @@ public class UserManager {
         this.currentUser.currentGameState.update();
     }
     public void newGameRequest(){
-        this.currentUser.currentGameState = new LogicGameState(this.lM);
+        this.currentUser.setCurrentGameState(new LogicGameState(this.lM));
+        this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
         this.lM.gM.guiUserManager.newGameRequest(this.lM.gM);
     }
     public void lastGamesRequest() {}
@@ -75,4 +76,9 @@ public class UserManager {
 //        return new LogicGameState(this.lM);
 //        this.gM.createANewGameState();
 //    }
+    public void sectionChanged() {
+        this.currentUser.currentGameState.background.topLeftColInWorld = 0;
+        this.currentUser.currentGameState.sectionNum++;
+        this.lM.gM.guiUserManager.sectionChanged();
+    }
 }

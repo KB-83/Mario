@@ -27,7 +27,7 @@ public class GuiGameState {
 
         this.gamePanel = gamePanel;
         this.gM = gM;
-        this.guiPlayer = new GuiMario(this.gM, this);
+        this.guiPlayer = new GuiUniqueGirl(this.gM, this);
         this.background = new GuiTileManager(this);
         this.coinManager = new GuiCoinManager(this);
         this.pipeManager = new GuiPipeManager(this);
@@ -42,5 +42,10 @@ public class GuiGameState {
 
     public void setLoop(GameLoop loop) {
         this.loop = loop;
+    }
+    public void sectionChanged() {
+        this.background.loadMap();
+        this.coinManager.loadCoinList();
+        this.pipeManager.loadPipeList();
     }
 }

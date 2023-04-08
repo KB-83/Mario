@@ -32,6 +32,7 @@ public class GuiTileManager implements GuiPart {
         try {
             int levelNum =  guiGameState.gM.lM.userManager.currentUser.currentGameState.levelNum;
             int sectionNum = guiGameState.gM.lM.userManager.currentUser.currentGameState.sectionNum;
+            System.out.println("/Maps/map"+levelNum+sectionNum+".txt from gui tile manager");
             InputStream is = getClass().getResourceAsStream("/Maps/map"+levelNum+sectionNum+".txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 

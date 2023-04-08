@@ -20,7 +20,7 @@ public class LogicGameState {
     public int cols =26;
     public int rows = 15;
     public int levelNum = 1;
-    public int sectionNum = 2;
+    public int sectionNum = 1;
     public TileManager background;
 //    public CollisionChecker collisionChecker;
     public LogicGameState(){}

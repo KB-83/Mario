@@ -25,4 +25,7 @@ public class GuiUserManager {
         this.gM.panelsManagerCard.lastGamesPanel.setUser();
         this.gM.panelsManagerCard.gamePanel.setCurrentUser(user);
     }
+    public void sectionChanged() {
+        this.guiGameState.sectionChanged();
+    }
 }

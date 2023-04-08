@@ -4,6 +4,8 @@ import Graphic.Listeners.PlayerListener;
 import Logic.Models.Entity.Entity;
 import Logic.Models.LogicGameState;
 import Logic.Models.Tiles.CollisionChecker;
+import Logic.Models.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -22,6 +24,8 @@ import java.awt.*;
 })
 
 public abstract class Player extends Entity {
+    @JsonIgnore
+    User currentUser;
 
     public PlayerListener playerListener;
     CollisionChecker collisionChecker;
@@ -33,17 +37,23 @@ public abstract class Player extends Entity {
     int lastYB4Jump = 12 * 48;
     int price;
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
-    Player() {
+    Player(){
         super();
-        if(playerListener == null){
+    }
+    Player(User currentUser) {
+        super();
+        this.currentUser = currentUser;
         this.playerListener = new PlayerListener();
-        }
 //        this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
         this.collisionChecker = new CollisionChecker(this);
     }
 
      public void update() {
-//        collisionChecker.checkCollision();
+//        collisionChecker.checkCollision();'
+         if(this.worldX >= this.currentUser.currentGameState.cols * 4 * 48 - 48){
+             this.currentUser.userManager.sectionChanged();
+             this.sectionChanged();
+         }
         String action = playerListener.keyAndMode;
          if (worldX >= this.logicGameState.background.topLeftColInWorld * size ) {
          switch (action) {
@@ -140,6 +150,10 @@ public abstract class Player extends Entity {
             }
         }
      }
+    private void sectionChanged(){
+        this.screenX = 0;
+        this.worldX = 0;
+    }
 
     @Override
     void setCollision() {
@@ -242,4 +256,11 @@ public abstract class Player extends Entity {
         this.price = price;
     }
 
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class User {
     @JsonIgnore
-    UserManager userManager;
+    public UserManager userManager;
     public LogicGameState currentGameState;
     public List<LogicGameState> gameStatesList = new ArrayList<>();
     List<Player> ownedPlayers = new ArrayList<>();
@@ -33,7 +33,7 @@ public class User {
         this.passWord = passWord;
 //        this.currentGameState = userManager.createANewGameState();
 //        this.gameStatesList.add(c);
-        Mario mario = new Mario();
+        UniqueGirl mario = new UniqueGirl(this);
         this.ownedPlayers.add(mario);
         this.selectedPlayer = mario;
 
