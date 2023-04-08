@@ -27,7 +27,7 @@ public class GuiGameState {
 
         this.gamePanel = gamePanel;
         this.gM = gM;
-        this.guiPlayer = new GuiUniqueGirl(this.gM, this);
+        this.guiPlayer = new GuiMario(this.gM, this);
         this.background = new GuiTileManager(this);
         this.coinManager = new GuiCoinManager(this);
         this.pipeManager = new GuiPipeManager(this);

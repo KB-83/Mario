@@ -28,8 +28,10 @@ public class GuiPipeManager implements GuiPart {
 
 
         try {
-
-            InputStream is = getClass().getResourceAsStream("/Maps/map01.txt");
+            System.out.println(guiGameState.gM.lM.userManager.currentUser.currentGameState);
+            int levelNum =  guiGameState.gM.lM.userManager.currentUser.currentGameState.levelNum;
+            int sectionNum = guiGameState.gM.lM.userManager.currentUser.currentGameState.sectionNum;
+            InputStream is = getClass().getResourceAsStream("/Maps/map"+levelNum+sectionNum+".txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
@@ -77,7 +79,7 @@ public class GuiPipeManager implements GuiPart {
     @Override
     public void draw(Graphics2D g2) {
 
-        int topLeftCol = guiGameState.gM.lM.userManager.logicGameState.background.topLeftColInWorld;
+        int topLeftCol = guiGameState.gM.lM.userManager.currentUser.currentGameState.background.topLeftColInWorld;
         int screenCol ;
         int screenRow ;
         for (GuiPipe guiPipe:pipeList){

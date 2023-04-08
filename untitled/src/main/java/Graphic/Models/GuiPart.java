@@ -8,5 +8,6 @@ public interface GuiPart {
     int worldRows = 15 ;
 
     public int tileSize = 48;
-    public void draw (Graphics2D g2);
+    int playerSize = 48;
+    void draw (Graphics2D g2);
 }

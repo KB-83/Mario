@@ -5,15 +5,16 @@ import Logic.Models.User;
 
 public class GuiUserManager {
     GraphicManager gM;
+    public GuiGameState guiGameState;
     GuiUser guiUser;
     User user;
     public GuiUserManager(GraphicManager gM){
         this.gM = gM;
     }
-    public void createANewGameState(GraphicManager gM) {
+    public void newGameRequest(GraphicManager gM) {
 
-//        this.guiGameState = new GuiGameState(panelsManagerCard.gamePanel,this);
-//        this.panelsManagerCard.gamePanel.setGuiGameState(guiGameState);
+        this.guiGameState = new GuiGameState(gM.panelsManagerCard.gamePanel,gM);
+        this.gM.panelsManagerCard.gamePanel.setGuiGameState(guiGameState);
 
     }
     public void setCurrentUser(User user){
@@ -22,5 +23,6 @@ public class GuiUserManager {
         this.gM.panelsManagerCard.profilePanel.setUser();
         this.gM.panelsManagerCard.newGamePanel.setUser();
         this.gM.panelsManagerCard.lastGamesPanel.setUser();
+        this.gM.panelsManagerCard.gamePanel.setCurrentUser(user);
     }
 }

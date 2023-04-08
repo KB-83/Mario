@@ -35,15 +35,15 @@ public abstract class Player extends Entity {
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
     Player() {
         super();
+        if(playerListener == null){
         this.playerListener = new PlayerListener();
+        }
 //        this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
         this.collisionChecker = new CollisionChecker(this);
     }
 
-     public void update(){
-
-        collisionChecker.checkCollision();
-
+     public void update() {
+//        collisionChecker.checkCollision();
         String action = playerListener.keyAndMode;
          if (worldX >= this.logicGameState.background.topLeftColInWorld * size ) {
          switch (action) {
@@ -120,7 +120,7 @@ public abstract class Player extends Entity {
          if (imageCounter > 24) {
              imageCounter = 0;
          }
-         this.logicGameState.lM.gM.guiGameState.guiPlayer.setImage(imageNumber);
+         this.logicGameState.lM.gM.guiUserManager.guiGameState.guiPlayer.setImage(imageNumber);
 //         System.out.println(this.logicGameState.background.topLeftColInWorld);
      }
 
@@ -134,7 +134,7 @@ public abstract class Player extends Entity {
             screenY += 2*v;
             try {
                 Thread.sleep(1000/60);//fps
-                logicGameState.lM.gM.guiGameState.gamePanel.repaint();
+                logicGameState.lM.gM.guiUserManager.guiGameState.gamePanel.repaint();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -241,4 +241,5 @@ public abstract class Player extends Entity {
     public void setPrice(int price) {
         this.price = price;
     }
+
 }

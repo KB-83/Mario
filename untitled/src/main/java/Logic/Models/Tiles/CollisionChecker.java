@@ -36,8 +36,8 @@ public class CollisionChecker {
         int playerLeftCol = player.worldX/48;
         int playerTopRow = player.worldY/48;
         String action = playerListener.keyAndMode;
-        System.out.println(playerLeftCol);
-        System.out.println(playerTopRow);
+//        System.out.println(playerLeftCol);
+//        System.out.println(playerTopRow);
 //        System.out.println(playerListener.keyAndMode);
         switch (action) {
             case "WP":

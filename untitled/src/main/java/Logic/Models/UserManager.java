@@ -11,7 +11,6 @@ import java.io.IOException;
 public class UserManager {
     private LogicManager lM;
     public User currentUser;
-    public LogicGameState logicGameState;
 
     public ObjectMapper objectMapper = new ObjectMapper();
     public UserManager(LogicManager lM){
@@ -64,9 +63,12 @@ public class UserManager {
         this.lM.gM.guiUserManager.setCurrentUser(user);
     }
     public void update(){
-        this.logicGameState.update();
+        this.currentUser.currentGameState.update();
     }
-    public void newGameRequest(){}
+    public void newGameRequest(){
+        this.currentUser.currentGameState = new LogicGameState(this.lM);
+        this.lM.gM.guiUserManager.newGameRequest(this.lM.gM);
+    }
     public void lastGamesRequest() {}
 //    public LogicGameState createANewGameState(){
 //        this.logicGameState = new LogicGameState(this);

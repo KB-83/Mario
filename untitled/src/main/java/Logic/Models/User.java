@@ -22,7 +22,7 @@ public class User {
     int score;
     int highScore;
     int coins;
-    int hearts;
+    int hearts = 3;
         @JsonCreator
     public User() {
 
@@ -33,8 +33,9 @@ public class User {
         this.passWord = passWord;
 //        this.currentGameState = userManager.createANewGameState();
 //        this.gameStatesList.add(c);
-        this.ownedPlayers.add(new Mario());
-        this.selectedPlayer = ownedPlayers.get(0);
+        Mario mario = new Mario();
+        this.ownedPlayers.add(mario);
+        this.selectedPlayer = mario;
 
 //        System.out.println("user"+selectedPlayer.name);
 //        this.ownedPlayers.add(selectedPlayer);

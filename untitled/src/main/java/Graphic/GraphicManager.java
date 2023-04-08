@@ -15,8 +15,6 @@ public class GraphicManager {
     public LogicManager lM ;
     Frame frame;
     public PanelsManagerCard panelsManagerCard;
-
-    public GuiGameState guiGameState;
     public GuiUserManager guiUserManager;
 
 

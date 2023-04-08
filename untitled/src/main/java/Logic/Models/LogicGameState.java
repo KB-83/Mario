@@ -19,15 +19,18 @@ public class LogicGameState {
     List<Enemy> enemies;
     public int cols =26;
     public int rows = 15;
+    public int levelNum = 1;
+    public int sectionNum = 2;
     public TileManager background;
 //    public CollisionChecker collisionChecker;
     public LogicGameState(){}
     public LogicGameState(LogicManager lM){
 
         this.lM = lM;
+        // asan ye vazi
 
         this.background = new TileManager(this);
-        this.currentPlayer = new UniqueGirl();
+        this.currentPlayer = lM.userManager.currentUser.selectedPlayer;
         currentPlayer.logicGameState = this;
 //        selectedUser.player = player;
 

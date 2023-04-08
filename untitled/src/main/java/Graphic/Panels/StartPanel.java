@@ -133,10 +133,12 @@ public class StartPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if(card.gM.lM.userManager.signInRequest(signName.getText() , signPass.getText())){
 //                    if(card.gM.lM.logicGameState == null){
-//                        card.gM.lM.startAGame();
-//                        GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
-//                        gameLoop.start();
-                    card.cardLayout.show(card,"mainMenu");
+                        card.gM.lM.userManager.newGameRequest();
+                        card.gamePanel.setKeyListener(card.gM.lM.userManager.currentUser.getSelectedPlayer().getPlayerListener());
+                        GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
+                        gameLoop.start();
+                    card.cardLayout.show(card,"gamePanel");
+                    card.gamePanel.requestFocus();
                     }
 //                    else {
 //
