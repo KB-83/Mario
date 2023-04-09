@@ -25,6 +25,12 @@ public class UserManager {
                 User user = new User(userName,pass,this);
                 userCleared(user);
                 objectMapper.writeValue(fileWriter,user);
+                //test
+                System.out.println("test from user manager");
+                newGameRequest(" lala");
+                newGameRequest("lele");
+                // test
+                this.lM.gM.panelsManagerCard.lastGamesPanel.setLastGamesButtons();
                 return true;
             }
             else {
@@ -41,6 +47,8 @@ public class UserManager {
             try {
                 if (objectMapper.readValue(file, User.class).getPassWord().equals(pass)) {
                     userCleared(objectMapper.readValue(file, User.class));
+                    //test
+                    this.lM.gM.panelsManagerCard.lastGamesPanel.setLastGamesButtons();
                     return true;
                 }
                 else {
@@ -65,10 +73,16 @@ public class UserManager {
     public void update(){
         this.currentUser.currentGameState.update();
     }
-    public void newGameRequest(){
+    public void newGameRequest(String massage){
         this.currentUser.setCurrentGameState(new LogicGameState(this.lM));
+        // test
+        this.currentUser.gameStatesList.add(currentUser.getCurrentGameState());
+        this.currentUser.currentGameState.massage = massage;
+        //
         this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
         this.lM.gM.guiUserManager.newGameRequest(this.lM.gM);
+        // testt
+        System.out.println("here from user manager");
     }
     public void lastGamesRequest() {}
 //    public LogicGameState createANewGameState(){
@@ -80,5 +94,8 @@ public class UserManager {
         this.currentUser.currentGameState.background.topLeftColInWorld = 0;
         this.currentUser.currentGameState.sectionNum++;
         this.lM.gM.guiUserManager.sectionChanged();
+    }
+    public void buyRequest(String name){
+        System.out.println(name);
     }
 }

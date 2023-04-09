@@ -31,11 +31,11 @@ public class User {
         this.userManager = userManager;
         this.userName = userName;
         this.passWord = passWord;
-//        this.currentGameState = userManager.createANewGameState();
-//        this.gameStatesList.add(c);
         UniqueGirl mario = new UniqueGirl(this);
         this.ownedPlayers.add(mario);
         this.selectedPlayer = mario;
+//        this.currentGameState = userManager.createANewGameState();
+//        this.gameStatesList.add(c);
 
 //        System.out.println("user"+selectedPlayer.name);
 //        this.ownedPlayers.add(selectedPlayer);

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("poker")
 public class Poker extends Player{
+    public static int price = 1000;
     public Poker() {
     }
 
@@ -18,6 +19,5 @@ public class Poker extends Player{
         this.screenY= 480 + 48;
         this.worldX = 0;
         this.worldY = 480 + 48;
-        this.price = 1000;
     }
 }

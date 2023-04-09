@@ -22,6 +22,7 @@ public class LogicGameState {
     public int levelNum = 1;
     public int sectionNum = 1;
     public TileManager background;
+    public String massage = "no";
 //    public CollisionChecker collisionChecker;
     public LogicGameState(){}
     public LogicGameState(LogicManager lM){
@@ -30,6 +31,7 @@ public class LogicGameState {
         // asan ye vazi
 
         this.background = new TileManager(this);
+        System.out.println(lM.userManager +" from logic game state");
         this.currentPlayer = lM.userManager.currentUser.selectedPlayer;
         currentPlayer.logicGameState = this;
 //        selectedUser.player = player;
@@ -51,4 +53,5 @@ public class LogicGameState {
     public void setLoop(GameLoop loop) {
         this.loop = loop;
     }
+
 }

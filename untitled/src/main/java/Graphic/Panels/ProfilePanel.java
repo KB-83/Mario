@@ -18,6 +18,7 @@ public class ProfilePanel extends JPanel {
     User user;
     List<JRadioButton> playersOption = new ArrayList<>();
     JButton ok;
+    JButton back = new JButton("<-");
     ProfilePanel(PanelsManagerCard card) {
         this.setLayout(null);
         this.card = card;
@@ -58,7 +59,6 @@ public class ProfilePanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(playersOption.size());
                 for (JRadioButton jRadioButton:playersOption){
-                    System.out.println("here");
                     if (jRadioButton.isSelected()){
                         name=jRadioButton.getText();
                         card.gM.lM.userManager.currentUser.changeSelectedPlayer(name);
@@ -69,8 +69,6 @@ public class ProfilePanel extends JPanel {
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }
-                        jRadioButton.setSelected(false);
-                        card.cardLayout.show(card,"mainMenu");
                         break;
                     }
                 }
@@ -78,6 +76,14 @@ public class ProfilePanel extends JPanel {
             }
         });
         this.add(ok);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                card.cardLayout.show(card,"mainMenu");
+            }
+        });
+        back.setBounds(0,0,50,50);
+        this.add(back);
     }
     public void setUser() {
         this.user = this.card.gM.lM.userManager.currentUser;

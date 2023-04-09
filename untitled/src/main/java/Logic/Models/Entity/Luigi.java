@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("luigi")
 public class Luigi extends Player{
+    public static int price = 1000;
     public Luigi() {
     }
 
@@ -18,6 +19,5 @@ public class Luigi extends Player{
         this.screenY= 480 + 48;
         this.worldX = 0;
         this.worldY = 480 + 48;
-        this.price = 1000;
     }
 }

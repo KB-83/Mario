@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("uniqueGirl")
 public class UniqueGirl extends Player{
+    public static int price = 5000;
     public UniqueGirl(){}
     public UniqueGirl(User currentUser){
         super(currentUser);
@@ -16,6 +17,5 @@ public class UniqueGirl extends Player{
         this.screenY= 480 + 48;
         this.worldX = 0;
         this.worldY = 480 + 48;
-        this.price = 5000;
     }
 }

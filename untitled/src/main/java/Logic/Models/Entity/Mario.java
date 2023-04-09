@@ -6,7 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("mario")
 public class Mario extends Player{
+    // a test static for saving
+    public static int price;
     public Mario(){}
+
 
 
     public Mario(User currentUser){

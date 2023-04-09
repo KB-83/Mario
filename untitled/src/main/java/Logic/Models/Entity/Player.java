@@ -35,7 +35,6 @@ public abstract class Player extends Entity {
     public int imageNumber;
     int imageCounter;
     int lastYB4Jump = 12 * 48;
-    int price;
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
     Player(){
         super();
@@ -246,14 +245,6 @@ public abstract class Player extends Entity {
 
     public void setLeftCollisionOn(boolean leftCollisionOn) {
         isLeftCollisionOn = leftCollisionOn;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public User getCurrentUser() {
