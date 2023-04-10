@@ -48,6 +48,7 @@ public class GameLoop implements Runnable{
         long delta = 0;
         long currentTime;
         while (running){
+//            System.out.println("in game loop");
             currentTime = System.nanoTime();
             delta = (currentTime - lastTime) / drawInterval ;
             if(delta >= 1){

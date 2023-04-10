@@ -28,6 +28,7 @@ public abstract class Player extends Entity {
     public User currentUser;
 
     public PlayerListener playerListener;
+    @JsonIgnore
     public CollisionChecker collisionChecker;
     // collision rect setting
     JumpPower jumpPow;
@@ -49,7 +50,7 @@ public abstract class Player extends Entity {
     }
 
      public void update() {
-        collisionChecker.checkCollision();
+//        collisionChecker.checkCollision();
          if(this.worldX >= this.currentUser.currentGameState.cols * 4 * 48 - 48){
              this.currentUser.userManager.sectionChanged();
              this.sectionChanged();

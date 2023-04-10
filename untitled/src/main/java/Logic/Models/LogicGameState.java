@@ -38,7 +38,8 @@ public class LogicGameState {
         this.background = new TileManager(this);
         this.coinManager = new CoinManager(this);
         this.currentPlayer = lM.userManager.currentUser.selectedPlayer;
-        this.currentPlayer.collisionChecker.tileManager = background;
+        this.lM.gM.panelsManagerCard.gamePanel.setKeyListener(currentPlayer.playerListener);
+//        this.currentPlayer.collisionChecker.tileManager = background;
         currentPlayer.logicGameState = this;
 
         //test

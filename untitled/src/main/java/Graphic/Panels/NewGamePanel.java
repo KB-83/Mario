@@ -50,8 +50,8 @@ public class NewGamePanel extends JPanel {
                     if (lastGamesList[i] != null && lastGamesList[i].isSelected()){
                         user.userManager.newGameRequest(lastGamesList[i].getText(),newGameMassage.getText());
                         setLastGamesOptions();
-                        card.gamePanel.setKeyListener(card.gM.lM.userManager.currentUser.getSelectedPlayer().getPlayerListener());
                         GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
+                        user.currentGameState.guiGameState.loop = gameLoop;
                         gameLoop.start();
                         saveInfo();
                         card.cardLayout.show(card,"gamePanel");

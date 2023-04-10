@@ -29,6 +29,7 @@ public class CollisionChecker {
 
     public void checkCollision() {
 //        System.out.println("here");
+        System.out.println(player == null);
 
         player.isUpCollisionOn = false;
         player.isLeftCollisionOn = false;
@@ -124,4 +125,5 @@ public class CollisionChecker {
 //        }
 
     }
+
 }
