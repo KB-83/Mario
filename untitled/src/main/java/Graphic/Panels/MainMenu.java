@@ -72,7 +72,6 @@ public class MainMenu extends JPanel {
         continueLastGames.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                card.gM.lM.userManager.lastGamesRequest();
                 card.cardLayout.show(card,"lastGamesPanel");
             }
         });

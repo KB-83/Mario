@@ -1,6 +1,7 @@
 package Graphic.Panels;
 
 import Logic.Models.User;
+import Util.GameLoop;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,9 +43,37 @@ public class LastGamesPanel extends JPanel {
     }
     public void setLastGamesButtons(){
         ok.setBounds(this.getWidth()/2 - 25,550,50,50);
+        ok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (JRadioButton button:lastGamesList){
+                    if(button != null && button.isSelected() ){
+                        System.out.println("hereeeee");
+                        user.userManager.lastGamesRequest(button.getText());
+                        setLastGamesOptions();
+                        GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
+                        System.out.println(user.currentGameState.guiGameState == null);
+                        user.currentGameState.setLoop(gameLoop);
+
+                        gameLoop.start();
+                        saveInfo();
+                        card.cardLayout.show(card,"gamePanel");
+                        card.gamePanel.requestFocus();
+                        break;
+                    }
+                }
+            }
+        });
         this.add(ok);
+        setLastGamesOptions();
+
+    }
+    private void setLastGamesOptions() {
         int x = 200;
         for (int i = 0;i < user.gameStatesList.size() ; i++){
+            if(lastGamesList[i] != null){
+                this.remove(lastGamesList[i]);
+            }
             JRadioButton gameButton = new JRadioButton();
             lastGamesList[i] = gameButton;
             gameButton.setText(user.gameStatesList.get(i).massage);

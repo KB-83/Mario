@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class GamePanel extends JPanel {
     public GraphicManager gM;
@@ -29,8 +32,8 @@ public class GamePanel extends JPanel {
         pause.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                cardPanel.gM.lM.userManager.currentUser.currentGameState.guiGameState.loop.stop();
+                saveInfo();
+                cardPanel.gM.lM.userManager.currentUser.currentGameState.getLoop().stop();
                 cardPanel.cardLayout.show(cardPanel,"startPanel");
             }
         });
@@ -57,5 +60,15 @@ public class GamePanel extends JPanel {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
+    }
+    private void saveInfo(){
+        File file = new File(currentUser.getUserName() + ".json");
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(file);
+            currentUser.userManager.objectMapper.writeValue(fileWriter,currentUser);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

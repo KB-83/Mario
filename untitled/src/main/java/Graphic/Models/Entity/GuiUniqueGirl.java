@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class GuiUniqueGirl extends GuiPlayer{
     public GuiUniqueGirl(){
+        super();
     }
     public GuiUniqueGirl(GraphicManager gM, GuiGameState guiGameState) {
         super(gM,guiGameState);

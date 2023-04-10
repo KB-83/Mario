@@ -99,7 +99,15 @@ public class UserManager {
             }
         }
     }
-    public void lastGamesRequest() {}
+    public void lastGamesRequest(String massage) {
+        for (LogicGameState gameState:currentUser.gameStatesList){
+            if (gameState.getMassage().equals(massage)){
+                currentUser.setCurrentGameState(gameState);
+                this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
+                break;
+            }
+        }
+    }
 //    public LogicGameState createANewGameState(){
 //        this.logicGameState = new LogicGameState(this);
 //        return new LogicGameState(this.lM);

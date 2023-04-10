@@ -23,11 +23,12 @@ public class GuiGameState {
     @JsonIgnore
     public GamePanel gamePanel;
     @JsonIgnore
-    public GameLoop loop;
     public GuiPlayer guiPlayer;
     List<Enemy> enemies;
     public GuiTileManager background;
+    @JsonIgnore
     public GuiCoinManager coinManager;
+    @JsonIgnore
     public GuiPipeManager pipeManager;
 
     public GuiGameState(GamePanel gamePanel, GraphicManager gM,LogicGameState logicGameState){
@@ -49,9 +50,6 @@ public class GuiGameState {
         guiPlayer.draw(g2);
     }
 
-    public void setLoop(GameLoop loop) {
-        this.loop = loop;
-    }
     public void sectionChanged() {
         this.background.loadMap();
         this.coinManager.loadCoinList();

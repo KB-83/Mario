@@ -51,7 +51,7 @@ public class NewGamePanel extends JPanel {
                         user.userManager.newGameRequest(lastGamesList[i].getText(),newGameMassage.getText());
                         setLastGamesOptions();
                         GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
-                        user.currentGameState.guiGameState.loop = gameLoop;
+                        user.currentGameState.setLoop(gameLoop);
                         gameLoop.start();
                         saveInfo();
                         card.cardLayout.show(card,"gamePanel");
