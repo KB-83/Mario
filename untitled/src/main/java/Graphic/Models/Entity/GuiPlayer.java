@@ -13,6 +13,7 @@ public abstract class GuiPlayer extends GuiEntity implements GuiPart {
             GuiGameState guiGameState;
             Image image;
 
+    public GuiPlayer(){}
     GuiPlayer(GraphicManager gM, GuiGameState guiGameState) {
 
 
@@ -26,4 +27,5 @@ public abstract class GuiPlayer extends GuiEntity implements GuiPart {
         g2.drawImage(image, gM.lM.userManager.currentUser.currentGameState.currentPlayer.screenX , gM.lM.userManager.currentUser.currentGameState.currentPlayer.screenY,
                 playerSize,playerSize, null);
     }
+
 }

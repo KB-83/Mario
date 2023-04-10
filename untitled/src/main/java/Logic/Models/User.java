@@ -1,6 +1,6 @@
 package Logic.Models;
 
-import Graphic.Models.GuiUser;
+//import Graphic.Models.GuiUser;
 import Logic.LogicManager;
 import Logic.Models.Entity.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -12,10 +12,12 @@ import java.util.List;
 public class User {
     @JsonIgnore
     public UserManager userManager;
+//    @JsonIgnore
     public LogicGameState currentGameState;
+//    @JsonIgnore
     public List<LogicGameState> gameStatesList = new ArrayList<>();
     List<Player> ownedPlayers = new ArrayList<>();
-    GuiUser guiUser;
+//    GuiUser guiUser;
     Player selectedPlayer;
     String userName;
     String passWord;
@@ -23,7 +25,7 @@ public class User {
     int highScore;
     int coins;
     int hearts = 3;
-        @JsonCreator
+
     public User() {
 
     }
@@ -34,6 +36,7 @@ public class User {
         UniqueGirl mario = new UniqueGirl(this);
         this.ownedPlayers.add(mario);
         this.selectedPlayer = mario;
+
 //        this.currentGameState = userManager.createANewGameState();
 //        this.gameStatesList.add(c);
 
@@ -81,13 +84,13 @@ public class User {
         this.ownedPlayers = ownedPlayers;
     }
 
-    public GuiUser getGuiUser() {
-        return guiUser;
-    }
-
-    public void setGuiUser(GuiUser guiUser) {
-        this.guiUser = guiUser;
-    }
+//    public GuiUser getGuiUser() {
+//        return guiUser;
+//    }
+//
+//    public void setGuiUser(GuiUser guiUser) {
+//        this.guiUser = guiUser;
+//    }
 
     public Player getSelectedPlayer() {
         return selectedPlayer;

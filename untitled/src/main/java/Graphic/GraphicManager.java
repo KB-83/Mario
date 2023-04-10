@@ -1,7 +1,7 @@
 package Graphic;
 
 import Graphic.Models.GuiGameState;
-import Graphic.Models.GuiUserManager;
+//import Graphic.Models.GuiUserManager;
 import Graphic.Panels.Frame;
 import Graphic.Panels.PanelsManagerCard;
 import Logic.LogicManager;
@@ -15,14 +15,14 @@ public class GraphicManager {
     public LogicManager lM ;
     Frame frame;
     public PanelsManagerCard panelsManagerCard;
-    public GuiUserManager guiUserManager;
+//    public GuiUserManager guiUserManager;
 
 
     public GraphicManager(LogicManager lM) {
 
         this.lM = lM;
         this.frame = new Frame(this);
-        this.guiUserManager = new GuiUserManager(this);
+//        this.guiUserManager = new GuiUserManager(this);
         this.panelsManagerCard = frame.panelsManagerCard;
 
     }

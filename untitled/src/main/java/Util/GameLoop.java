@@ -2,6 +2,7 @@ package Util;
 
 import Graphic.GraphicManager;
 import Logic.LogicManager;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class GameLoop implements Runnable{
     Thread gameThread;
@@ -10,11 +11,13 @@ public class GameLoop implements Runnable{
     int tryFps;
 
     //
+    @JsonIgnore
     LogicManager lM;
+    @JsonIgnore
     GraphicManager gM;
 
     public GameLoop(LogicManager lM, GraphicManager gM) {
-        gM.guiUserManager.guiGameState.setLoop(this);
+//        gM.guiUserManager.guiGameState.setLoop(this);
         lM.userManager.currentUser.currentGameState.setLoop(this);
         this.lM = lM;
         this.gM = gM;

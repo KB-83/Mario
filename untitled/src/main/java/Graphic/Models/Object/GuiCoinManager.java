@@ -28,8 +28,8 @@ public class GuiCoinManager implements GuiPart {
 
         try {
 
-            int levelNum =  guiGameState.gM.lM.userManager.currentUser.currentGameState.levelNum;
-            int sectionNum = guiGameState.gM.lM.userManager.currentUser.currentGameState.sectionNum;
+            int levelNum =  guiGameState.logicGameState.levelNum;
+            int sectionNum = guiGameState.logicGameState.sectionNum;
             InputStream is = getClass().getResourceAsStream("/Maps/map"+levelNum+sectionNum+".txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
@@ -68,6 +68,8 @@ public class GuiCoinManager implements GuiPart {
         }catch (Exception e){
             e.printStackTrace();
         }
+//        this.guiGameState.gM.lM.userManager.currentUser.currentGameState.coinManager.setCoinsColAndRow(coinsColAndRow);
+//        this.guiGameState.gM.lM.userManager.currentUser.currentGameState.coinManager.createCoinList();
     }
 
     @Override

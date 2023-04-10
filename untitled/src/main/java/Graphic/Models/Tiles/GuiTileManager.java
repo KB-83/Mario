@@ -24,14 +24,15 @@ public class GuiTileManager implements GuiPart {
         mapTileNum = new int[worldCols][worldRows];
         loadTilesImage();
         loadMap();
-        this.guiGameState.gM.lM.userManager.currentUser.currentGameState.background.mapTileNum = this.mapTileNum;
+        this.guiGameState.logicGameState.background.mapTileNum = this.mapTileNum;
     }
 
     public void loadMap(){
 
         try {
-            int levelNum =  guiGameState.gM.lM.userManager.currentUser.currentGameState.levelNum;
-            int sectionNum = guiGameState.gM.lM.userManager.currentUser.currentGameState.sectionNum;
+            int levelNum =  guiGameState.logicGameState.levelNum;
+            int sectionNum = guiGameState.logicGameState.sectionNum;
+
             System.out.println("/Maps/map"+levelNum+sectionNum+".txt from gui tile manager");
             InputStream is = getClass().getResourceAsStream("/Maps/map"+levelNum+sectionNum+".txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));

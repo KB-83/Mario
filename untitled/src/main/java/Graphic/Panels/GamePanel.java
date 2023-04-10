@@ -30,7 +30,7 @@ public class GamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                cardPanel.gM.guiUserManager.guiGameState.loop.stop();
+//                cardPanel.gM.guiUserManager.guiGameState.loop.stop();
                 cardPanel.cardLayout.show(cardPanel,"startPanel");
             }
         });

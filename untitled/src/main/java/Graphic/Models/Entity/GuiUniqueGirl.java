@@ -8,6 +8,8 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GuiUniqueGirl extends GuiPlayer{
+    public GuiUniqueGirl(){
+    }
     public GuiUniqueGirl(GraphicManager gM, GuiGameState guiGameState) {
         super(gM,guiGameState);
         images = new Image[10];
@@ -43,4 +45,5 @@ public class GuiUniqueGirl extends GuiPlayer{
 //        g2.drawImage(image, gM.lM.userManager.logicGameState.getCurrentPlayer().screenX , gM.lM.userManager.logicGameState.getCurrentPlayer().screenY,
 //                playerSize, playerSize, null);
 //    }
+
 }

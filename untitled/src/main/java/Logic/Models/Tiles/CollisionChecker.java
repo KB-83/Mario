@@ -3,19 +3,22 @@ package Logic.Models.Tiles;
 import Graphic.Listeners.PlayerListener;
 import Logic.Models.Entity.Player;
 import Logic.Models.LogicGameState;
+import Logic.Models.Object.CoinManager;
+import Logic.Models.Object.PipeManager;
 
 import java.io.FilterOutputStream;
 
 public class CollisionChecker {
-    TileManager tileManager;
+    public TileManager tileManager;
+    public CoinManager coinManager;
+    public PipeManager pipeManager;
     Player player;
     PlayerListener playerListener;
-    public int col , row;
     Tile tile1,tile2;
 
     public CollisionChecker(Player player) {
 
-//        this.tileManager = player.logicGameState.background;
+//        this.tileManager = player.currentUser.currentGameState.background;
         this.player = player;
 //        System.out.println(player);
         this.playerListener = player.playerListener;
@@ -35,6 +38,7 @@ public class CollisionChecker {
 
         int playerLeftCol = player.worldX/48;
         int playerTopRow = player.worldY/48;
+//        System.out.println(player.worldY/48.0);
         String action = playerListener.keyAndMode;
 //        System.out.println(playerLeftCol);
 //        System.out.println(playerTopRow);
@@ -50,16 +54,26 @@ public class CollisionChecker {
                 break;
             case "DP":
 //                playerLeftCol = (player.worldX + player.v)/48;
-                tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol + 1][playerTopRow]];
-                tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol + 1][playerTopRow + 1]];
+                if(playerLeftCol <= 26 * 4 - 2) {
+                    tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol + 1][playerTopRow]];
+                    tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol + 1][playerTopRow + 1]];
+                    System.out.println(player.worldY / 48.0 % 48 - playerTopRow);
+                }
+//                if(Math.abs(player.worldY/48.0 % 48 - playerTopRow ) < 1){
+//                    System.out.println("collision");
+//                    tile2 = tile1;
+//                }
                 if (tile1.collision || tile2.collision){
                     player.isRightCollisionOn = true;
                 }
                 break;
             case "AP":
 //                playerLeftCol = (player.worldX- player.v)/48;
-                tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol - 1][playerTopRow]];
-                tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol - 1][playerTopRow+1]];
+                tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol ][playerTopRow]];
+                tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol ][playerTopRow + 1]];
+                if(player.worldY% 48 == 0){
+                    tile2 = tile1;
+                }
                 if (tile1.collision || tile2.collision){
                     player.isLeftCollisionOn = true;
                 }

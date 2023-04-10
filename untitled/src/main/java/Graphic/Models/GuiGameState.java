@@ -8,14 +8,21 @@ import Graphic.Models.Object.GuiPipeManager;
 import Graphic.Models.Tiles.GuiTileManager;
 import Graphic.Panels.GamePanel;
 import Logic.Models.Entity.Enemy;
+import Logic.Models.LogicGameState;
 import Util.GameLoop;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.awt.*;
 import java.util.List;
 
 public class GuiGameState {
+    @JsonIgnore
     public GraphicManager gM;
+    @JsonIgnore
+    public LogicGameState logicGameState;
+    @JsonIgnore
     public GamePanel gamePanel;
+    @JsonIgnore
     public GameLoop loop;
     public GuiPlayer guiPlayer;
     List<Enemy> enemies;
@@ -23,10 +30,12 @@ public class GuiGameState {
     public GuiCoinManager coinManager;
     public GuiPipeManager pipeManager;
 
-    public GuiGameState(GamePanel gamePanel, GraphicManager gM){
+    public GuiGameState(GamePanel gamePanel, GraphicManager gM,LogicGameState logicGameState){
 
         this.gamePanel = gamePanel;
+        this.gamePanel.guiGameState = this;
         this.gM = gM;
+        this.logicGameState = logicGameState;
         this.guiPlayer = new GuiUniqueGirl(this.gM, this);
         this.background = new GuiTileManager(this);
         this.coinManager = new GuiCoinManager(this);

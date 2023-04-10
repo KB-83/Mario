@@ -1,6 +1,7 @@
 package Graphic.Panels;
 
 import Graphic.GraphicManager;
+import Logic.Models.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,5 +52,16 @@ public class PanelsManagerCard extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         gamePanel.repaint();
+        shopPanel.repaint();
+        profilePanel.repaint();
+        newGamePanel.repaint();
+        lastGamesPanel.repaint();
+    }
+    public void setCurrentUser(User user){
+        shopPanel.setUser();
+        profilePanel.setUser();
+        newGamePanel.setUser();
+        lastGamesPanel.setUser();
+        gamePanel.setCurrentUser(user);
     }
 }

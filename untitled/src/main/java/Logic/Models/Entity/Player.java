@@ -25,16 +25,17 @@ import java.awt.*;
 
 public abstract class Player extends Entity {
     @JsonIgnore
-    User currentUser;
+    public User currentUser;
 
     public PlayerListener playerListener;
-    CollisionChecker collisionChecker;
+    public CollisionChecker collisionChecker;
     // collision rect setting
     JumpPower jumpPow;
     public String name;
     public int imageNumber;
     int imageCounter;
     int lastYB4Jump = 12 * 48;
+    private Rectangle collision = new Rectangle(5,0,38,48);
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
     Player(){
         super();
@@ -48,7 +49,7 @@ public abstract class Player extends Entity {
     }
 
      public void update() {
-//        collisionChecker.checkCollision();'
+        collisionChecker.checkCollision();
          if(this.worldX >= this.currentUser.currentGameState.cols * 4 * 48 - 48){
              this.currentUser.userManager.sectionChanged();
              this.sectionChanged();
@@ -129,7 +130,7 @@ public abstract class Player extends Entity {
          if (imageCounter > 24) {
              imageCounter = 0;
          }
-         this.logicGameState.lM.gM.guiUserManager.guiGameState.guiPlayer.setImage(imageNumber);
+         this.logicGameState.guiGameState.guiPlayer.setImage(imageNumber);
 //         System.out.println(this.logicGameState.background.topLeftColInWorld);
      }
 
@@ -143,7 +144,7 @@ public abstract class Player extends Entity {
             screenY += 2*v;
             try {
                 Thread.sleep(1000/60);//fps
-                logicGameState.lM.gM.guiUserManager.guiGameState.gamePanel.repaint();
+//                logicGameState.lM.gM.guiUserManager.guiGameState.gamePanel.repaint();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

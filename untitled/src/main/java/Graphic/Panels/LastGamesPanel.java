@@ -15,6 +15,7 @@ public class LastGamesPanel extends JPanel {
 
     ButtonGroup bg = new ButtonGroup();
     JButton back = new JButton("<-");
+    JButton ok =new  JButton("ok");
 
     JRadioButton[] lastGamesList = new JRadioButton[3];
     LastGamesPanel(PanelsManagerCard card) {
@@ -37,9 +38,12 @@ public class LastGamesPanel extends JPanel {
         this.add(back);
     }
     public void setLastGamesButtons(){
+        ok.setBounds(this.getWidth()/2 - 25,550,50,50);
+        this.add(ok);
         int x = 200;
         for (int i = 0;i < user.gameStatesList.size() ; i++){
             JRadioButton gameButton = new JRadioButton();
+            lastGamesList[i] = gameButton;
             gameButton.setText(user.gameStatesList.get(i).massage);
             gameButton.setBounds(x,500,100,30);
             bg.add(gameButton);

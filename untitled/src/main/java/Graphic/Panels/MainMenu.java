@@ -54,14 +54,14 @@ public class MainMenu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 //                card.gM.lM.userManager.newGameRequest();
-//                card.cardLayout.show(card,"newGamePanel");
-//                card.newGamePanel.requestFocus();
-                card.gM.lM.userManager.newGameRequest(" from main menu");
-                    card.gamePanel.setKeyListener(card.gM.lM.userManager.currentUser.getSelectedPlayer().getPlayerListener());
-                    GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
-                    gameLoop.start();
-                    card.cardLayout.show(card,"gamePanel");
-                    card.gamePanel.requestFocus();
+                card.cardLayout.show(card,"newGamePanel");
+                card.newGamePanel.requestFocus();
+//                card.gM.lM.userManager.newGameRequest(" from main menu");
+//                    card.gamePanel.setKeyListener(card.gM.lM.userManager.currentUser.getSelectedPlayer().getPlayerListener());
+//                    GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
+//                    gameLoop.start();
+//                    card.cardLayout.show(card,"gamePanel");
+//                    card.gamePanel.requestFocus();
             }
         });
         continueLastGames.addActionListener(new ActionListener() {

@@ -22,15 +22,21 @@ public class UserManager {
         try {
             if(!file.exists()) {
                 FileWriter fileWriter = new FileWriter(file);
-                User user = new User(userName,pass,this);
-                userCleared(user);
-                objectMapper.writeValue(fileWriter,user);
+//                User user = new User(userName,pass,this);
+                //test
+                this.currentUser = new User(userName,pass,this);
+                userCleared(currentUser);
+                LogicGameState logicGameState1 = new LogicGameState(this.lM);
+                currentUser.gameStatesList.add(logicGameState1);
+                LogicGameState logicGameState2 = new LogicGameState(this.lM);
+                currentUser.gameStatesList.add(logicGameState2);
+                currentUser.currentGameState = logicGameState1;
+                objectMapper.writeValue(fileWriter,currentUser);
                 //test
                 System.out.println("test from user manager");
-                newGameRequest(" lala");
-                newGameRequest("lele");
                 // test
                 this.lM.gM.panelsManagerCard.lastGamesPanel.setLastGamesButtons();
+                this.lM.gM.panelsManagerCard.newGamePanel.setLastGamesButtons();
                 return true;
             }
             else {
@@ -49,6 +55,7 @@ public class UserManager {
                     userCleared(objectMapper.readValue(file, User.class));
                     //test
                     this.lM.gM.panelsManagerCard.lastGamesPanel.setLastGamesButtons();
+                    this.lM.gM.panelsManagerCard.newGamePanel.setLastGamesButtons();
                     return true;
                 }
                 else {
@@ -68,21 +75,28 @@ public class UserManager {
         this.currentUser = user;
         //VERY IMP
         user.setUserManager(this);
-        this.lM.gM.guiUserManager.setCurrentUser(user);
+        this.lM.gM.panelsManagerCard.setCurrentUser(user);
     }
     public void update(){
         this.currentUser.currentGameState.update();
     }
     public void newGameRequest(String massage){
-        this.currentUser.setCurrentGameState(new LogicGameState(this.lM));
-        // test
-        this.currentUser.gameStatesList.add(currentUser.getCurrentGameState());
-        this.currentUser.currentGameState.massage = massage;
-        //
-        this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
-        this.lM.gM.guiUserManager.newGameRequest(this.lM.gM);
-        // testt
-        System.out.println("here from user manager");
+        for (int i = 0; i <currentUser.gameStatesList.size();i++) {
+            if (currentUser.gameStatesList.get(i).massage.equals(massage)) {
+                currentUser.gameStatesList.remove(i);
+                this.currentUser.setCurrentGameState(new LogicGameState(this.lM));
+                currentUser.gameStatesList.add(i,currentUser.currentGameState);
+                // test
+//                this.currentUser.gameStatesList.add(currentUser.getCurrentGameState());
+                this.currentUser.currentGameState.massage = massage;
+                //
+                this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
+//                this.lM.gM.guiUserManager.newGameRequest(this.lM.gM);
+                // testt
+                System.out.println("here from user manager");
+                break;
+            }
+        }
     }
     public void lastGamesRequest() {}
 //    public LogicGameState createANewGameState(){
@@ -93,7 +107,8 @@ public class UserManager {
     public void sectionChanged() {
         this.currentUser.currentGameState.background.topLeftColInWorld = 0;
         this.currentUser.currentGameState.sectionNum++;
-        this.lM.gM.guiUserManager.sectionChanged();
+        System.out.println("section changed from user mnager");
+        this.currentUser.currentGameState.guiGameState.sectionChanged();
     }
     public void buyRequest(String name){
         System.out.println(name);
