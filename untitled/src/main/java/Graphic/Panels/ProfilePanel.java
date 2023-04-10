@@ -62,13 +62,7 @@ public class ProfilePanel extends JPanel {
                     if (jRadioButton.isSelected()){
                         name=jRadioButton.getText();
                         card.gM.lM.userManager.currentUser.changeSelectedPlayer(name);
-                        File file =new File(user.getUserName()+".json");
-                        try {
-                            FileWriter fileWriter = new FileWriter(file);
-                            card.gM.lM.userManager.objectMapper.writeValue(fileWriter,user);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
+                        saveInfo();
                         break;
                     }
                 }
@@ -88,5 +82,15 @@ public class ProfilePanel extends JPanel {
     public void setUser() {
         this.user = this.card.gM.lM.userManager.currentUser;
         setPlayersOption();
+    }
+    private void saveInfo(){
+        File file = new File(user.getUserName() + ".json");
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(file);
+            user.userManager.objectMapper.writeValue(fileWriter,user);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

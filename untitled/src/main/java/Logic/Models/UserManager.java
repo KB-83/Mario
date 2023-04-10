@@ -51,6 +51,7 @@ public class UserManager {
         File file = new File(userName + ".json");
         if (file.exists()) {
             try {
+                System.out.println(objectMapper+"from user manaer");
                 if (objectMapper.readValue(file, User.class).getPassWord().equals(pass)) {
                     userCleared(objectMapper.readValue(file, User.class));
                     //test
@@ -80,15 +81,15 @@ public class UserManager {
     public void update(){
         this.currentUser.currentGameState.update();
     }
-    public void newGameRequest(String massage){
+    public void newGameRequest(String lastGameMassage,String newGameMassage){
         for (int i = 0; i <currentUser.gameStatesList.size();i++) {
-            if (currentUser.gameStatesList.get(i).massage.equals(massage)) {
+            if (currentUser.gameStatesList.get(i).massage.equals(lastGameMassage)) {
                 currentUser.gameStatesList.remove(i);
                 this.currentUser.setCurrentGameState(new LogicGameState(this.lM));
                 currentUser.gameStatesList.add(i,currentUser.currentGameState);
                 // test
 //                this.currentUser.gameStatesList.add(currentUser.getCurrentGameState());
-                this.currentUser.currentGameState.massage = massage;
+                this.currentUser.currentGameState.massage = newGameMassage;
                 //
                 this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
 //                this.lM.gM.guiUserManager.newGameRequest(this.lM.gM);

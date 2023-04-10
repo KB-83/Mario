@@ -1,15 +1,20 @@
 package Graphic.Panels;
 
+import Logic.Models.User;
 import Util.GameLoop;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class MainMenu extends JPanel {
 
     PanelsManagerCard card;
+    User user;
     JButton startNewGame = new JButton("start new game");
     JButton continueLastGames = new JButton("continue last games");
     JButton shop = new JButton("shop");
@@ -88,11 +93,26 @@ public class MainMenu extends JPanel {
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                saveInfo();
                 card.gM.lM.userManager.currentUser = null;
                 card.cardLayout.show(card,"startPanel");
                 card.startPanel.requestFocus();
             }
         });
+    }
+    public void setUser() {
+        this.user = this.card.gM.lM.userManager.currentUser;
+        this.repaint();
+    }
+    private void saveInfo(){
+        File file = new File(user.getUserName() + ".json");
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(file);
+            user.userManager.objectMapper.writeValue(fileWriter,user);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

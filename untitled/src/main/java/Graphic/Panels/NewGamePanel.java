@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class NewGamePanel extends JPanel {
     PanelsManagerCard card;
@@ -45,11 +48,12 @@ public class NewGamePanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 for (int i = 0 ; i<lastGamesList.length;i++) {
                     if (lastGamesList[i] != null && lastGamesList[i].isSelected()){
-                        user.userManager.newGameRequest(lastGamesList[i].getText());
+                        user.userManager.newGameRequest(lastGamesList[i].getText(),newGameMassage.getText());
+                        setLastGamesOptions();
                         card.gamePanel.setKeyListener(card.gM.lM.userManager.currentUser.getSelectedPlayer().getPlayerListener());
                         GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
                         gameLoop.start();
-
+                        saveInfo();
                         card.cardLayout.show(card,"gamePanel");
                         card.gamePanel.requestFocus();
                         break;
@@ -59,8 +63,15 @@ public class NewGamePanel extends JPanel {
             }
         });
         this.add(ok);
+        setLastGamesOptions();
+    }
+    public void setLastGamesOptions(){
         int x = 200;
         for (int i = 0;i < user.gameStatesList.size() ; i++){
+            System.out.println("here setting Buttons newGamepanel");
+            if(lastGamesList[i] != null){
+                this.remove(lastGamesList[i]);
+            }
             JRadioButton gameButton = new JRadioButton();
             lastGamesList[i] = gameButton;
             gameButton.setText(user.gameStatesList.get(i).massage);
@@ -68,6 +79,17 @@ public class NewGamePanel extends JPanel {
             bg.add(gameButton);
             this.add(gameButton);
             x += 100;
+        }
+
+    }
+    private void saveInfo(){
+        File file = new File(user.getUserName() + ".json");
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(file);
+            user.userManager.objectMapper.writeValue(fileWriter,user);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

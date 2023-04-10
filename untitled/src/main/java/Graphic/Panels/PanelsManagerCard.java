@@ -58,6 +58,7 @@ public class PanelsManagerCard extends JPanel {
         lastGamesPanel.repaint();
     }
     public void setCurrentUser(User user){
+        mainMenu.setUser();
         shopPanel.setUser();
         profilePanel.setUser();
         newGamePanel.setUser();

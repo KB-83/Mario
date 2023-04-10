@@ -5,6 +5,7 @@ import Logic.LogicManager;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class GameLoop implements Runnable{
+    @JsonIgnore
     Thread gameThread;
     int FPS = 60;
     boolean running =false;
@@ -15,6 +16,7 @@ public class GameLoop implements Runnable{
     LogicManager lM;
     @JsonIgnore
     GraphicManager gM;
+    public  GameLoop(){}
 
     public GameLoop(LogicManager lM, GraphicManager gM) {
 //        gM.guiUserManager.guiGameState.setLoop(this);
@@ -60,5 +62,53 @@ public class GameLoop implements Runnable{
                 tryFps = 0;
             }
         }
+    }
+
+    public Thread getGameThread() {
+        return gameThread;
+    }
+
+    public void setGameThread(Thread gameThread) {
+        this.gameThread = gameThread;
+    }
+
+    public int getFPS() {
+        return FPS;
+    }
+
+    public void setFPS(int FPS) {
+        this.FPS = FPS;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
+    public int getTryFps() {
+        return tryFps;
+    }
+
+    public void setTryFps(int tryFps) {
+        this.tryFps = tryFps;
+    }
+
+    public LogicManager getlM() {
+        return lM;
+    }
+
+    public void setlM(LogicManager lM) {
+        this.lM = lM;
+    }
+
+    public GraphicManager getgM() {
+        return gM;
+    }
+
+    public void setgM(GraphicManager gM) {
+        this.gM = gM;
     }
 }

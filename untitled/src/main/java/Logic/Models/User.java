@@ -163,4 +163,5 @@ public class User {
     public void setHighScore(int highScore) {
         this.highScore = highScore;
     }
+
 }

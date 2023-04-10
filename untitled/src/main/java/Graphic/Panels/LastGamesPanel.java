@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +52,16 @@ public class LastGamesPanel extends JPanel {
             bg.add(gameButton);
             this.add(gameButton);
             x += 100;
+        }
+    }
+    private void saveInfo(){
+        File file = new File(user.getUserName() + ".json");
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(file);
+            user.userManager.objectMapper.writeValue(fileWriter,user);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
