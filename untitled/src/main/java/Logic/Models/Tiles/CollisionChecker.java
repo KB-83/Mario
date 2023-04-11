@@ -46,7 +46,7 @@ public class CollisionChecker {
 //        System.out.println(playerListener.keyAndMode);
         switch (action) {
             case "WP":
-//                playerTopRow = (player.worldY- player.v)/48;
+                playerTopRow = (player.worldY- player.v)/48;
                 tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol][playerTopRow]];
                 tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol+1][playerTopRow]];
                 if (tile1.collision || tile2.collision){
@@ -54,11 +54,14 @@ public class CollisionChecker {
                 }
                 break;
             case "DP":
-//                playerLeftCol = (player.worldX + player.v)/48;
+                playerLeftCol = (player.worldX + player.v)/48;
                 if(playerLeftCol <= 26 * 4 - 2) {
                     tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol + 1][playerTopRow]];
                     tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol + 1][playerTopRow + 1]];
-                    System.out.println(player.worldY / 48.0 % 48 - playerTopRow);
+                    // chec
+                    if(tileManager.mapTileNum[playerLeftCol + 1][playerTopRow] == 7){
+
+                    }
                 }
 //                if(Math.abs(player.worldY/48.0 % 48 - playerTopRow ) < 1){
 //                    System.out.println("collision");
@@ -69,7 +72,7 @@ public class CollisionChecker {
                 }
                 break;
             case "AP":
-//                playerLeftCol = (player.worldX- player.v)/48;
+                playerLeftCol = (player.worldX- player.v)/48;
                 tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol ][playerTopRow]];
                 tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol ][playerTopRow + 1]];
                 if(player.worldY% 48 == 0){
@@ -80,7 +83,7 @@ public class CollisionChecker {
                 }
                 break;
             case "SP":
-//                playerTopRow = (player.worldY + player.v)/48;
+                playerTopRow = (player.worldY + player.v)/48;
                 tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol][playerTopRow+1]];
                 tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol+1][playerTopRow +1]];
                 if (tile1.collision || tile2.collision){
@@ -88,6 +91,7 @@ public class CollisionChecker {
                 }
                 break;
         }
+        checkIfCoin(tile1,tile2);
 
 //        col = playerNewWorldX/ player.size;
 //        row = playerNewWorldY/ player.size;
@@ -124,6 +128,18 @@ public class CollisionChecker {
 //            player.isLeftCollisionOn = true;
 //        }
 
+    }
+    private void checkIfCoin(Tile tile1,Tile tile2){
+//        System.out.println("checking coin from collision checker");
+        if (tile1 != null && tile2 != null) {
+            System.out.println(tile1.num);
+            if (tile1.num == 7 || tile2.num == 7) {
+                this.tileManager.logicGameState.coins++;
+                this.tileManager.mapTileNum[player.worldX /48][player.worldY/48 + 1] = 0;
+//                tile1.num = 0;
+//                tile2.num = 0;
+            }
+        }
     }
 
 }

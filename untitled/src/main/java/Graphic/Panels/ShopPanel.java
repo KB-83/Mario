@@ -54,8 +54,8 @@ public class ShopPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
             g2.setFont(new Font("monospaced", Font.BOLD, 30));
-            g2.drawString(String.valueOf(user.getCoins()),465,55);
-            g2.drawImage(coinImage,500,20,48,48,null);
+            g2.drawString(String.valueOf(user.getCoins()),530,55);
+            g2.drawImage(coinImage,465,20,48,48,null);
         if(playerImage!=null){
             g2.drawImage(playerImage,300,200,200,200,null);
             g2.drawString("price:"+price,500,400);

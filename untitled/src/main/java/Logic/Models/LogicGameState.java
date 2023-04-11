@@ -28,6 +28,9 @@ public class LogicGameState {
     public TileManager background;
     public CoinManager coinManager;
     public String massage = "no";
+    int hearts = 3;
+    int score = 0;
+    public int coins = 0;
 //    public CollisionChecker collisionChecker;
     public LogicGameState(){}
     public LogicGameState(LogicManager lM){
@@ -39,7 +42,7 @@ public class LogicGameState {
         this.currentPlayer = new UniqueGirl(lM.userManager.currentUser);
         this.lM.userManager.currentUser.selectedPlayer = this.currentPlayer;
 //        this.lM.gM.panelsManagerCard.gamePanel.setKeyListener(currentPlayer.playerListener);
-//        this.currentPlayer.collisionChecker.tileManager = background;
+        this.currentPlayer.collisionChecker.tileManager = background;
         currentPlayer.logicGameState = this;
 
         //test
@@ -148,4 +151,27 @@ public class LogicGameState {
         this.massage = massage;
     }
 
+    public int getHearts() {
+        return hearts;
+    }
+
+    public void setHearts(int hearts) {
+        this.hearts = hearts;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
 }

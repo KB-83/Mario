@@ -49,9 +49,9 @@ public class GamePanel extends JPanel {
         guiGameState.paintAll(g2);
         }
         g2.setFont(new Font("monospaced", Font.BOLD, 30));
-        g2.drawString(String.valueOf("COINS:"+currentUser.getCoins()),120,35);
-        g2.drawString(String.valueOf("HEARTS:"+currentUser.getHearts()),320,35);
-        g2.drawString(String.valueOf("SCORE:"+currentUser.getScore()),520,35);
+        g2.drawString(String.valueOf("COINS:"+currentUser.currentGameState.getCoins()),120,35);
+        g2.drawString(String.valueOf("HEARTS:"+currentUser.currentGameState.getHearts()),320,35);
+        g2.drawString(String.valueOf("SCORE:"+currentUser.currentGameState.getScore()),520,35);
 
     }
     public void setKeyListener(KeyListener keyListener) {

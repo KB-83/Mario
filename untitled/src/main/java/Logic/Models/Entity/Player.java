@@ -48,7 +48,7 @@ public abstract class Player extends Entity {
     }
 
      public void update() {
-//        collisionChecker.checkCollision();
+        collisionChecker.checkCollision();
          if(this.worldX >= 26 * 4 * 48 - 48){
              this.currentUser.userManager.sectionChanged();
              this.sectionChanged();

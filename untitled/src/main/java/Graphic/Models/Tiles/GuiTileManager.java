@@ -33,7 +33,6 @@ public class GuiTileManager implements GuiPart {
             int levelNum =  guiGameState.logicGameState.levelNum;
             int sectionNum = guiGameState.logicGameState.sectionNum;
 
-            System.out.println("/Maps/map"+levelNum+sectionNum+".txt from gui tile manager");
             InputStream is = getClass().getResourceAsStream("/Maps/map"+levelNum+sectionNum+".txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
@@ -49,8 +48,19 @@ public class GuiTileManager implements GuiPart {
                     String numbers[] = line.split(" ");
                     int num;
                     // assuming coin and pipe background is sky;
-                    if(numbers[col].equals("c") || numbers[col].equals("p") || numbers[col].equals("P")){
-                        num = 0;
+                    if(numbers[col].equals("c")){
+                        num = 7;
+                    }
+                    else if(numbers[col].equals("p") || numbers[col].equals("P")){
+                        num = 6;
+                        mapTileNum[col][row] = num;
+                        mapTileNum[col + 1][row] = num;
+                        mapTileNum[col][row -1] = num;
+                        mapTileNum[col][row -1] = num;
+                        if(numbers[col].equals("P")){
+                            mapTileNum[col][row -2] = num;
+                            mapTileNum[col][row -2] = num;
+                        }
                     }
                     else {
                         num = Integer.parseInt(numbers[col]);
@@ -95,6 +105,15 @@ public class GuiTileManager implements GuiPart {
             tiles[5] = new GuiTile();
             tiles[5].image = ImageIO.read(getClass().getResourceAsStream("/Images/Tiles/Tile5.png"));
 
+            // sky tile with pipe for collision
+            tiles[6] = new GuiTile();
+            tiles[6].image = ImageIO.read(getClass().getResourceAsStream("/Images/Tiles/Sky.png"));
+
+            //for coin
+            tiles[7] = new GuiTile();
+            tiles[7].image = ImageIO.read(getClass().getResourceAsStream("/Images/Tiles/Sky.png"));
+            tiles[7].collision = false;
+
         }catch (IOException e){
 
             e.printStackTrace();
@@ -116,7 +135,7 @@ public class GuiTileManager implements GuiPart {
             int tileNum = mapTileNum[col][row];
 
 
-            g2.drawImage(tiles[tileNum].image, x, y, tileSize,tileSize, null);
+            g2.drawImage(tiles[guiGameState.logicGameState.background.mapTileNum[col][row]].image, x, y, tileSize,tileSize, null);
             col++;
             x += tileSize;
 

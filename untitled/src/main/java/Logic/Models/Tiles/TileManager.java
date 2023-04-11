@@ -24,12 +24,14 @@ public class TileManager {
         loadTiles();
     }
     public void loadTiles() {
-        tiles[0] = new Tile(false);
-        tiles[1] = new Tile(true);
-        tiles[2] = new Tile(true);
-        tiles[3] = new Tile(true);
-        tiles[4] = new Tile(true);
-        tiles[5] = new Tile(true);
+        tiles[0] = new Tile(false,0);
+        tiles[1] = new Tile(true,1);
+        tiles[2] = new Tile(true,2);
+        tiles[3] = new Tile(true,3);
+        tiles[4] = new Tile(true,4);
+        tiles[5] = new Tile(true,5);
+        tiles[6] = new Tile(true,6);
+        tiles[7] = new Tile(false,7);
     }
 
 }

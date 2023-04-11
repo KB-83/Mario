@@ -57,7 +57,6 @@ public class ProfilePanel extends JPanel {
             String name="Mario";
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(playersOption.size());
                 for (JRadioButton jRadioButton:playersOption){
                     if (jRadioButton.isSelected()){
                         name=jRadioButton.getText();

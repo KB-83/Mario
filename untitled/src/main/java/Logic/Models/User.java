@@ -23,10 +23,8 @@ public class User {
     Player selectedPlayer;
     String userName;
     String passWord;
-    int score;
     int highScore;
-    int coins;
-    int hearts = 3;
+    int coins = 100;
 
     public User() {
 
@@ -118,13 +116,6 @@ public class User {
         this.passWord = passWord;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
 
     public int getCoins() {
         return coins;
@@ -132,14 +123,6 @@ public class User {
 
     public void setCoins(int coins) {
         this.coins = coins;
-    }
-
-    public int getHearts() {
-        return hearts;
-    }
-
-    public void setHearts(int hearts) {
-        this.hearts = hearts;
     }
 
     public UserManager getUserManager() {
