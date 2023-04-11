@@ -1,5 +1,6 @@
 package Logic.Models;
 
+import Graphic.Models.GuiGameState;
 import Logic.LogicManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -54,6 +55,7 @@ public class UserManager {
                 System.out.println(objectMapper+"from user manaer");
                 if (objectMapper.readValue(file, User.class).getPassWord().equals(pass)) {
                     userCleared(objectMapper.readValue(file, User.class));
+                    System.out.println("login request");
                     //test
                     this.lM.gM.panelsManagerCard.lastGamesPanel.setLastGamesButtons();
                     this.lM.gM.panelsManagerCard.newGamePanel.setLastGamesButtons();
@@ -76,6 +78,8 @@ public class UserManager {
         this.currentUser = user;
         //VERY IMP
         user.setUserManager(this);
+//        System.out.println("here user cleard");
+//        currentUser.currentGameState.currentPlayer.setCurrentUser(currentUser);
         this.lM.gM.panelsManagerCard.setCurrentUser(user);
     }
     public void update(){
@@ -94,7 +98,7 @@ public class UserManager {
                 this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
 //                this.lM.gM.guiUserManager.newGameRequest(this.lM.gM);
                 // testt
-                System.out.println("here from user manager");
+//                System.out.println("here from user manager");
                 break;
             }
         }
@@ -102,8 +106,14 @@ public class UserManager {
     public void lastGamesRequest(String massage) {
         for (LogicGameState gameState:currentUser.gameStatesList){
             if (gameState.getMassage().equals(massage)){
+                gameState.guiGameState = new GuiGameState(lM.gM.panelsManagerCard.gamePanel,lM.gM,currentUser.currentGameState);
                 currentUser.setCurrentGameState(gameState);
+//                currentUser.currentGameState.currentPlayer.setCurrentUser(currentUser);
+                gameState.currentPlayer.setCurrentUser(currentUser);
+                gameState.guiGameState.logicGameState = gameState;
+//                gameState.currentPlayer.setLogicG;
                 this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
+                lM.gM.panelsManagerCard.gamePanel.setKeyListener(gameState.currentPlayer.getPlayerListener());
                 break;
             }
         }

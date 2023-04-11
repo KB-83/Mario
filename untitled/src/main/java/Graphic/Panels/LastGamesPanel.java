@@ -48,11 +48,9 @@ public class LastGamesPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 for (JRadioButton button:lastGamesList){
                     if(button != null && button.isSelected() ){
-                        System.out.println("hereeeee");
                         user.userManager.lastGamesRequest(button.getText());
                         setLastGamesOptions();
                         GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
-                        System.out.println(user.currentGameState.guiGameState == null);
                         user.currentGameState.setLoop(gameLoop);
 
                         gameLoop.start();

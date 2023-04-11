@@ -5,6 +5,7 @@ import Logic.LogicManager;
 import Logic.Models.Entity.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class User {
     public List<LogicGameState> gameStatesList = new ArrayList<>();
     List<Player> ownedPlayers = new ArrayList<>();
 //    GuiUser guiUser;
+    @JsonManagedReference
     Player selectedPlayer;
     String userName;
     String passWord;

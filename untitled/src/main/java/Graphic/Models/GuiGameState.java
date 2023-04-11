@@ -51,6 +51,7 @@ public class GuiGameState {
     }
 
     public void sectionChanged() {
+        System.out.println("section changed from gui game state");
         this.background.loadMap();
         this.coinManager.loadCoinList();
         this.pipeManager.loadPipeList();

@@ -34,11 +34,11 @@ public class LogicGameState {
 
         this.lM = lM;
         // asan ye vazi
-
         this.background = new TileManager(this);
         this.coinManager = new CoinManager(this);
-        this.currentPlayer = lM.userManager.currentUser.selectedPlayer;
-        this.lM.gM.panelsManagerCard.gamePanel.setKeyListener(currentPlayer.playerListener);
+        this.currentPlayer = new UniqueGirl(lM.userManager.currentUser);
+        this.lM.userManager.currentUser.selectedPlayer = this.currentPlayer;
+//        this.lM.gM.panelsManagerCard.gamePanel.setKeyListener(currentPlayer.playerListener);
 //        this.currentPlayer.collisionChecker.tileManager = background;
         currentPlayer.logicGameState = this;
 
@@ -147,4 +147,5 @@ public class LogicGameState {
     public void setMassage(String massage) {
         this.massage = massage;
     }
+
 }

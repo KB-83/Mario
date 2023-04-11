@@ -19,7 +19,7 @@ public class PlayerListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("action event player listener");
+//        System.out.println("action event player listener");
 
         if(e.getKeyCode() == KeyEvent.VK_W) {
             keyAndMode = "WP";

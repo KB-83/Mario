@@ -5,9 +5,7 @@ import Logic.Models.Entity.Entity;
 import Logic.Models.LogicGameState;
 import Logic.Models.Tiles.CollisionChecker;
 import Logic.Models.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.awt.*;
@@ -24,7 +22,7 @@ import java.awt.*;
 })
 
 public abstract class Player extends Entity {
-    @JsonIgnore
+    @JsonBackReference
     public User currentUser;
 
     public PlayerListener playerListener;
@@ -45,18 +43,18 @@ public abstract class Player extends Entity {
         super();
         this.currentUser = currentUser;
         this.playerListener = new PlayerListener();
-//        this.logicGameState.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
+        this.currentUser.userManager.lM.gM.panelsManagerCard.gamePanel.addKeyListener(playerListener);
         this.collisionChecker = new CollisionChecker(this);
     }
 
      public void update() {
 //        collisionChecker.checkCollision();
-         if(this.worldX >= this.currentUser.currentGameState.cols * 4 * 48 - 48){
+         if(this.worldX >= 26 * 4 * 48 - 48){
              this.currentUser.userManager.sectionChanged();
              this.sectionChanged();
          }
         String action = playerListener.keyAndMode;
-         if (worldX >= this.logicGameState.background.topLeftColInWorld * size ) {
+         if (worldX >= this.currentUser.currentGameState.background.topLeftColInWorld * size ) {
          switch (action) {
                  case "WP":
                      imageNumber = 4;
@@ -83,7 +81,7 @@ public abstract class Player extends Entity {
                              this.screenX += this.v;
                          }
                          else {
-                             this.logicGameState.background.topLeftColInWorld = (this.worldX - (26 * 48 /2) ) / size;
+                             this.currentUser.currentGameState.background.topLeftColInWorld = (this.worldX - (26 * 48 /2) ) / size;
                          }
                      }
                      lastYB4Jump = this.screenY;
@@ -112,7 +110,7 @@ public abstract class Player extends Entity {
                      imageNumber = 6;
                      imageCounter++;
                      if (!isBottomCollisionOn) {
-                         if (screenY< size * (this.logicGameState.rows) - size) {
+                         if (screenY< size * (this.currentUser.currentGameState.rows) - size) {
                              this.screenY += this.v;
                              this.worldY += this.v;
                          }
@@ -126,12 +124,12 @@ public abstract class Player extends Entity {
              }
          }
          else {
-             worldX = this.logicGameState.background.topLeftColInWorld * size;
+             worldX = this.currentUser.currentGameState.background.topLeftColInWorld * size;
          }
          if (imageCounter > 24) {
              imageCounter = 0;
          }
-         this.logicGameState.guiGameState.guiPlayer.setImage(imageNumber);
+         this.currentUser.currentGameState.guiGameState.guiPlayer.setImage(imageNumber);
 //         System.out.println(this.logicGameState.background.topLeftColInWorld);
      }
 
