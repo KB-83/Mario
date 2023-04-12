@@ -32,6 +32,10 @@ public class LogicGameState {
     int hearts = 3;
     int score = 0;
     public int coins = 0;
+    int totalTimePerSection = 300;
+    long lastStopThreadTime = System.nanoTime();
+    int remainingTime;
+    int passedTime;
 //    public CollisionChecker collisionChecker;
     public LogicGameState(){}
     public LogicGameState(LogicManager lM){
@@ -53,6 +57,10 @@ public class LogicGameState {
     }
 
     public void update(){
+        if (loop.isRunning()){
+        passedTime = (int) ((System.nanoTime() - lastStopThreadTime)/1000000000);
+        }
+        remainingTime = (int) (totalTimePerSection - passedTime);
         currentPlayer.update();
         checkIfOver();
     }
@@ -200,4 +208,37 @@ public class LogicGameState {
     public void setOver(boolean over) {
         isOver = over;
     }
+
+    public int getTotalTimePerSection() {
+        return totalTimePerSection;
+    }
+
+    public void setTotalTimePerSection(int totalTimePerSection) {
+        this.totalTimePerSection = totalTimePerSection;
+    }
+
+    public long getLastStopThreadTime() {
+        return lastStopThreadTime;
+    }
+
+    public void setLastStopThreadTime(long lastStopThreadTime) {
+        this.lastStopThreadTime = lastStopThreadTime;
+    }
+
+    public int getPassedTime() {
+        return passedTime;
+    }
+
+    public void setPassedTime(int passedTime) {
+        this.passedTime = passedTime;
+    }
+
+    public int getRemainingTime() {
+        return remainingTime;
+    }
+
+    public void setRemainingTime(int remainingTime) {
+        this.remainingTime = remainingTime;
+    }
+
 }

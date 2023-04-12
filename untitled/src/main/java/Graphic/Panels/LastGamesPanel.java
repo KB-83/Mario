@@ -54,6 +54,8 @@ public class LastGamesPanel extends JPanel {
                         user.currentGameState.setLoop(gameLoop);
 
                         gameLoop.start();
+                        long nano = 1000000000;
+                        user.currentGameState.setLastStopThreadTime(System.nanoTime() - (user.currentGameState.getPassedTime() *nano));
                         saveInfo();
                         card.cardLayout.show(card,"gamePanel");
                         card.gamePanel.requestFocus();

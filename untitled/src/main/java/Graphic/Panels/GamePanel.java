@@ -33,6 +33,7 @@ public class GamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 saveInfo();
+                cardPanel.lastGamesPanel.setLastGamesButtons();
                 cardPanel.gM.lM.userManager.currentUser.currentGameState.getLoop().stop();
                 cardPanel.cardLayout.show(cardPanel,"mainMenu");
             }
@@ -58,6 +59,7 @@ public class GamePanel extends JPanel {
         g2.drawString(String.valueOf("COINS:"+currentUser.currentGameState.getCoins()),120,35);
         g2.drawString(String.valueOf("HEARTS:"+currentUser.currentGameState.getHearts()),320,35);
         g2.drawString(String.valueOf("SCORE:"+currentUser.currentGameState.getScore()),520,35);
+        g2.drawString(String.valueOf("TIME:"+currentUser.currentGameState.getRemainingTime()),720,35);
 
     }
     public void setKeyListener(KeyListener keyListener) {
