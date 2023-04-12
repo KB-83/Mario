@@ -12,7 +12,7 @@ import java.util.List;
 
 public class GuiCoinManager implements GuiPart {
 
-    List<GuiCoin> coinList = new ArrayList<>();
+    public List<GuiCoin> coinList = new ArrayList<>();
     GuiGameState guiGameState;
 
     int[][] coinsColAndRow = new int[worldCols][worldRows];

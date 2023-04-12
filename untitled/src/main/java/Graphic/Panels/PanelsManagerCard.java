@@ -17,7 +17,7 @@ public class PanelsManagerCard extends JPanel {
     public ShopPanel shopPanel;
     public NewGamePanel newGamePanel;
     public LastGamesPanel lastGamesPanel;
-    CardLayout cardLayout = new CardLayout();
+    public CardLayout cardLayout = new CardLayout();
     //info
     public final int cols = 26;
     public final int rows = 15;

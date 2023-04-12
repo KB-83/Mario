@@ -82,7 +82,12 @@ public class UserManager {
         this.lM.gM.panelsManagerCard.setCurrentUser(user);
     }
     public void update(){
-        this.currentUser.currentGameState.update();
+        if (this.currentUser.currentGameState.isOver == false) {
+            this.currentUser.currentGameState.update();
+        }
+        else {
+            this.currentUser.currentGameState.loop.stop();
+        }
     }
     public void newGameRequest(String lastGameMassage,String newGameMassage){
         for (int i = 0; i <currentUser.gameStatesList.size();i++) {
@@ -107,11 +112,12 @@ public class UserManager {
             if (gameState.getMassage().equals(massage)){
                 gameState.lM = lM;
                 gameState.guiGameState = new GuiGameState(lM.gM.panelsManagerCard.gamePanel,lM.gM,currentUser.currentGameState);
+                gameState.background.logicGameState = gameState;
                 currentUser.setCurrentGameState(gameState);
                 gameState.currentPlayer.setCurrentUser(currentUser);
-//                gameState.currentPlayer.collisionChecker = new CollisionChecker(gameState.currentPlayer);
-//                gameState.currentPlayer.collisionChecker.player = gameState.currentPlayer;
-//                gameState.currentPlayer.collisionChecker.tileManager = gameState.background;
+                gameState.currentPlayer.collisionChecker = new CollisionChecker(gameState.currentPlayer);
+                gameState.currentPlayer.collisionChecker.player = gameState.currentPlayer;
+                gameState.currentPlayer.collisionChecker.tileManager = gameState.background;
                 gameState.guiGameState.logicGameState = gameState;
 //                gameState.currentPlayer.setLogicG;
 //                this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);

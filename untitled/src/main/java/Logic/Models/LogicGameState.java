@@ -18,7 +18,7 @@ public class LogicGameState {
     @JsonIgnore
     public GuiGameState guiGameState;
     @JsonIgnore
-    private GameLoop loop;
+    public GameLoop loop;
     public Player currentPlayer;
     List<Enemy> enemies;
     public int cols =26;
@@ -28,6 +28,7 @@ public class LogicGameState {
     public TileManager background;
     public CoinManager coinManager;
     public String massage = "no";
+    public boolean isOver = false;
     int hearts = 3;
     int score = 0;
     public int coins = 0;
@@ -53,6 +54,23 @@ public class LogicGameState {
 
     public void update(){
         currentPlayer.update();
+        checkIfOver();
+    }
+
+    private void checkIfOver() {
+        currentPlayer.checkHearts();
+        if(hearts <= 0){
+            isOver = true;
+            lM.userManager.currentUser.coins += this.coins;
+            try {
+                lM.gM.panelsManagerCard.gamePanel.repaint();
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            this.lM.gM.panelsManagerCard.cardLayout.show(lM.gM.panelsManagerCard,"mainMenu");
+        }
+
     }
 
     public Player getCurrentPlayer() {
@@ -175,5 +193,11 @@ public class LogicGameState {
         this.coins = coins;
     }
 
+    public boolean isOver() {
+        return isOver;
+    }
 
+    public void setOver(boolean over) {
+        isOver = over;
+    }
 }

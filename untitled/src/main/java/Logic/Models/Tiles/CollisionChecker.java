@@ -1,6 +1,7 @@
 package Logic.Models.Tiles;
 
 import Graphic.Listeners.PlayerListener;
+import Graphic.Models.Object.GuiCoin;
 import Logic.Models.Entity.Player;
 import Logic.Models.LogicGameState;
 import Logic.Models.Object.CoinManager;
@@ -15,6 +16,7 @@ public class CollisionChecker {
     public Player player;
     PlayerListener playerListener;
     Tile tile1,tile2;
+
 
     public CollisionChecker(Player player) {
 
@@ -134,9 +136,14 @@ public class CollisionChecker {
 //        System.out.println("checking coin from collision checker");
         if (tile1 != null && tile2 != null) {
             System.out.println(tile1.num);
-            if (tile1.num == 7 || tile2.num == 7) {
+            if (this.tileManager.logicGameState.guiGameState.background.mapTileNum[player.worldX /48][player.worldY/48] == 7) {
+                for (GuiCoin coin: this.tileManager.logicGameState.guiGameState.coinManager.coinList){
+                    if (coin.worldCol == player.getWorldX()/48 && coin.worldRow == player.worldY/48) {
+                        coin.isEaten = true;
+                    }
+                }
                 this.tileManager.logicGameState.coins++;
-                this.tileManager.mapTileNum[player.worldX /48][player.worldY/48 + 1] = 0;
+                this.tileManager.logicGameState.guiGameState.background.mapTileNum[player.worldX /48][player.worldY/48] = 0;
 //                tile1.num = 0;
 //                tile2.num = 0;
             }

@@ -7,8 +7,8 @@ import java.io.IOException;
 public class GuiCoin {
 
     Image image;
-    int worldCol,worldRow;
-    boolean isEaten = false;
+    public int worldCol,worldRow;
+    public boolean isEaten = false;
 
     GuiCoin(int worldCol,int worldRow) {
 

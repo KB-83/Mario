@@ -34,7 +34,7 @@ public class GamePanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 saveInfo();
                 cardPanel.gM.lM.userManager.currentUser.currentGameState.getLoop().stop();
-                cardPanel.cardLayout.show(cardPanel,"startPanel");
+                cardPanel.cardLayout.show(cardPanel,"mainMenu");
             }
         });
     }
@@ -47,6 +47,12 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         if (currentUser.currentGameState != null){
         currentUser.currentGameState.guiGameState.paintAll(g2);
+        if(currentUser.currentGameState.isOver() == true){
+            g2.setFont(new Font("monospaced", Font.BOLD, 70));
+            FontMetrics fm = g2.getFontMetrics();
+            int textX = (this.getSize().width / 2) - (fm.stringWidth("GAME OVER")/ 2);
+            g2.drawString("GAME OVER",textX,235);
+        }
         }
         g2.setFont(new Font("monospaced", Font.BOLD, 30));
         g2.drawString(String.valueOf("COINS:"+currentUser.currentGameState.getCoins()),120,35);

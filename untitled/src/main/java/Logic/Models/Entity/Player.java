@@ -48,7 +48,7 @@ public abstract class Player extends Entity {
     }
 
      public void update() {
-//        collisionChecker.checkCollision();
+        collisionChecker.checkCollision();
          if(this.worldX >= 26 * 4 * 48 - 48){
              this.currentUser.userManager.sectionChanged();
              this.sectionChanged();
@@ -152,6 +152,16 @@ public abstract class Player extends Entity {
     private void sectionChanged(){
         this.screenX = 0;
         this.worldX = 0;
+    }
+    public void checkHearts(){
+        if (this.worldY > 12 * 48 ){
+            this.worldY = 480;
+            this.worldX =0;
+            this.screenY = worldY;
+            this.screenX = worldX;
+            this.currentUser.currentGameState.background.topLeftColInWorld = 0;
+            currentUser.currentGameState.setHearts(currentUser.currentGameState.getHearts()-1);
+        }
     }
 
     @Override

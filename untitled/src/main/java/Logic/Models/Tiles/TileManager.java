@@ -3,6 +3,7 @@ package Logic.Models.Tiles;
 import Graphic.Models.GuiGameState;
 import Graphic.Models.Tiles.GuiTile;
 import Logic.Models.LogicGameState;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class TileManager {
 
@@ -11,7 +12,8 @@ public class TileManager {
     public int worldCols = 26 * 4;
     public int worldRows = 15;
     public int topLeftColInWorld = 0;
-    LogicGameState logicGameState;
+    @JsonIgnore
+    public LogicGameState logicGameState;
     Tile[] tiles;
     public int[][] mapTileNum;
 

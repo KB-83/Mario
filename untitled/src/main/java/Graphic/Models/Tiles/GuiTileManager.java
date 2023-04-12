@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
 public class GuiTileManager implements GuiPart {
     GuiGameState guiGameState;
     public GuiTile[] tiles;
-    int[][] mapTileNum;
+    public int[][] mapTileNum;
     public GuiTileManager(GuiGameState guiGameState){
 
         this.guiGameState = guiGameState;
@@ -136,7 +136,7 @@ public class GuiTileManager implements GuiPart {
 
             int tileNum = mapTileNum[col][row];
 
-            g2.drawImage(tiles[guiGameState.logicGameState.background.mapTileNum[col][row]].image, x, y, tileSize,tileSize, null);
+            g2.drawImage(tiles[tileNum].image, x, y, tileSize,tileSize, null);
             col++;
             x += tileSize;
 
