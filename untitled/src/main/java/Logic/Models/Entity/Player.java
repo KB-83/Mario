@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
+
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
@@ -33,9 +35,10 @@ public abstract class Player extends Entity {
     public String name;
     public int imageNumber;
     int imageCounter;
-    int lastYB4Jump = 12 * 48;
+    int lastYB4Jump = 10 * 48;
     private Rectangle collision = new Rectangle(5,0,38,48);
     public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
+    public boolean duringJump;
     Player(){
         super();
     }
@@ -54,74 +57,91 @@ public abstract class Player extends Entity {
              this.sectionChanged();
          }
         String action = playerListener.keyAndMode;
-         if (worldX >= this.currentUser.currentGameState.background.topLeftColInWorld * size ) {
-         switch (action) {
-                 case "WP":
+         if (worldX >= this.currentUser.currentGameState.background.topLeftColInWorld * size) {
+             if (action.equals("WP")) {
+                 if (imageNumber == 0 || imageNumber == 1 || imageNumber == 4) {
                      imageNumber = 4;
-                     if (!isUpCollisionOn) {
-//                         if(lastYB4Jump - screenY < 4 *48) {
-                             this.screenY -= this.v;
-                             this.worldY -= this.v;
-//                         }
-//                         else {
-//                             playerJumpIsOver();
-//                         }
-                     }// it is jumped
-                     break;
-                 case "DP":
+                 }
+                 else {
+                     imageNumber = 5;
+                 }
+                 if (!isUpCollisionOn && duringJump == false) {
+                     playerWantsToJump();
+                 }// it is jumped
+             }
+             if (action.equals("DP")) {
+                 if (duringJump == false) {
                      if (imageCounter < 12) {
                          imageNumber = 0;
                      } else {
                          imageNumber = 1;
                      }
                      imageCounter++;
-                     if (!isRightCollisionOn) {
-                         this.worldX += this.v;
+                 }
+                 if (!isRightCollisionOn) {
+                     this.worldX += this.v;
+                     System.out.println("rightttt");
+                     while (!isBottomCollisionOn && worldY< 13 * 48) {
+                         collisionChecker.jumpOverCollisionChecker();
+                         screenY += v;
+                         worldY += v;
+                         try {
+                             Thread.sleep(1);//fps
+                             currentUser.userManager.lM.gM.panelsManagerCard.gamePanel.repaint();
+                         } catch (InterruptedException e) {
+                             throw new RuntimeException(e);
+                         }
                          if (screenX <= 26 * 48 / 2) {
                              this.screenX += this.v;
-                         }
-                         else {
-                             this.currentUser.currentGameState.background.topLeftColInWorld = (this.worldX - (26 * 48 /2) ) / size;
+                         } else {
+                             this.currentUser.currentGameState.background.topLeftColInWorld = (this.worldX - (26 * 48 / 2)) / size;
                          }
                      }
+                     worldY -= v;
+                     screenY -= v;
+                     duringJump = false;
+                 }
+                 if (duringJump == false) {
                      lastYB4Jump = this.screenY;
-                     break;
-                 case "AP":
+                 }
+             }
+             if (action.equals("AP")) {
+                 if (duringJump == false) {
                      if (imageCounter < 12) {
                          imageNumber = 2;
                      } else {
                          imageNumber = 3;
                      }
                      imageCounter++;
-                     if(!isLeftCollisionOn){
-                     if(this.screenX > 0){
+                 }
+                 if (!isLeftCollisionOn) {
+                     if (this.screenX > 0) {
                          this.screenX -= v;
                          this.worldX -= v;
                      }
-                     }
-//                     else {
-//                     this.worldX -= this.v;
-//                     }
-
+                 } else {
+                     this.worldX -= this.v;
+                 }
+                 if (duringJump == false) {
                      lastYB4Jump = this.screenY;
-                     break;
-
-                 case "SP":
-                     imageNumber = 6;
-                     imageCounter++;
-                     if (!isBottomCollisionOn) {
-                         if (screenY< size * (this.currentUser.currentGameState.rows) - size) {
-                             this.screenY += this.v;
-                             this.worldY += this.v;
-                         }
-                     }
-
-                     lastYB4Jump = this.screenY;
-                     break;
-             case "WR":
-//                 playerJumpIsOver();
-                 break;
+                 }
              }
+
+             if (action .equals("SP")) {
+                 imageNumber = 6;
+                 imageCounter++;
+                 if (!isBottomCollisionOn && duringJump == false) {
+                     if (screenY < size * (this.currentUser.currentGameState.rows) - size) {
+                         this.screenY += this.v;
+                         this.worldY += this.v;
+                     }
+                 }
+
+                 lastYB4Jump = this.screenY;
+             }
+//             if (action == "WR") {
+//                 playerJumpIsOver();
+//             }
          }
          else {
              worldX = this.currentUser.currentGameState.background.topLeftColInWorld * size;
@@ -132,6 +152,33 @@ public abstract class Player extends Entity {
          this.currentUser.currentGameState.guiGameState.guiPlayer.setImage(imageNumber);
 //         System.out.println(this.logicGameState.background.topLeftColInWorld);
      }
+     private void playerWantsToJump(){
+        duringJump =true;
+         while (lastYB4Jump - screenY < 4 * 48) {
+             this.screenY -= this.v;
+             this.worldY -= this.v;
+             if (playerListener.keyAndMode.equals("DP")){
+                 this.worldX += 2*v;
+                 if (screenX <= 26 * 48 / 2) {
+                     this.screenX += 2*v;
+                 } else {
+                     this.currentUser.currentGameState.background.topLeftColInWorld = (this.worldX - (26 * 48 / 2)) / size;
+                 }
+             }
+             else if (playerListener.keyAndMode.equals("AP")){
+                 this.screenX -= v;
+                 worldX -= v;
+             }
+
+             try {
+                 Thread.sleep(1000/60);
+             } catch (InterruptedException e) {
+                 throw new RuntimeException(e);
+             }
+             currentUser.userManager.lM.gM.panelsManagerCard.gamePanel.repaint();
+         }
+         playerJumpIsOver();
+    }
 
      private void playerJumpIsOver(){
          try {
@@ -139,15 +186,21 @@ public abstract class Player extends Entity {
          } catch (InterruptedException e) {
              throw new RuntimeException(e);
          }
-         while (screenY < lastYB4Jump) {
-            screenY += 2*v;
+         while (!isBottomCollisionOn && worldY<13 * 48) {
+             collisionChecker.jumpOverCollisionChecker();
+             screenY += v;
+             worldY += v;
             try {
                 Thread.sleep(1000/60);//fps
-//                logicGameState.lM.gM.guiUserManager.guiGameState.gamePanel.repaint();
+                currentUser.userManager.lM.gM.panelsManagerCard.gamePanel.repaint();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
+         this.currentUser.currentGameState.update();
+         worldY -=v;
+         screenY -=v;
+         duringJump = false;
      }
     private void sectionChanged(){
         this.screenX = 0;
@@ -263,5 +316,13 @@ public abstract class Player extends Entity {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
+    }
+
+    public boolean isDuringJump() {
+        return duringJump;
+    }
+
+    public void setDuringJump(boolean duringJump) {
+        this.duringJump = duringJump;
     }
 }

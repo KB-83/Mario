@@ -131,6 +131,17 @@ public class CollisionChecker {
 //        }
 
     }
+    public void jumpOverCollisionChecker(){
+        int playerLeftCol = player.worldX/48;
+        int playerTopRow = player.worldY/48;
+        playerTopRow = (player.worldY + player.v)/48;
+        tile1 = tileManager.tiles[tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol][playerTopRow+1]];
+        tile2 = tileManager.tiles[tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol+1][playerTopRow +1]];
+        if (tile1.collision || tile2.collision){
+            player.isBottomCollisionOn = true;
+            checkIfCoin(tile1,tile2);
+    }
+    }
     private void checkIfCoin(Tile tile1,Tile tile2){
 //        System.out.println("checking coin from collision checker");
         if (tile1 != null && tile2 != null) {
