@@ -26,11 +26,11 @@ public class GuiGameState {
     public GuiPlayer guiPlayer;
     List<Enemy> enemies;
     public GuiTileManager background;
-    @JsonIgnore
+//    @JsonIgnore
     public GuiCoinManager coinManager;
-    @JsonIgnore
+//    @JsonIgnore
     public GuiPipeManager pipeManager;
-    @JsonIgnore
+//    @JsonIgnore
     public GuiPlantManager plantManager;
 
     public GuiGameState(GamePanel gamePanel, GraphicManager gM,LogicGameState logicGameState){
@@ -54,7 +54,6 @@ public class GuiGameState {
     }
 
     public void sectionChanged() {
-        System.out.println("section changed from gui game state");
         this.background.loadMap();
         this.coinManager.loadCoinList();
         this.pipeManager.loadPipeList();

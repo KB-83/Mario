@@ -46,7 +46,6 @@ public class GuiEnemy extends GuiEntity {
         timer = new Timer(1000/40, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("firs row"+worldY);
                 if( direction){
                     goingUp();
                 }

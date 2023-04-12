@@ -51,7 +51,7 @@ public abstract class Player extends Entity {
     }
 
      public void update() {
-        collisionChecker.checkCollision();
+//        collisionChecker.checkCollision();
          if(this.worldX >= 26 * 4 * 48 - 48){
              this.currentUser.userManager.sectionChanged();
              this.sectionChanged();
@@ -80,25 +80,24 @@ public abstract class Player extends Entity {
                  }
                  if (!isRightCollisionOn) {
                      this.worldX += this.v;
-                     System.out.println("rightttt");
-                     while (!isBottomCollisionOn && worldY< 13 * 48) {
-                         collisionChecker.jumpOverCollisionChecker();
-                         screenY += v;
-                         worldY += v;
-                         try {
-                             Thread.sleep(1);//fps
-                             currentUser.userManager.lM.gM.panelsManagerCard.gamePanel.repaint();
-                         } catch (InterruptedException e) {
-                             throw new RuntimeException(e);
-                         }
+//                     while (!isBottomCollisionOn && worldY< 13 * 48) {
+//                         collisionChecker.jumpOverCollisionChecker();
+//                         screenY += v;
+//                         worldY += v;
+//                         try {
+//                             Thread.sleep(1);//fps
+//                             currentUser.userManager.lM.gM.panelsManagerCard.gamePanel.repaint();
+//                         } catch (InterruptedException e) {
+//                             throw new RuntimeException(e);
+//                         }
                          if (screenX <= 26 * 48 / 2) {
                              this.screenX += this.v;
                          } else {
                              this.currentUser.currentGameState.background.topLeftColInWorld = (this.worldX - (26 * 48 / 2)) / size;
                          }
-                     }
-                     worldY -= v;
-                     screenY -= v;
+//                     }
+//                     worldY -= v;
+//                     screenY -= v;
                      duringJump = false;
                  }
                  if (duringJump == false) {

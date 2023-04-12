@@ -18,7 +18,7 @@ import static javax.management.timer.Timer.ONE_SECOND;
 
 public class GuiPlantManager implements GuiPart {
     GuiGameState guiGameState;
-    List<GuiEnemy> plantList = new ArrayList<>();
+    List<GuiEnemy> plantList;
     Timer timer;
 
     int[][] plantsColAndRow = new int[worldCols][worldRows];
@@ -31,7 +31,7 @@ public class GuiPlantManager implements GuiPart {
 
     public void loadPlantList() {
 
-
+        plantList = new ArrayList<>();
         try {
             int levelNum =  guiGameState.logicGameState.levelNum;
             int sectionNum = guiGameState.logicGameState.sectionNum;

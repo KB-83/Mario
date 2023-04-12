@@ -139,6 +139,7 @@ public class UserManager {
 //        this.gM.createANewGameState();
 //    }
     public void sectionChanged() {
+        countScore();
         this.currentUser.currentGameState.background.topLeftColInWorld = 0;
         this.currentUser.currentGameState.sectionNum++;
         System.out.println("section changed from user mnager");
@@ -180,5 +181,17 @@ public class UserManager {
                 System.out.println("you dont have enough money");
             }
         }
+    }
+    public void countScore(){
+//        به ازای هر سکه بدست آمده ۱۰ امتیاز
+//        به ازای هر قلب ۲۰ امتیاز
+//        به ازای هر دشمن کشته شده ۱۵ امتیاز
+//        به ازای هر ثانیه باقیمانده از بازی ۱ امتیاز
+        int coin = currentUser.currentGameState.coins;
+        int hearts = currentUser.currentGameState.hearts;
+        int time = currentUser.currentGameState.remainingTime;
+        currentUser.getCurrentGameState().score+= 10 * coin + 20 * hearts + time;
+        currentUser.currentGameState.coins = 0;
+        currentUser.coins += coin;
     }
 }

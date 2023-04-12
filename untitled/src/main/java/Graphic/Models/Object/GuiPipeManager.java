@@ -14,7 +14,7 @@ import java.util.List;
 public class GuiPipeManager implements GuiPart {
 
     GuiGameState guiGameState;
-    List<GuiPipe> pipeList = new ArrayList<>();
+    List<GuiPipe> pipeList;
 
     int[][] pipesColAndRow = new int[worldCols][worldRows];
 
@@ -26,7 +26,7 @@ public class GuiPipeManager implements GuiPart {
 
     public void loadPipeList() {
 
-
+        pipeList = new ArrayList<>();
         try {
             int levelNum =  guiGameState.logicGameState.levelNum;
             int sectionNum = guiGameState.logicGameState.sectionNum;
