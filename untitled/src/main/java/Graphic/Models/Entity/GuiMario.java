@@ -10,6 +10,9 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GuiMario extends GuiPlayer{
+    public GuiMario(){
+        super();
+    }
     public GuiMario(GraphicManager gM, GuiGameState guiGameState) {
         super(gM,guiGameState);
         images = new Image[10];

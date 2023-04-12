@@ -17,13 +17,13 @@ public class User {
     public LogicGameState currentGameState;
 //    @JsonIgnore
     public List<LogicGameState> gameStatesList = new ArrayList<>();
-    List<Player> ownedPlayers = new ArrayList<>();
+    List<String> ownedPlayers = new ArrayList<>();
 //    GuiUser guiUser;
-    Player selectedPlayer;
+    String selectedPlayer;
     String userName;
     String passWord;
     int highScore;
-    int coins = 100;
+    int coins = 21100;
 
     public User() {
 
@@ -32,9 +32,12 @@ public class User {
         this.userManager = userManager;
         this.userName = userName;
         this.passWord = passWord;
-        UniqueGirl mario = new UniqueGirl(this);
-        this.ownedPlayers.add(mario);
-        this.selectedPlayer = mario;
+        this.ownedPlayers.add("Mario");
+//        this.ownedPlayers.add("Luigi");
+//        this.ownedPlayers.add("Princess");
+//        this.ownedPlayers.add("UniqueGirl");
+//        this.ownedPlayers.add("Poker");
+        this.selectedPlayer = "Mario";
 
 //        this.currentGameState = userManager.createANewGameState();
 //        this.gameStatesList.add(c);
@@ -56,15 +59,7 @@ public class User {
 //        this.selectedPlayer.update();
 //    }
     public void changeSelectedPlayer(String name){
-//        System.out.println(name);
-//            for (Player player:ownedPlayers){
-//                if (player.name.equals(name)){
-//                    this.selectedPlayer = player;
-//                    this.lm.gM.panelsManagerCard.profilePanel.repaint();
-//                    break;
-//                }
-//            }
-
+        this.selectedPlayer = name;
     }
 
     public List<LogicGameState> getGameStatesList() {
@@ -75,11 +70,11 @@ public class User {
         this.gameStatesList = gameStatesList;
     }
 
-    public List<Player> getOwnedPlayers() {
+    public List<String> getOwnedPlayers() {
         return ownedPlayers;
     }
 
-    public void setOwnedPlayers(List<Player> ownedPlayers) {
+    public void setOwnedPlayers(List<String> ownedPlayers) {
         this.ownedPlayers = ownedPlayers;
     }
 
@@ -91,11 +86,11 @@ public class User {
 //        this.guiUser = guiUser;
 //    }
 
-    public Player getSelectedPlayer() {
+    public String getSelectedPlayer() {
         return selectedPlayer;
     }
 
-    public void setSelectedPlayer(Player selectedPlayer) {
+    public void setSelectedPlayer(String selectedPlayer) {
         this.selectedPlayer = selectedPlayer;
     }
 
@@ -147,5 +142,4 @@ public class User {
     public void setHighScore(int highScore) {
         this.highScore = highScore;
     }
-
 }

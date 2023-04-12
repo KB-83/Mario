@@ -2,7 +2,12 @@ package Logic.Models;
 
 import Graphic.Models.GuiGameState;
 import Logic.LogicManager;
+import Logic.Models.Entity.Luigi;
+import Logic.Models.Entity.Poker;
+import Logic.Models.Entity.Princess;
+import Logic.Models.Entity.UniqueGirl;
 import Logic.Models.Tiles.CollisionChecker;
+import Logic.Models.Tiles.Tile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -111,7 +116,7 @@ public class UserManager {
         for (LogicGameState gameState:currentUser.gameStatesList){
             if (gameState.getMassage().equals(massage)){
                 gameState.lM = lM;
-                gameState.guiGameState = new GuiGameState(lM.gM.panelsManagerCard.gamePanel,lM.gM,currentUser.currentGameState);
+                gameState.guiGameState = new GuiGameState(lM.gM.panelsManagerCard.gamePanel,lM.gM,gameState);
                 gameState.background.logicGameState = gameState;
                 currentUser.setCurrentGameState(gameState);
                 gameState.currentPlayer.setCurrentUser(currentUser);
@@ -138,6 +143,40 @@ public class UserManager {
         this.currentUser.currentGameState.guiGameState.sectionChanged();
     }
     public void buyRequest(String name){
-        System.out.println(name);
+        if (currentUser.ownedPlayers.contains(name)){
+            System.out.println("already taken");
+        }
+        else {
+            int coins = currentUser.coins;
+            int price = 0;
+            switch (name){
+                case "Luigi":
+                    price = Luigi.price;
+                    break;
+                case "Princess":
+                    price = Princess.price;
+                    break;
+                case "UniqueGirl":
+                    price = UniqueGirl.price;
+                    break;
+                case "Poker":
+                    price = Poker.price;
+                    break;
+            }
+            if (price<=coins){
+                currentUser.coins -= price;
+                currentUser.ownedPlayers.add(name);
+                try {
+                    Thread.sleep(400);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                lM.gM.panelsManagerCard.shopPanel.repaint();
+                lM.gM.panelsManagerCard.profilePanel.setPlayersOption();
+            }
+            else {
+                System.out.println("you dont have enough money");
+            }
+        }
     }
 }

@@ -44,8 +44,8 @@ public class LogicGameState {
         // asan ye vazi
         this.background = new TileManager(this);
         this.coinManager = new CoinManager(this);
-        this.currentPlayer = new UniqueGirl(lM.userManager.currentUser);
-        this.lM.userManager.currentUser.selectedPlayer = this.currentPlayer;
+        setPlayer();
+//        this.lM.userManager.currentUser.selectedPlayer = this.currentPlayer;
 //        this.lM.gM.panelsManagerCard.gamePanel.setKeyListener(currentPlayer.playerListener);
         this.currentPlayer.collisionChecker.tileManager = background;
         currentPlayer.logicGameState = this;
@@ -77,6 +77,27 @@ public class LogicGameState {
                 throw new RuntimeException(e);
             }
             this.lM.gM.panelsManagerCard.cardLayout.show(lM.gM.panelsManagerCard,"mainMenu");
+        }
+
+    }
+    public void setPlayer(){
+        String playerName = lM.userManager.currentUser.selectedPlayer;
+        switch (playerName){
+            case "Mario":
+                this.currentPlayer = new Mario(lM.userManager.currentUser);
+                break;
+            case "Luigi":
+                this.currentPlayer = new Luigi(lM.userManager.currentUser);
+                break;
+            case "Princess":
+                this.currentPlayer = new Princess(lM.userManager.currentUser);
+                break;
+            case "UniqueGirl":
+                this.currentPlayer = new UniqueGirl(lM.userManager.currentUser);
+                break;
+            case "Poker":
+                this.currentPlayer = new Poker(lM.userManager.currentUser);
+                break;
         }
 
     }

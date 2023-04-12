@@ -8,6 +8,9 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GuiPoker extends GuiPlayer{
+    public GuiPoker(){
+        super();
+    }
 
     public GuiPoker(GraphicManager gM, GuiGameState guiGameState) {
         super(gM,guiGameState);

@@ -8,6 +8,9 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GuiPrincess extends GuiPlayer{
+    public GuiPrincess(){
+        super();
+    }
     public GuiPrincess(GraphicManager gM, GuiGameState guiGameState) {
         super(gM,guiGameState);
         images = new Image[10];

@@ -7,7 +7,7 @@ import Graphic.Models.Object.GuiCoinManager;
 import Graphic.Models.Object.GuiPipeManager;
 import Graphic.Models.Tiles.GuiTileManager;
 import Graphic.Panels.GamePanel;
-import Logic.Models.Entity.Enemy;
+import Logic.Models.Entity.*;
 import Logic.Models.LogicGameState;
 import Util.GameLoop;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -37,7 +37,7 @@ public class GuiGameState {
 //        this.gamePanel.setGuiGameState(this);
         this.gM = gM;
         this.logicGameState = logicGameState;
-        this.guiPlayer = new GuiUniqueGirl(this.gM, this);
+        setPlayer();
         this.background = new GuiTileManager(this);
         this.coinManager = new GuiCoinManager(this);
         this.pipeManager = new GuiPipeManager(this);
@@ -54,5 +54,26 @@ public class GuiGameState {
         this.background.loadMap();
         this.coinManager.loadCoinList();
         this.pipeManager.loadPipeList();
+    }
+    private void setPlayer(){
+        String playerName = logicGameState.currentPlayer.name;
+        switch (playerName){
+            case "Mario":
+                this.guiPlayer = new GuiMario(gM,this);
+                break;
+            case "Luigi":
+                this.guiPlayer = new GuiLuigi(gM,this);
+                break;
+            case "Princess":
+                this.guiPlayer = new GuiPrincess(gM,this);
+                break;
+            case "UniqueGirl":
+                this.guiPlayer = new GuiUniqueGirl(gM,this);
+                break;
+            case "Poker":
+                this.guiPlayer = new GuiPoker(gM,this);
+                break;
+        }
+
     }
 }

@@ -36,15 +36,16 @@ public class ProfilePanel extends JPanel {
         textX = (this.getSize().width / 2) - (fm.stringWidth("Highest Score:"+String.valueOf(user.getHighScore())) / 2);
         g2.drawString("Highest Score:"+String.valueOf(user.getHighScore()), textX,200);
 
-        textX = (this.getSize().width / 2) - (fm.stringWidth("selected player: "+user.getSelectedPlayer().name) / 2);
-        g2.drawString("selected player: "+user.getSelectedPlayer().name, textX,260);
+        textX = (this.getSize().width / 2) - (fm.stringWidth("selected player: "+user.getSelectedPlayer()) / 2);
+        g2.drawString("selected player: "+user.getSelectedPlayer(), textX,260);
 
     }
-    private void setPlayersOption(){
+    public void setPlayersOption(){
         int x = 100;
+        this.removeAll();
         ButtonGroup bg=new ButtonGroup();
-        for (Player player:user.getOwnedPlayers()){
-            JRadioButton jRadioButton=new JRadioButton(player.name);
+        for (String player:user.getOwnedPlayers()){
+            JRadioButton jRadioButton=new JRadioButton(player);
             jRadioButton.setBounds(x,500,100,30);
             playersOption.add(jRadioButton);
             bg.add(jRadioButton);
@@ -54,13 +55,13 @@ public class ProfilePanel extends JPanel {
         ok = new JButton("ok");
         ok.setBounds(100,550,50,30);
         ok.addActionListener(new ActionListener() {
-            String name="Mario";
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (JRadioButton jRadioButton:playersOption){
                     if (jRadioButton.isSelected()){
-                        name=jRadioButton.getText();
+                        String name=jRadioButton.getText();
                         card.gM.lM.userManager.currentUser.changeSelectedPlayer(name);
+                        repaint();
                         saveInfo();
                         break;
                     }
