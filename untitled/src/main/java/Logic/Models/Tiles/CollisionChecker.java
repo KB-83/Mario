@@ -49,8 +49,8 @@ public class CollisionChecker {
         switch (action) {
             case "WP":
                 playerTopRow = (player.worldY- player.v)/48;
-                tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol][playerTopRow]];
-                tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol+1][playerTopRow]];
+                tile1 = tileManager.tiles[tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol][playerTopRow]];
+                tile2 = tileManager.tiles[tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol+1][playerTopRow]];
                 if (tile1.collision || tile2.collision){
                     player.isUpCollisionOn = true;
                 }
@@ -58,11 +58,10 @@ public class CollisionChecker {
             case "DP":
                 playerLeftCol = (player.worldX + player.v)/48;
                 if(playerLeftCol <= 26 * 4 - 2) {
-                    System.out.println(tileManager.tiles+"collision checker line 59");
-                    tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol + 1][playerTopRow]];
-                    tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol + 1][playerTopRow + 1]];
+                    tile1 = tileManager.tiles[tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol + 1][playerTopRow]];
+                    tile2 = tileManager.tiles[tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol + 1][playerTopRow + 1]];
                     // chec
-                    if(tileManager.mapTileNum[playerLeftCol + 1][playerTopRow] == 7){
+                    if(tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol + 1][playerTopRow] == 7){
 
                     }
                 }
@@ -76,8 +75,8 @@ public class CollisionChecker {
                 break;
             case "AP":
                 playerLeftCol = (player.worldX- player.v)/48;
-                tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol ][playerTopRow]];
-                tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol ][playerTopRow + 1]];
+                tile1 = tileManager.tiles[tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol ][playerTopRow]];
+                tile2 = tileManager.tiles[tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol ][playerTopRow + 1]];
                 if(player.worldY% 48 == 0){
                     tile2 = tile1;
                 }
@@ -87,8 +86,8 @@ public class CollisionChecker {
                 break;
             case "SP":
                 playerTopRow = (player.worldY + player.v)/48;
-                tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol][playerTopRow+1]];
-                tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol+1][playerTopRow +1]];
+                tile1 = tileManager.tiles[tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol][playerTopRow+1]];
+                tile2 = tileManager.tiles[tileManager.logicGameState.guiGameState.background.mapTileNum[playerLeftCol+1][playerTopRow +1]];
                 if (tile1.collision || tile2.collision){
                     player.isBottomCollisionOn = true;
                 }
