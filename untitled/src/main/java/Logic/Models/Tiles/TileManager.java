@@ -34,4 +34,11 @@ public class TileManager {
         tiles[7] = new Tile(false,7);
     }
 
+    public Tile[] getTiles() {
+        return tiles;
+    }
+
+    public void setTiles(Tile[] tiles) {
+        this.tiles = tiles;
+    }
 }

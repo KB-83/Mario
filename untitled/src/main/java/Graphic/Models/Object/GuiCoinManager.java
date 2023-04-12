@@ -79,7 +79,7 @@ public class GuiCoinManager implements GuiPart {
         int screenCol ;
         int screenRow ;
             for (GuiCoin guiCoin:coinList){
-                if(guiCoin.worldCol >= topLeftCol) {
+                if(guiCoin.worldCol >= topLeftCol && guiCoin.isEaten == false) {
                     screenCol = guiCoin.worldCol - topLeftCol;
                     screenRow = guiCoin.worldRow;
                     g2.drawImage(guiCoin.image , screenCol *tileSize , screenRow * tileSize + 20,24,24,null);

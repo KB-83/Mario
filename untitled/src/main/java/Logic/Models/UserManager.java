@@ -2,6 +2,7 @@ package Logic.Models;
 
 import Graphic.Models.GuiGameState;
 import Logic.LogicManager;
+import Logic.Models.Tiles.CollisionChecker;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -25,8 +26,8 @@ public class UserManager {
                 FileWriter fileWriter = new FileWriter(file);
 //                User user = new User(userName,pass,this);
                 //test
-                this.currentUser = new User(userName,pass,this);
-                userCleared(currentUser);
+                User user = new User(userName,pass,this);
+                userCleared(user);
                 LogicGameState logicGameState1 = new LogicGameState(this.lM);
                 currentUser.gameStatesList.add(logicGameState1);
                 LogicGameState logicGameState2 = new LogicGameState(this.lM);
@@ -52,10 +53,8 @@ public class UserManager {
         File file = new File(userName + ".json");
         if (file.exists()) {
             try {
-                System.out.println(objectMapper+"from user manaer");
                 if (objectMapper.readValue(file, User.class).getPassWord().equals(pass)) {
                     userCleared(objectMapper.readValue(file, User.class));
-                    System.out.println("login request");
                     //test
                     this.lM.gM.panelsManagerCard.lastGamesPanel.setLastGamesButtons();
                     this.lM.gM.panelsManagerCard.newGamePanel.setLastGamesButtons();
@@ -95,7 +94,7 @@ public class UserManager {
 //                this.currentUser.gameStatesList.add(currentUser.getCurrentGameState());
                 this.currentUser.currentGameState.massage = newGameMassage;
                 //
-                this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
+                this.currentUser.currentGameState.currentPlayer.setCurrentUser(this.currentUser);
 //                this.lM.gM.guiUserManager.newGameRequest(this.lM.gM);
                 // testt
 //                System.out.println("here from user manager");
@@ -106,13 +105,16 @@ public class UserManager {
     public void lastGamesRequest(String massage) {
         for (LogicGameState gameState:currentUser.gameStatesList){
             if (gameState.getMassage().equals(massage)){
+                gameState.lM = lM;
                 gameState.guiGameState = new GuiGameState(lM.gM.panelsManagerCard.gamePanel,lM.gM,currentUser.currentGameState);
                 currentUser.setCurrentGameState(gameState);
-//                currentUser.currentGameState.currentPlayer.setCurrentUser(currentUser);
                 gameState.currentPlayer.setCurrentUser(currentUser);
+//                gameState.currentPlayer.collisionChecker = new CollisionChecker(gameState.currentPlayer);
+//                gameState.currentPlayer.collisionChecker.player = gameState.currentPlayer;
+//                gameState.currentPlayer.collisionChecker.tileManager = gameState.background;
                 gameState.guiGameState.logicGameState = gameState;
 //                gameState.currentPlayer.setLogicG;
-                this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
+//                this.currentUser.selectedPlayer.setCurrentUser(this.currentUser);
                 lM.gM.panelsManagerCard.gamePanel.setKeyListener(gameState.currentPlayer.getPlayerListener());
                 break;
             }

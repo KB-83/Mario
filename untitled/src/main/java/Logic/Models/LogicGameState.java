@@ -16,8 +16,8 @@ public class LogicGameState {
     @JsonIgnore
     public LogicManager lM;
     @JsonIgnore
-
     public GuiGameState guiGameState;
+    @JsonIgnore
     private GameLoop loop;
     public Player currentPlayer;
     List<Enemy> enemies;
@@ -174,4 +174,6 @@ public class LogicGameState {
     public void setCoins(int coins) {
         this.coins = coins;
     }
+
+
 }

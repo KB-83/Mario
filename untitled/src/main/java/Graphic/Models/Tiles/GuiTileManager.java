@@ -32,6 +32,7 @@ public class GuiTileManager implements GuiPart {
         try {
             int levelNum =  guiGameState.logicGameState.levelNum;
             int sectionNum = guiGameState.logicGameState.sectionNum;
+            System.out.println("loadingMap"+sectionNum);
 
             InputStream is = getClass().getResourceAsStream("/Maps/map"+levelNum+sectionNum+".txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -125,6 +126,7 @@ public class GuiTileManager implements GuiPart {
 
         int topLeftCol = guiGameState.gM.lM.userManager.currentUser.currentGameState.background.topLeftColInWorld;
         int topLeftRow = 0;
+        System.out.println(mapTileNum[0][0]+" gui tile manager");
         int col = topLeftCol;
         int row = topLeftRow;
         int x = 0;
@@ -133,7 +135,6 @@ public class GuiTileManager implements GuiPart {
         while (col < worldCols && row<  worldRows) {
 
             int tileNum = mapTileNum[col][row];
-
 
             g2.drawImage(tiles[guiGameState.logicGameState.background.mapTileNum[col][row]].image, x, y, tileSize,tileSize, null);
             col++;

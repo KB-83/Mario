@@ -17,7 +17,7 @@ public class GamePanel extends JPanel {
     User currentUser;
     public PanelsManagerCard cardPanel;
     // needs gui game state to paint that
-    public GuiGameState guiGameState;
+//    public GuiGameState guiGameState;
 
     JButton pause = new JButton("ll");
 
@@ -38,15 +38,15 @@ public class GamePanel extends JPanel {
             }
         });
     }
-    public void setGuiGameState(GuiGameState guiGameState){
-        this.guiGameState = guiGameState;
-    }
+//    public void setGuiGameState(GuiGameState guiGameState){
+//        this.guiGameState = guiGameState;
+//    }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         super.paintComponent(g);
-        if (guiGameState != null){
-        guiGameState.paintAll(g2);
+        if (currentUser.currentGameState != null){
+        currentUser.currentGameState.guiGameState.paintAll(g2);
         }
         g2.setFont(new Font("monospaced", Font.BOLD, 30));
         g2.drawString(String.valueOf("COINS:"+currentUser.currentGameState.getCoins()),120,35);

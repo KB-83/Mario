@@ -19,7 +19,6 @@ public class User {
     public List<LogicGameState> gameStatesList = new ArrayList<>();
     List<Player> ownedPlayers = new ArrayList<>();
 //    GuiUser guiUser;
-    @JsonManagedReference
     Player selectedPlayer;
     String userName;
     String passWord;

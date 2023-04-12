@@ -8,7 +8,7 @@ public class GuiCoin {
 
     Image image;
     int worldCol,worldRow;
-    boolean isEaten;
+    boolean isEaten = false;
 
     GuiCoin(int worldCol,int worldRow) {
 

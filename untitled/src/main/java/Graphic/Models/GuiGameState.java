@@ -34,7 +34,7 @@ public class GuiGameState {
     public GuiGameState(GamePanel gamePanel, GraphicManager gM,LogicGameState logicGameState){
 
         this.gamePanel = gamePanel;
-        this.gamePanel.guiGameState = this;
+//        this.gamePanel.setGuiGameState(this);
         this.gM = gM;
         this.logicGameState = logicGameState;
         this.guiPlayer = new GuiUniqueGirl(this.gM, this);
@@ -43,7 +43,6 @@ public class GuiGameState {
         this.pipeManager = new GuiPipeManager(this);
     }
     public void paintAll(Graphics2D g2){
-
         background.draw(g2);
         pipeManager.draw(g2);
         coinManager.draw(g2);

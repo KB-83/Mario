@@ -12,7 +12,7 @@ public class CollisionChecker {
     public TileManager tileManager;
     public CoinManager coinManager;
     public PipeManager pipeManager;
-    Player player;
+    public Player player;
     PlayerListener playerListener;
     Tile tile1,tile2;
 
@@ -56,6 +56,7 @@ public class CollisionChecker {
             case "DP":
                 playerLeftCol = (player.worldX + player.v)/48;
                 if(playerLeftCol <= 26 * 4 - 2) {
+                    System.out.println(tileManager.tiles+"collision checker line 59");
                     tile1 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol + 1][playerTopRow]];
                     tile2 = tileManager.tiles[tileManager.mapTileNum[playerLeftCol + 1][playerTopRow + 1]];
                     // chec
