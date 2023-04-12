@@ -54,6 +54,7 @@ public class NewGamePanel extends JPanel {
         this.add(back);
     }
     public void setLastGamesButtons(){
+        newGameMassage.setForeground(Color.gray);
         newGameMassage.setBounds(this.getWidth()/2-350 ,550,250,50);
         this.add(newGameMassage);
         ok.setBounds(this.getWidth()/2 - 25,550,50,50);

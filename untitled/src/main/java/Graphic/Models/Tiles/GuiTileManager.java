@@ -120,6 +120,7 @@ public class GuiTileManager implements GuiPart {
             tiles[7].image = ImageIO.read(getClass().getResourceAsStream("/Images/Tiles/Sky.png"));
             tiles[7].collision = false;
 
+
         }catch (IOException e){
 
             e.printStackTrace();

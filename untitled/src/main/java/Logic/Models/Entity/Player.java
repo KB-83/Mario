@@ -36,8 +36,9 @@ public abstract class Player extends Entity {
     public int imageNumber;
     int imageCounter;
     int lastYB4Jump = 10 * 48;
-    private Rectangle collision = new Rectangle(5,0,38,48);
-    public boolean isUpCollisionOn,isRightCollisionOn,isBottomCollisionOn,isLeftCollisionOn;
+    @JsonIgnore
+    public Rectangle solidArea = new Rectangle(5,0,38,46);
+    public boolean isCollisionOn;
     public boolean duringJump;
     Player(){
         super();
@@ -51,8 +52,9 @@ public abstract class Player extends Entity {
     }
 
      public void update() {
-//        collisionChecker.checkCollision();
-         if(this.worldX >= 26 * 4 * 48 - 48){
+        isCollisionOn = false;
+        collisionChecker.checkCollision();
+         if(this.worldX >= 26 * 4 * 48 - 60){
              this.currentUser.userManager.sectionChanged();
              this.sectionChanged();
          }
@@ -61,12 +63,13 @@ public abstract class Player extends Entity {
              if (action.equals("WP")) {
                  if (imageNumber == 0 || imageNumber == 1 || imageNumber == 4) {
                      imageNumber = 4;
-                 }
-                 else {
+                 } else {
                      imageNumber = 5;
                  }
-                 if (!isUpCollisionOn && duringJump == false) {
-                     playerWantsToJump();
+                 if (!isCollisionOn && duringJump == false) {
+//                     playerWantsToJump();
+                     worldY -= v;
+                     screenY -= v;
                  }// it is jumped
              }
              if (action.equals("DP")) {
@@ -78,7 +81,7 @@ public abstract class Player extends Entity {
                      }
                      imageCounter++;
                  }
-                 if (!isRightCollisionOn) {
+                 if (!isCollisionOn) {
                      this.worldX += this.v;
 //                     while (!isBottomCollisionOn && worldY< 13 * 48) {
 //                         collisionChecker.jumpOverCollisionChecker();
@@ -90,11 +93,11 @@ public abstract class Player extends Entity {
 //                         } catch (InterruptedException e) {
 //                             throw new RuntimeException(e);
 //                         }
-                         if (screenX <= 26 * 48 / 2) {
-                             this.screenX += this.v;
-                         } else {
-                             this.currentUser.currentGameState.background.topLeftColInWorld = (this.worldX - (26 * 48 / 2)) / size;
-                         }
+                     if (screenX <= 26 * 48 / 2) {
+                         this.screenX += this.v;
+                     } else {
+                         this.currentUser.currentGameState.background.topLeftColInWorld = (this.worldX - (26 * 48 / 2)) / size;
+                     }
 //                     }
 //                     worldY -= v;
 //                     screenY -= v;
@@ -113,23 +116,24 @@ public abstract class Player extends Entity {
                      }
                      imageCounter++;
                  }
-                 if (!isLeftCollisionOn) {
+                 if (!isCollisionOn) {
                      if (this.screenX > 0) {
                          this.screenX -= v;
                          this.worldX -= v;
                      }
-                 } else {
-                     this.worldX -= this.v;
                  }
+//                 } else {
+//                     this.worldX -= this.v;
+//                 }
                  if (duringJump == false) {
                      lastYB4Jump = this.screenY;
                  }
              }
 
-             if (action .equals("SP")) {
+             if (action.equals("SP")) {
                  imageNumber = 6;
                  imageCounter++;
-                 if (!isBottomCollisionOn && duringJump == false) {
+                 if (!isCollisionOn && duringJump == false) {
                      if (screenY < size * (this.currentUser.currentGameState.rows) - size) {
                          this.screenY += this.v;
                          this.worldY += this.v;
@@ -176,31 +180,30 @@ public abstract class Player extends Entity {
              }
              currentUser.userManager.lM.gM.panelsManagerCard.gamePanel.repaint();
          }
-         playerJumpIsOver();
     }
 
-     private void playerJumpIsOver(){
-         try {
-             Thread.sleep(300);
-         } catch (InterruptedException e) {
-             throw new RuntimeException(e);
-         }
-         while (!isBottomCollisionOn && worldY<13 * 48) {
-             collisionChecker.jumpOverCollisionChecker();
-             screenY += v;
-             worldY += v;
-            try {
-                Thread.sleep(1000/60);//fps
-                currentUser.userManager.lM.gM.panelsManagerCard.gamePanel.repaint();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-         this.currentUser.currentGameState.update();
-         worldY -=v;
-         screenY -=v;
-         duringJump = false;
-     }
+//     private void playerJumpIsOver(){
+//         try {
+//             Thread.sleep(300);
+//         } catch (InterruptedException e) {
+//             throw new RuntimeException(e);
+//         }
+//         while (!isBottomCollisionOn && worldY<13 * 48) {
+//             collisionChecker.jumpOverCollisionChecker();
+//             screenY += v;
+//             worldY += v;
+//            try {
+//                Thread.sleep(1000/60);//fps
+//                currentUser.userManager.lM.gM.panelsManagerCard.gamePanel.repaint();
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+//         this.currentUser.currentGameState.update();
+//         worldY -=v;
+//         screenY -=v;
+//         duringJump = false;
+//     }
     private void sectionChanged(){
         this.screenX = 0;
         this.worldX = 0;
@@ -275,38 +278,6 @@ public abstract class Player extends Entity {
 
     public void setLastYB4Jump(int lastYB4Jump) {
         this.lastYB4Jump = lastYB4Jump;
-    }
-
-    public boolean isUpCollisionOn() {
-        return isUpCollisionOn;
-    }
-
-    public void setUpCollisionOn(boolean upCollisionOn) {
-        isUpCollisionOn = upCollisionOn;
-    }
-
-    public boolean isRightCollisionOn() {
-        return isRightCollisionOn;
-    }
-
-    public void setRightCollisionOn(boolean rightCollisionOn) {
-        isRightCollisionOn = rightCollisionOn;
-    }
-
-    public boolean isBottomCollisionOn() {
-        return isBottomCollisionOn;
-    }
-
-    public void setBottomCollisionOn(boolean bottomCollisionOn) {
-        isBottomCollisionOn = bottomCollisionOn;
-    }
-
-    public boolean isLeftCollisionOn() {
-        return isLeftCollisionOn;
-    }
-
-    public void setLeftCollisionOn(boolean leftCollisionOn) {
-        isLeftCollisionOn = leftCollisionOn;
     }
 
     public User getCurrentUser() {

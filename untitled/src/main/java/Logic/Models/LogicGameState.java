@@ -67,9 +67,12 @@ public class LogicGameState {
 
     private void checkIfOver() {
         currentPlayer.checkHearts();
-        if(hearts <= 0){
+        if(hearts <= 0 || sectionNum > 3){
             isOver = true;
             lM.userManager.currentUser.coins += this.coins;
+            if(lM.userManager.currentUser.highScore < this.score){
+                lM.userManager.currentUser.highScore = this.score;
+            }
             try {
                 lM.gM.panelsManagerCard.gamePanel.repaint();
                 Thread.sleep(3000);
