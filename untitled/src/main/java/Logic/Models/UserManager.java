@@ -37,6 +37,8 @@ public class UserManager {
                 currentUser.gameStatesList.add(logicGameState1);
                 LogicGameState logicGameState2 = new LogicGameState(this.lM);
                 currentUser.gameStatesList.add(logicGameState2);
+                LogicGameState logicGameState3 = new LogicGameState(this.lM);
+                currentUser.gameStatesList.add(logicGameState3);
                 currentUser.currentGameState = logicGameState1;
                 objectMapper.writeValue(fileWriter,currentUser);
                 //test

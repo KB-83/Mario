@@ -47,18 +47,20 @@ public class LastGamesPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (JRadioButton button:lastGamesList){
-                    if(button != null && button.isSelected() ){
-                        user.userManager.lastGamesRequest(button.getText());
-                        setLastGamesOptions();
-                        GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
-                        user.currentGameState.setLoop(gameLoop);
+                    if(button != null && button.isSelected() ) {
+                        if (!button.getText().equals("newGame   ")) {
+                            user.userManager.lastGamesRequest(button.getText());
+                            setLastGamesOptions();
+                            GameLoop gameLoop = new GameLoop(card.gM.lM, card.gM);
+                            user.currentGameState.setLoop(gameLoop);
 
-                        gameLoop.start();
-                        long nano = 1000000000;
-                        user.currentGameState.setLastStopThreadTime(System.nanoTime() - (user.currentGameState.getPassedTime() *nano));
-                        saveInfo();
-                        card.cardLayout.show(card,"gamePanel");
-                        card.gamePanel.requestFocus();
+                            gameLoop.start();
+                            long nano = 1000000000;
+                            user.currentGameState.setLastStopThreadTime(System.nanoTime() - (user.currentGameState.getPassedTime() * nano));
+                            saveInfo();
+                            card.cardLayout.show(card, "gamePanel");
+                            card.gamePanel.requestFocus();
+                        }
                         break;
                     }
                 }
@@ -77,10 +79,10 @@ public class LastGamesPanel extends JPanel {
             JRadioButton gameButton = new JRadioButton();
             lastGamesList[i] = gameButton;
             gameButton.setText(user.gameStatesList.get(i).massage);
-            gameButton.setBounds(x,500,100,30);
+            gameButton.setBounds(x,500,250,30);
             bg.add(gameButton);
             this.add(gameButton);
-            x += 100;
+            x += 300;
         }
     }
     private void saveInfo(){

@@ -27,7 +27,7 @@ public class LogicGameState {
     public int sectionNum = 1;
     public TileManager background;
     public CoinManager coinManager;
-    public String massage = "no";
+    public String massage = "newGame   ";
     public boolean isOver = false;
     int hearts = 3;
     int score = 0;

@@ -43,9 +43,11 @@ public class ProfilePanel extends JPanel {
     public void setPlayersOption(){
         int x = 100;
         this.removeAll();
+        playersOption = new ArrayList<>();
         ButtonGroup bg=new ButtonGroup();
         for (String player:user.getOwnedPlayers()){
             JRadioButton jRadioButton=new JRadioButton(player);
+            System.out.println(player+" prfile panel setting text");
             jRadioButton.setBounds(x,500,100,30);
             playersOption.add(jRadioButton);
             bg.add(jRadioButton);
@@ -60,6 +62,7 @@ public class ProfilePanel extends JPanel {
                 for (JRadioButton jRadioButton:playersOption){
                     if (jRadioButton.isSelected()){
                         String name=jRadioButton.getText();
+                        System.out.println(name+" profile panel");
                         card.gM.lM.userManager.currentUser.changeSelectedPlayer(name);
                         repaint();
                         saveInfo();

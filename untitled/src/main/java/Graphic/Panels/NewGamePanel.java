@@ -76,10 +76,10 @@ public class NewGamePanel extends JPanel {
             JRadioButton gameButton = new JRadioButton();
             lastGamesList[i] = gameButton;
             gameButton.setText(user.gameStatesList.get(i).massage);
-            gameButton.setBounds(x,500,100,30);
+            gameButton.setBounds(x,500,250,30);
             bg.add(gameButton);
             this.add(gameButton);
-            x += 100;
+            x += 300;
         }
 
     }

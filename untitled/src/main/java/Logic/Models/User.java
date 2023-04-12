@@ -59,6 +59,7 @@ public class User {
 //        this.selectedPlayer.update();
 //    }
     public void changeSelectedPlayer(String name){
+        System.out.println("here user");
         this.selectedPlayer = name;
     }
 
