@@ -30,6 +30,8 @@ public class GuiGameState {
     public GuiCoinManager coinManager;
     @JsonIgnore
     public GuiPipeManager pipeManager;
+    @JsonIgnore
+    public GuiPlantManager plantManager;
 
     public GuiGameState(GamePanel gamePanel, GraphicManager gM,LogicGameState logicGameState){
 
@@ -41,9 +43,11 @@ public class GuiGameState {
         this.background = new GuiTileManager(this);
         this.coinManager = new GuiCoinManager(this);
         this.pipeManager = new GuiPipeManager(this);
+        this.plantManager = new GuiPlantManager(this);
     }
     public void paintAll(Graphics2D g2){
         background.draw(g2);
+        plantManager.draw(g2);
         pipeManager.draw(g2);
         coinManager.draw(g2);
         guiPlayer.draw(g2);
@@ -54,6 +58,7 @@ public class GuiGameState {
         this.background.loadMap();
         this.coinManager.loadCoinList();
         this.pipeManager.loadPipeList();
+        this.plantManager.loadPlantList();
     }
     private void setPlayer(){
         String playerName = logicGameState.currentPlayer.name;

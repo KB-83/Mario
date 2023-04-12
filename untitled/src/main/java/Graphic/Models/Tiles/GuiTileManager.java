@@ -1,5 +1,6 @@
 package Graphic.Models.Tiles;
 
+import Graphic.Models.Entity.GuiEnemy;
 import Graphic.Models.GuiGameState;
 import Graphic.Models.GuiPart;
 import Graphic.Panels.GamePanel;
@@ -51,6 +52,10 @@ public class GuiTileManager implements GuiPart {
                     // assuming coin and pipe background is sky;
                     if(numbers[col].equals("c")){
                         num = 7;
+                    }
+                    else if (numbers[col].equals("e")){
+                        num = 0;
+
                     }
                     else if(numbers[col].equals("p") || numbers[col].equals("P")){
                         num = 6;
@@ -126,7 +131,6 @@ public class GuiTileManager implements GuiPart {
 
         int topLeftCol = guiGameState.gM.lM.userManager.currentUser.currentGameState.background.topLeftColInWorld;
         int topLeftRow = 0;
-        System.out.println(mapTileNum[0][0]+" gui tile manager");
         int col = topLeftCol;
         int row = topLeftRow;
         int x = 0;
