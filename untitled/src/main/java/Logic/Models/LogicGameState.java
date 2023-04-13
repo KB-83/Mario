@@ -32,7 +32,7 @@ public class LogicGameState {
     int hearts = 3;
     int score = 0;
     public int coins = 0;
-    int totalTimePerSection = 20;
+    int totalTimePerSection = 200;
     long lastStopThreadTime = System.nanoTime();
     int remainingTime;
     int passedTime;
