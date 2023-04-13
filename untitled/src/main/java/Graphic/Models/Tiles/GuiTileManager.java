@@ -33,7 +33,6 @@ public class GuiTileManager implements GuiPart {
         try {
             int levelNum =  guiGameState.logicGameState.levelNum;
             int sectionNum = guiGameState.logicGameState.sectionNum;
-            System.out.println("loadingMap"+sectionNum);
 
             InputStream is = getClass().getResourceAsStream("/Maps/map"+levelNum+sectionNum+".txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -56,6 +55,9 @@ public class GuiTileManager implements GuiPart {
                     else if (numbers[col].equals("e")){
                         num = 0;
 
+                    }
+                    else if (numbers[col].equals("E")){
+                        num = 8;
                     }
                     else if(numbers[col].equals("p") || numbers[col].equals("P")){
                         num = 6;
@@ -119,6 +121,10 @@ public class GuiTileManager implements GuiPart {
             tiles[7] = new GuiTile();
             tiles[7].image = ImageIO.read(getClass().getResourceAsStream("/Images/Tiles/Sky.png"));
             tiles[7].collision = false;
+
+            tiles[8] = new GuiTile();
+            tiles[8].image = ImageIO.read(getClass().getResourceAsStream("/Images/Tiles/Sky2.png"));
+            tiles[8].collision = false;
 
 
         }catch (IOException e){

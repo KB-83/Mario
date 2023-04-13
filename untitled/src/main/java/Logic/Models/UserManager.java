@@ -42,7 +42,6 @@ public class UserManager {
                 currentUser.currentGameState = logicGameState1;
                 objectMapper.writeValue(fileWriter,currentUser);
                 //test
-                System.out.println("test from user manager");
                 // test
                 this.lM.gM.panelsManagerCard.lastGamesPanel.setLastGamesButtons();
                 this.lM.gM.panelsManagerCard.newGamePanel.setLastGamesButtons();
@@ -142,7 +141,6 @@ public class UserManager {
         countScore();
         this.currentUser.currentGameState.background.topLeftColInWorld = 0;
         this.currentUser.currentGameState.sectionNum++;
-        System.out.println("section changed from user mnager");
         this.currentUser.currentGameState.guiGameState.sectionChanged();
     }
     public void buyRequest(String name){
@@ -191,7 +189,5 @@ public class UserManager {
         int hearts = currentUser.currentGameState.hearts;
         int time = currentUser.currentGameState.remainingTime;
         currentUser.getCurrentGameState().score+= 10 * coin + 20 * hearts + time;
-        currentUser.currentGameState.coins = 0;
-        currentUser.coins += coin;
     }
 }

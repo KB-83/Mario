@@ -69,8 +69,6 @@ public class GuiCoinManager implements GuiPart {
         }catch (Exception e){
             e.printStackTrace();
         }
-//        this.guiGameState.gM.lM.userManager.currentUser.currentGameState.coinManager.setCoinsColAndRow(coinsColAndRow);
-//        this.guiGameState.gM.lM.userManager.currentUser.currentGameState.coinManager.createCoinList();
     }
 
     @Override

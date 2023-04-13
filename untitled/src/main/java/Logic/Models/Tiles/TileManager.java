@@ -34,6 +34,7 @@ public class TileManager {
         tiles[5] = new Tile(true,5);
         tiles[6] = new Tile(true,6);
         tiles[7] = new Tile(false,7);
+        tiles[8] = new Tile(false,8);
     }
 
     public Tile[] getTiles() {

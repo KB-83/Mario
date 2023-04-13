@@ -5,8 +5,6 @@ import Graphic.Models.GuiPart;
 import Graphic.Models.Object.GuiPipe;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -14,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 
-import static javax.management.timer.Timer.ONE_SECOND;
 
 public class GuiPlantManager implements GuiPart {
     GuiGameState guiGameState;
@@ -52,9 +49,15 @@ public class GuiPlantManager implements GuiPart {
                     // assuming coin background is sky;
                     if(numbers[col].equals("e")){
                         num = 1;
-                        GuiEnemy guiPlant = new GuiEnemy( col * 48,row * 48);
+                        GuiEnemy guiPlant = new GuiEnemy( col * 48,row * 48,1);
                         guiPlant.timer.start();
-                        plantList.add(guiPlant);;
+                        plantList.add(guiPlant);
+                    }
+                    else if(numbers[col].equals("E")){
+                        GuiEnemy guiPlant = new GuiEnemy( col * 48,row * 48,2);
+                        guiPlant.timer.start();
+                        plantList.add(guiPlant);
+                        num = 1;
                     }
                     else {
                         num = 0;
@@ -82,9 +85,13 @@ public class GuiPlantManager implements GuiPart {
         int screenCol ;
         int screenRow ;
         for (GuiEnemy guiPlant:plantList){
-            if(guiPlant.worldX/48 >= topLeftCol) {
+            if(guiPlant.worldX/48 >= topLeftCol && guiPlant.imageNumber ==1) {
                 int screenX = guiPlant.worldX - topLeftCol * 48;
                 g2.drawImage(guiPlant.image , screenX, guiPlant.worldY,tileSize,tileSize,null);
+            }
+            else if(guiPlant.worldX/48 >= topLeftCol && guiPlant.imageNumber ==2) {
+                int screenX = guiPlant.worldX - topLeftCol * 48;
+                g2.drawImage(guiPlant.image , screenX, guiPlant.worldY,null);
             }
         }
     }

@@ -23,7 +23,7 @@ public class User {
     String userName;
     String passWord;
     int highScore;
-    int coins = 21100;
+    int coins = 100;
 
     public User() {
 
@@ -143,4 +143,5 @@ public class User {
     public void setHighScore(int highScore) {
         this.highScore = highScore;
     }
+
 }

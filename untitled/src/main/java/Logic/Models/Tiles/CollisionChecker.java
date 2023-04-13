@@ -148,7 +148,6 @@ public class CollisionChecker {
     private void checkIfCoin(Tile tile1,Tile tile2){
 //        System.out.println("checking coin from collision checker");
         if (tile1 != null && tile2 != null) {
-            System.out.println(tile1.num);
             if (this.tileManager.logicGameState.guiGameState.background.mapTileNum[player.worldX /48][player.worldY/48] == 7) {
                 for (GuiCoin coin: this.tileManager.logicGameState.guiGameState.coinManager.coinList){
                     if (coin.worldCol == player.getWorldX()/48 && coin.worldRow == player.worldY/48) {

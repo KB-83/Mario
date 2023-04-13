@@ -41,10 +41,5 @@ public class GuiUniqueGirl extends GuiPlayer{
         }
     }
 
-//    @Override
-//    public void draw(Graphics2D g2) {
-//        g2.drawImage(image, gM.lM.userManager.logicGameState.getCurrentPlayer().screenX , gM.lM.userManager.logicGameState.getCurrentPlayer().screenY,
-//                playerSize, playerSize, null);
-//    }
 
 }

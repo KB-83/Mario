@@ -62,7 +62,6 @@ public class ProfilePanel extends JPanel {
                 for (JRadioButton jRadioButton:playersOption){
                     if (jRadioButton.isSelected()){
                         String name=jRadioButton.getText();
-                        System.out.println(name+" profile panel");
                         card.gM.lM.userManager.currentUser.changeSelectedPlayer(name);
                         repaint();
                         saveInfo();

@@ -39,9 +39,6 @@ public class GamePanel extends JPanel {
             }
         });
     }
-//    public void setGuiGameState(GuiGameState guiGameState){
-//        this.guiGameState = guiGameState;
-//    }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;

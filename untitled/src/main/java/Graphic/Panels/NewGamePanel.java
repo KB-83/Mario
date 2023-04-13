@@ -101,7 +101,6 @@ public class NewGamePanel extends JPanel {
     public void setLastGamesOptions(){
         int x = 200;
         for (int i = 0;i < user.gameStatesList.size() ; i++){
-            System.out.println("here setting Buttons newGamepanel");
             if(lastGamesList[i] != null){
                 this.remove(lastGamesList[i]);
             }

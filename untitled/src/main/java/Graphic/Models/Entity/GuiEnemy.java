@@ -16,16 +16,18 @@ public class GuiEnemy extends GuiEntity {
     int firstRow;
     int secondRow;
     Timer timer;
-
     Image image;
+
+    int imageNumber;
     //true == up
     boolean direction;
 
-    public GuiEnemy (int worldX, int worldY) {
+    public GuiEnemy (int worldX, int worldY,int imageNum) {
         this.worldX = worldX;
         this.worldY= worldY;
         firstRow = worldY/48;
         secondRow = firstRow+1;
+        this.imageNumber = imageNum;
         loadImage();
         timer = timerMaker();
 
@@ -60,7 +62,12 @@ public class GuiEnemy extends GuiEntity {
     private void loadImage() {
 
         try {
-                this.image = ImageIO.read(getClass().getResourceAsStream("/Images/Enemy/plant.png"));
+            if(imageNumber == 1) {
+                image = ImageIO.read(getClass().getResourceAsStream("/Images/Enemy/plant.png"));
+            }
+            else {
+                image = ImageIO.read(getClass().getResourceAsStream("/Images/Enemy/broth.png"));
+            }
         }
         catch (IOException e){
             e.printStackTrace();

@@ -42,9 +42,4 @@ public class GuiPoker extends GuiPlayer{
         }
     }
 
-//    @Override
-//    public void draw(Graphics2D g2) {
-//        g2.drawImage(image, gM.lM.userManager.logicGameState.currentPlayer.screenX , gM.lM.userManager.logicGameState.currentPlayer.screenY,
-//                playerSize,playerSize, null);
-//    }
 }

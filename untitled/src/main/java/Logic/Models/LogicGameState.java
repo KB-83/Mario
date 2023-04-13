@@ -32,7 +32,7 @@ public class LogicGameState {
     int hearts = 3;
     int score = 0;
     public int coins = 0;
-    int totalTimePerSection = 300;
+    int totalTimePerSection = 20;
     long lastStopThreadTime = System.nanoTime();
     int remainingTime;
     int passedTime;
@@ -67,7 +67,7 @@ public class LogicGameState {
 
     private void checkIfOver() {
         currentPlayer.checkHearts();
-        if(hearts <= 0 || sectionNum > 3){
+        if(hearts <= 0 || sectionNum > 3 || remainingTime<=0){
             isOver = true;
             lM.userManager.currentUser.coins += this.coins;
             if(lM.userManager.currentUser.highScore < this.score){
